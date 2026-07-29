@@ -5,73 +5,137 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>StudentHub | Login</title>
   </head>
-
   <body>
     <header>
       <h1>StudentHub Portal</h1>
-
+      <p>Student Login</p>
+      <hr />
       <nav aria-label="Main Navigation">
         <a href="index.html">Home</a> | <a href="about.html">About</a> |
         <a href="event.html">Events</a> | <a href="contact.html">Contact</a> |
+        <a href="faq.html">FAQ</a> |
         <a href="register.html">Register</a>
       </nav>
-
       <hr />
     </header>
 
     <main>
       <section>
-        <h2>Student Login</h2>
+        <h2>Login to StudentHub</h2>
+        <p>
+          Enter your registered email address and password to access your
+          StudentHub account.
+        </p>
+      </section>
 
+      <hr />
+
+      <section>
         <form action="#" method="post">
-          <p>
-            <label for="email">Email Address</label><br />
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Enter your email"
-              required
-            />
-          </p>
+          <label for="email">Email Address</label><br />
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email"
+            required
+          /><br /><br />
 
-          <p>
-            <label for="password">Password</label><br />
-            <input
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Enter password"
-              required
-            />
-          </p>
+          <label for="password">Password</label><br />
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter your password"
+            required
+          /><br /><br />
 
-          <p>
-            <input type="checkbox" id="remember" />
-            <label for="remember">Remember Me</label>
-          </p>
+          <input type="checkbox" id="remember" name="remember" />
+          <label for="remember">Remember Me</label><br /><br />
 
           <button type="submit">Login</button>
           <button type="reset">Clear</button>
         </form>
 
-        <hr />
-
         <p>
-          Forgot Password?
-          <a href="#">Click Here</a>
+          <a href="#">Forgot Password?</a>
         </p>
 
         <p>
           New User?
-          <a href="register.html">Create Account</a>
+          <a href="register.html">Create an Account</a>
         </p>
+      </section>
+
+      <hr />
+
+      <section>
+        <h2>Student Login Benefits</h2>
+        <ul>
+          <li>View your student profile.</li>
+          <li>Access the Student Dashboard.</li>
+          <li>Register for upcoming events.</li>
+          <li>Check latest announcements.</li>
+          <li>Submit feedback online.</li>
+          <li>Stay updated with college activities.</li>
+        </ul>
+      </section>
+
+      <hr />
+
+      <section>
+        <h2>Latest Announcements</h2>
+        <table border="1" cellpadding="8">
+          <tr>
+            <th>Announcement</th>
+            <th>Date</th>
+          </tr>
+          <tr>
+            <td>Semester Registration Starts</td>
+            <td>30 July 2026</td>
+          </tr>
+          <tr>
+            <td>AI & Machine Learning Workshop</td>
+            <td>02 August 2026</td>
+          </tr>
+          <tr>
+            <td>Annual Tech Fest 2026</td>
+            <td>08 August 2026</td>
+          </tr>
+          <tr>
+            <td>Placement Training Program</td>
+            <td>12 August 2026</td>
+          </tr>
+        </table>
+      </section>
+
+      <hr />
+
+      <section>
+        <h2>Login Instructions</h2>
+        <ol>
+          <li>Enter your registered email address.</li>
+          <li>Type your password correctly.</li>
+          <li>Click the <strong>Login</strong> button.</li>
+          <li>
+            After successful login, you will be redirected to the Dashboard.
+          </li>
+        </ol>
       </section>
     </main>
 
+    <hr />
+
     <footer>
-      <hr />
-      <p>&copy; 2026 StudentHub Portal</p>
+      <p><strong>StudentHub Portal</strong></p>
+      <p>CHARUSAT University, Changa, Anand, Gujarat - 388421</p>
+      <p>Email: studenthub@gmail.com</p>
+      <p>Phone: +91 9876543210</p>
+      <p>
+        <a href="#">Privacy Policy</a> |
+        <a href="#">Terms & Conditions</a>
+      </p>
+      <p>&copy; 2026 StudentHub Portal. All Rights Reserved.</p>
     </footer>
   </body>
 </html>

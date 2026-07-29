@@ -1,0 +1,209 @@
+/* ===========================
+   StudentHub Portal CSS
+   =========================== */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f6f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+header{
+    background-color: #0d47a1;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+header h1{
+    margin-bottom: 10px;
+}
+
+header p{
+    font-size: 18px;
+}
+
+nav{
+    margin-top: 15px;
+}
+
+nav a{
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+nav a:hover{
+    background-color: white;
+    color: #0d47a1;
+}
+
+main{
+    width: 90%;
+    margin: 20px auto;
+}
+
+section{
+    background-color: white;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+}
+
+h2{
+    color: #0d47a1;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #0d47a1;
+    padding-bottom: 5px;
+}
+
+h3{
+    color: #1565c0;
+    margin-bottom: 10px;
+}
+
+p{
+    margin-bottom: 10px;
+}
+
+ul,
+ol{
+    margin-left: 25px;
+    margin-top: 10px;
+}
+
+li{
+    margin-bottom: 8px;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+table,
+th,
+td{
+    border: 1px solid #999;
+}
+
+th{
+    background-color: #0d47a1;
+    color: white;
+    padding: 10px;
+}
+
+td{
+    padding: 10px;
+    text-align: left;
+}
+
+tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+form{
+    margin-top: 10px;
+}
+
+fieldset{
+    border: 2px solid #0d47a1;
+    border-radius: 6px;
+    padding: 20px;
+}
+
+legend{
+    font-weight: bold;
+    color: #0d47a1;
+    padding: 0 10px;
+}
+
+label{
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+input[type="tel"],
+select,
+textarea{
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+}
+
+textarea{
+    resize: vertical;
+}
+
+input[type="radio"],
+input[type="checkbox"]{
+    margin-right: 5px;
+}
+
+button{
+    background-color: #0d47a1;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+button:hover{
+    background-color: #1565c0;
+}
+
+details{
+    margin-bottom: 12px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+summary{
+    font-weight: bold;
+    cursor: pointer;
+    color: #0d47a1;
+}
+
+hr{
+    margin: 20px 0;
+    border: 1px solid #ddd;
+}
+
+footer{
+    background-color: #0d47a1;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+footer a{
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover{
+    text-decoration: underline;
+    color: yellow;
+}

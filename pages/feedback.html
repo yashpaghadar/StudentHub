@@ -3,39 +3,174 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Feedback</title>
+    <title>StudentHub | Feedback</title>
   </head>
   <body>
     <header>
       <h1>StudentHub Portal</h1>
+      <p>Student Feedback</p>
+      <hr />
       <nav aria-label="Main Navigation">
         <a href="index.html">Home</a> | <a href="about.html">About</a> |
-        <a href="register.html">Register</a> | <a href="login.html">Login</a> |
         <a href="dashboard.html">Dashboard</a> |
-        <a href="event.html">Events</a> | <a href="profile.html">Profile</a> |
-        <a href="contact.html">Contact</a> | <a href="admin.html">Admin</a> |
+        <a href="event.html">Events</a> | <a href="contact.html">Contact</a> |
         <a href="faq.html">FAQ</a> |
-        <a href="feedback.html">Feedback</a>
+        <a href="login.html">Logout</a>
       </nav>
       <hr />
     </header>
+
     <main>
       <section>
-        <h2>Feedback</h2>
-        <form>
-          <label>Name</label><input /><br /><label>Rating</label
-          ><select>
-            <option>Excellent</option>
-            <option>Good</option></select
-          ><br /><label>Comments</label><textarea></textarea><br /><button>
-            Submit
-          </button>
+        <h2>Student Feedback Form</h2>
+        <p>
+          Your feedback helps us improve the StudentHub Portal and college
+          services.
+        </p>
+      </section>
+
+      <hr />
+
+      <section>
+        <form action="#" method="post">
+          <label for="name">Full Name</label><br />
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Enter your full name"
+            required
+          /><br /><br />
+
+          <label for="enrollment">Enrollment Number</label><br />
+          <input
+            type="text"
+            id="enrollment"
+            name="enrollment"
+            placeholder="Enter enrollment number"
+            required
+          /><br /><br />
+
+          <label for="email">Email Address</label><br />
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email"
+            required
+          /><br /><br />
+
+          <label for="department">Department</label><br />
+          <select id="department" name="department">
+            <option>Information Technology</option>
+            <option>Computer Engineering</option>
+            <option>Mechanical Engineering</option>
+            <option>Civil Engineering</option>
+            <option>Electrical Engineering</option></select
+          ><br /><br />
+
+          <label>Overall Experience</label><br />
+          <input type="radio" id="excellent" name="rating" />
+          <label for="excellent">Excellent</label><br />
+
+          <input type="radio" id="good" name="rating" />
+          <label for="good">Good</label><br />
+
+          <input type="radio" id="average" name="rating" />
+          <label for="average">Average</label><br />
+
+          <input type="radio" id="poor" name="rating" />
+          <label for="poor">Poor</label><br /><br />
+
+          <label>Which services do you use?</label><br />
+          <input type="checkbox" id="events" />
+          <label for="events">Events</label><br />
+
+          <input type="checkbox" id="dashboard" />
+          <label for="dashboard">Dashboard</label><br />
+
+          <input type="checkbox" id="profile" />
+          <label for="profile">Profile</label><br />
+
+          <input type="checkbox" id="contact" />
+          <label for="contact">Contact</label><br />
+
+          <input type="checkbox" id="faq" />
+          <label for="faq">FAQ</label><br /><br />
+
+          <label for="message">Suggestions / Comments</label><br />
+          <textarea
+            id="message"
+            name="message"
+            rows="6"
+            cols="50"
+            placeholder="Write your feedback here..."
+            required
+          ></textarea
+          ><br /><br />
+
+          <label for="date">Feedback Date</label><br />
+          <input type="date" id="date" name="date" /><br /><br />
+
+          <button type="submit">Submit Feedback</button>
+          <button type="reset">Clear</button>
         </form>
       </section>
-    </main>
-    <footer>
+
       <hr />
-      <p>&copy;2026 StudentHub Portal</p>
+
+      <section>
+        <h2>Why Your Feedback Matters</h2>
+        <ul>
+          <li>Improve the StudentHub Portal.</li>
+          <li>Enhance student services.</li>
+          <li>Plan better college events.</li>
+          <li>Improve communication between students and faculty.</li>
+          <li>Provide a better learning experience.</li>
+        </ul>
+      </section>
+
+      <hr />
+
+      <section>
+        <h2>Recent Feedback Summary</h2>
+        <table border="1" cellpadding="8">
+          <tr>
+            <th>Month</th>
+            <th>Feedback Received</th>
+            <th>Average Rating</th>
+          </tr>
+          <tr>
+            <td>July 2026</td>
+            <td>125</td>
+            <td>4.5 / 5</td>
+          </tr>
+          <tr>
+            <td>August 2026</td>
+            <td>98</td>
+            <td>4.7 / 5</td>
+          </tr>
+          <tr>
+            <td>September 2026</td>
+            <td>110</td>
+            <td>4.6 / 5</td>
+          </tr>
+        </table>
+      </section>
+    </main>
+
+    <hr />
+
+    <footer>
+      <p><strong>StudentHub Portal</strong></p>
+      <p>CHARUSAT University, Changa, Anand, Gujarat - 388421</p>
+      <p>Email: studenthub@gmail.com</p>
+      <p>Phone: +91 9876543210</p>
+      <p>
+        <a href="#">Privacy Policy</a> |
+        <a href="#">Terms & Conditions</a>
+      </p>
+      <p>&copy; 2026 StudentHub Portal. All Rights Reserved.</p>
     </footer>
   </body>
 </html>

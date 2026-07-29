@@ -3,39 +3,145 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin</title>
+    <title>StudentHub | Admin</title>
   </head>
   <body>
     <header>
       <h1>StudentHub Portal</h1>
+      <p>Administrator Login</p>
+      <hr />
       <nav aria-label="Main Navigation">
         <a href="index.html">Home</a> | <a href="about.html">About</a> |
-        <a href="register.html">Register</a> | <a href="login.html">Login</a> |
-        <a href="dashboard.html">Dashboard</a> |
-        <a href="event.html">Events</a> | <a href="profile.html">Profile</a> |
-        <a href="contact.html">Contact</a> | <a href="admin.html">Admin</a> |
-        <a href="faq.html">FAQ</a> |
-        <a href="feedback.html">Feedback</a>
+        <a href="event.html">Events</a> | <a href="contact.html">Contact</a> |
+        <a href="login.html">Student Login</a> |
+        <a href="register.html">Register</a> |
+        <a href="faq.html">FAQ</a>
       </nav>
       <hr />
     </header>
+
     <main>
       <section>
-        <h2>Admin Panel</h2>
-        <form>
-          <label>Username</label><input /><br /><label>Password</label
-          ><input type="password" /><br /><button>Login</button>
+        <h2>Administrator Login</h2>
+        <p>
+          Only authorized administrators can access the StudentHub
+          administration panel.
+        </p>
+
+        <form action="#" method="post">
+          <label for="adminid">Admin ID</label><br />
+          <input
+            type="text"
+            id="adminid"
+            name="adminid"
+            placeholder="Enter Admin ID"
+            required
+          /><br /><br />
+
+          <label for="email">Email Address</label><br />
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter Email"
+            required
+          /><br /><br />
+
+          <label for="password">Password</label><br />
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter Password"
+            required
+          /><br /><br />
+
+          <input type="checkbox" id="remember" />
+          <label for="remember">Remember Me</label><br /><br />
+
+          <button type="submit">Login</button>
+          <button type="reset">Clear</button>
         </form>
-        <h3>Modules</h3>
+
+        <p>
+          <a href="#">Forgot Password?</a>
+        </p>
+      </section>
+
+      <hr />
+
+      <section>
+        <h2>Administrator Responsibilities</h2>
         <ul>
-          <li>Manage Students</li>
-          <li>Manage Events</li>
+          <li>Manage student accounts.</li>
+          <li>Create and update college events.</li>
+          <li>Publish announcements.</li>
+          <li>Review student feedback.</li>
+          <li>Manage user profiles.</li>
+          <li>Monitor portal activities.</li>
         </ul>
       </section>
-    </main>
-    <footer>
+
       <hr />
-      <p>&copy;2026 StudentHub Portal</p>
+
+      <section>
+        <h2>Recent Administrative Activities</h2>
+        <table border="1" cellpadding="8">
+          <tr>
+            <th>Activity</th>
+            <th>Date</th>
+            <th>Status</th>
+          </tr>
+          <tr>
+            <td>Published Tech Fest 2026</td>
+            <td>28 July 2026</td>
+            <td>Completed</td>
+          </tr>
+          <tr>
+            <td>Updated Semester Notices</td>
+            <td>30 July 2026</td>
+            <td>Completed</td>
+          </tr>
+          <tr>
+            <td>Added AI Workshop Event</td>
+            <td>01 August 2026</td>
+            <td>Completed</td>
+          </tr>
+          <tr>
+            <td>Verified New Student Registrations</td>
+            <td>03 August 2026</td>
+            <td>Pending</td>
+          </tr>
+        </table>
+      </section>
+
+      <hr />
+
+      <section>
+        <h2>Admin Dashboard Features</h2>
+        <ol>
+          <li>Dashboard Overview</li>
+          <li>Manage Students</li>
+          <li>Manage Events</li>
+          <li>Manage Feedback</li>
+          <li>View Reports</li>
+          <li>Logout</li>
+        </ol>
+      </section>
+    </main>
+
+    <hr />
+
+    <footer>
+      <p><strong>StudentHub Portal</strong></p>
+      <p>CHARUSAT University, Changa, Anand, Gujarat - 388421</p>
+      <p>Email: admin@studenthub.com</p>
+      <p>Phone: +91 9876543210</p>
+      <p>
+        <a href="#">Privacy Policy</a> |
+        <a href="#">Terms & Conditions</a>
+      </p>
+      <p>&copy; 2026 StudentHub Portal. All Rights Reserved.</p>
     </footer>
   </body>
 </html>

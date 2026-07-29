@@ -3,34 +3,175 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact</title>
+    <title>StudentHub | Contact</title>
   </head>
   <body>
     <header>
       <h1>StudentHub Portal</h1>
+      <p>Your One-Stop Campus Management System</p>
+      <hr />
       <nav aria-label="Main Navigation">
         <a href="index.html">Home</a> | <a href="about.html">About</a> |
-        <a href="register.html">Register</a> | <a href="login.html">Login</a> |
-        <a href="dashboard.html">Dashboard</a> |
-        <a href="event.html">Events</a> | <a href="profile.html">Profile</a> |
-        <a href="contact.html">Contact</a> | <a href="admin.html">Admin</a> |
-        <a href="faq.html">FAQ</a> |
-        <a href="feedback.html">Feedback</a>
+        <a href="event.html">Events</a> | <a href="contact.html">Contact</a> |
+        <a href="login.html">Login</a> | <a href="register.html">Register</a> |
+        <a href="faq.html">FAQ</a>
       </nav>
       <hr />
     </header>
+
     <main>
       <section>
-        <h2>Contact</h2>
-        <address>Email: studenthub@example.com<br />Phone: 9999999999</address>
-        <form>
-          <label>Message</label><textarea></textarea><br /><button>Send</button>
+        <h2>Contact Us</h2>
+        <p>
+          If you have any questions, suggestions, or need support, feel free to
+          contact us.
+        </p>
+      </section>
+
+      <hr />
+
+      <section>
+        <h2>College Contact Information</h2>
+        <table border="1" cellpadding="8">
+          <tr>
+            <th>Department</th>
+            <th>Details</th>
+          </tr>
+          <tr>
+            <td>College Name</td>
+            <td>CHARUSAT University</td>
+          </tr>
+          <tr>
+            <td>Address</td>
+            <td>Changa, Anand, Gujarat - 388421</td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td>studenthub@gmail.com</td>
+          </tr>
+          <tr>
+            <td>Phone</td>
+            <td>+91 9876543210</td>
+          </tr>
+          <tr>
+            <td>Office Hours</td>
+            <td>Monday to Friday (9:00 AM - 5:00 PM)</td>
+          </tr>
+        </table>
+      </section>
+
+      <hr />
+
+      <section>
+        <h2>Send Us a Message</h2>
+        <form action="#" method="post">
+          <label for="name">Full Name</label><br />
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Enter your name"
+            required
+          /><br /><br />
+
+          <label for="email">Email Address</label><br />
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email"
+            required
+          /><br /><br />
+
+          <label for="mobile">Mobile Number</label><br />
+          <input
+            type="tel"
+            id="mobile"
+            name="mobile"
+            maxlength="10"
+            placeholder="Enter mobile number"
+            required
+          /><br /><br />
+
+          <label for="subject">Subject</label><br />
+          <input
+            type="text"
+            id="subject"
+            name="subject"
+            placeholder="Enter subject"
+            required
+          /><br /><br />
+
+          <label for="message">Message</label><br />
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            cols="40"
+            placeholder="Write your message here..."
+            required
+          ></textarea
+          ><br /><br />
+
+          <button type="submit">Send Message</button>
+          <button type="reset">Clear</button>
         </form>
       </section>
-    </main>
-    <footer>
+
       <hr />
-      <p>&copy;2026 StudentHub Portal</p>
+
+      <section>
+        <h2>Support Services</h2>
+        <ul>
+          <li>Student Admission Support</li>
+          <li>Technical Support</li>
+          <li>Event Registration Help</li>
+          <li>Student Account Assistance</li>
+          <li>Feedback and Suggestions</li>
+        </ul>
+      </section>
+
+      <hr />
+
+      <section>
+        <h2>Upcoming Office Schedule</h2>
+        <table border="1" cellpadding="8">
+          <tr>
+            <th>Date</th>
+            <th>Activity</th>
+          </tr>
+          <tr>
+            <td>30 July 2026</td>
+            <td>Admission Help Desk Open</td>
+          </tr>
+          <tr>
+            <td>02 August 2026</td>
+            <td>Student Query Session</td>
+          </tr>
+          <tr>
+            <td>08 August 2026</td>
+            <td>Tech Fest Registration Help</td>
+          </tr>
+          <tr>
+            <td>15 August 2026</td>
+            <td>Office Closed (Independence Day)</td>
+          </tr>
+        </table>
+      </section>
+    </main>
+
+    <hr />
+
+    <footer>
+      <p><strong>StudentHub Portal</strong></p>
+      <p>CHARUSAT University, Changa, Anand, Gujarat - 388421</p>
+      <p>Email: studenthub@gmail.com</p>
+      <p>Phone: +91 9876543210</p>
+      <p>
+        <a href="#">Privacy Policy</a> |
+        <a href="#">Terms & Conditions</a>
+      </p>
+      <p>&copy; 2026 StudentHub Portal. All Rights Reserved.</p>
     </footer>
   </body>
 </html>
