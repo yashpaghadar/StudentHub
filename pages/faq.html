@@ -1,178 +1,108 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>StudentHub | FAQ</title>
-  </head>
-  <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentHub - FAQ</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- Skip Navigation -->
+    <a href="#main-content" class="skip-link">Skip to Main Content</a>
+
+    <!-- Header -->
     <header>
-      <h1>StudentHub Portal</h1>
-      <p>Frequently Asked Questions</p>
-      <hr />
-      <nav aria-label="Main Navigation">
-        <a href="index.html">Home</a> | <a href="about.html">About</a> |
-        <a href="dashboard.html">Dashboard</a> |
-        <a href="event.html">Events</a> | <a href="contact.html">Contact</a> |
-        <a href="feedback.html">Feedback</a> |
-        <a href="login.html">Login</a>
-      </nav>
-      <hr />
+        <img src="../img/logo.png" alt="StudentHub Logo" width="60" />
+        <h1>StudentHub</h1>
+        <p>Frequently Asked Questions</p>
     </header>
 
-    <main>
-      <section>
-        <h2>Frequently Asked Questions</h2>
-        <p>
-          Find answers to the most commonly asked questions about StudentHub
-          Portal.
-        </p>
-      </section>
-
-      <hr />
-
-      <section>
-        <h2>General Questions</h2>
-
-        <details>
-          <summary>1. What is StudentHub Portal?</summary>
-          <p>
-            StudentHub is an online portal that helps students access academic
-            information, events, announcements, and profile details.
-          </p>
-        </details>
-
-        <details>
-          <summary>2. Who can use StudentHub?</summary>
-          <p>
-            Students, faculty members, and administrators can use the StudentHub
-            Portal.
-          </p>
-        </details>
-
-        <details>
-          <summary>3. How do I register on StudentHub?</summary>
-          <p>
-            Open the Register page, fill in your details, and submit the
-            registration form.
-          </p>
-        </details>
-
-        <details>
-          <summary>4. How can I log in?</summary>
-          <p>
-            Use your registered email address and password on the Login page.
-          </p>
-        </details>
-
-        <details>
-          <summary>5. What should I do if I forget my password?</summary>
-          <p>
-            Click the "Forgot Password" link on the Login page and follow the
-            instructions.
-          </p>
-        </details>
-
-        <details>
-          <summary>6. Can I update my profile?</summary>
-          <p>
-            Yes. After logging in, open the Profile page and update your
-            personal information.
-          </p>
-        </details>
-
-        <details>
-          <summary>7. How can I register for college events?</summary>
-          <p>
-            Visit the Events page, select your preferred event, and complete the
-            registration form.
-          </p>
-        </details>
-
-        <details>
-          <summary>8. How do I submit feedback?</summary>
-          <p>
-            Open the Feedback page, fill out the feedback form, and click the
-            Submit button.
-          </p>
-        </details>
-
-        <details>
-          <summary>9. How do I contact the college?</summary>
-          <p>
-            You can visit the Contact page to find the college email address,
-            phone number, and contact form.
-          </p>
-        </details>
-
-        <details>
-          <summary>10. Where can I see the latest announcements?</summary>
-          <p>
-            Latest announcements are available on the Home page and Dashboard.
-          </p>
-        </details>
-      </section>
-
-      <hr />
-
-      <section>
-        <h2>Upcoming Important Dates</h2>
-        <table border="1" cellpadding="8">
-          <tr>
-            <th>Activity</th>
-            <th>Date</th>
-          </tr>
-          <tr>
-            <td>Semester Registration Begins</td>
-            <td>30 July 2026</td>
-          </tr>
-          <tr>
-            <td>AI & Machine Learning Workshop</td>
-            <td>02 August 2026</td>
-          </tr>
-          <tr>
-            <td>Annual Tech Fest 2026</td>
-            <td>08 August 2026</td>
-          </tr>
-          <tr>
-            <td>Placement Training Program</td>
-            <td>12 August 2026</td>
-          </tr>
-          <tr>
-            <td>Coding Competition</td>
-            <td>22 August 2026</td>
-          </tr>
-        </table>
-      </section>
-
-      <hr />
-
-      <section>
-        <h2>Need More Help?</h2>
-        <p>
-          If your question is not listed above, please contact the StudentHub
-          Support Team.
-        </p>
+    <!-- Navigation -->
+    <nav>
         <ul>
-          <li>Email: studenthub@gmail.com</li>
-          <li>Phone: +91 9876543210</li>
-          <li>Office Hours: Monday to Friday (9:00 AM - 5:00 PM)</li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="admin.html">Admin</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
         </ul>
-      </section>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb">
+        <p><a href="index.html">Home</a> > FAQ</p>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+
+        <section>
+            <h2>Frequently Asked Questions</h2>
+
+            <article>
+                <h3>1. How do I register?</h3>
+                <p>
+                    Open the Register page, fill in your details, and click the
+                    Register button.
+                </p>
+            </article>
+
+            <article>
+                <h3>2. How do I log in?</h3>
+                <p>
+                    Go to the Login page and enter your registered email and
+                    password.
+                </p>
+            </article>
+
+            <article>
+                <h3>3. How can I update my profile?</h3>
+                <p>
+                    After logging in, open the Profile page and edit your
+                    information.
+                </p>
+            </article>
+
+            <article>
+                <h3>4. How do I view upcoming events?</h3>
+                <p>
+                    Click on the Events page from the navigation menu to see all
+                    upcoming college events.
+                </p>
+            </article>
+
+            <article>
+                <h3>5. How can I contact the college?</h3>
+                <p>
+                    Visit the Contact page and submit the contact form or use the
+                    provided contact details.
+                </p>
+            </article>
+
+        </section>
+
+        <aside>
+            <h3>Need More Help?</h3>
+            <p>
+                If your question is not listed here, please visit the Contact
+                page or send us your feedback.
+            </p>
+        </aside>
+
     </main>
 
-    <hr />
-
+    <!-- Footer -->
     <footer>
-      <p><strong>StudentHub Portal</strong></p>
-      <p>CHARUSAT University, Changa, Anand, Gujarat - 388421</p>
-      <p>Email: studenthub@gmail.com</p>
-      <p>Phone: +91 9876543210</p>
-      <p>
-        <a href="#">Privacy Policy</a> |
-        <a href="#">Terms & Conditions</a>
-      </p>
-      <p>&copy; 2026 StudentHub Portal. All Rights Reserved.</p>
+        <p>&copy; 2026 StudentHub. All Rights Reserved.</p>
     </footer>
-  </body>
+
+</body>
 </html>

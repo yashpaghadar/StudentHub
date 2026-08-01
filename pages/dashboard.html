@@ -1,166 +1,94 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>StudentHub | Dashboard</title>
-  </head>
-  <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentHub - Dashboard</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- Skip Navigation -->
+    <a href="#main-content" class="skip-link">Skip to Main Content</a>
+
+    <!-- Header -->
     <header>
-      <h1>StudentHub Portal</h1>
-      <p>Student Dashboard</p>
-      <hr />
-      <nav aria-label="Main Navigation">
-        <a href="index.html">Home</a> | <a href="about.html">About</a> |
-        <a href="profile.html">Profile</a> | <a href="event.html">Events</a> |
-        <a href="contact.html">Contact</a> |
-        <a href="feedback.html">Feedback</a> |
-        <a href="login.html">Logout</a>
-      </nav>
-      <hr />
+        <img src="../img/logo.png" alt="StudentHub Logo" width="60" />
+        <h1>StudentHub</h1>
+        <p>Student Dashboard</p>
     </header>
 
-    <main>
-      <section>
-        <h2>Welcome, Student</h2>
-        <p>
-          Welcome to your StudentHub Dashboard. Here you can access your
-          profile, view upcoming events, check announcements, and stay updated
-          with campus activities.
-        </p>
-      </section>
-
-      <hr />
-
-      <section>
-        <h2>Student Information</h2>
-        <table border="1" cellpadding="8">
-          <tr>
-            <th>Field</th>
-            <th>Details</th>
-          </tr>
-          <tr>
-            <td>Name</td>
-            <td>Yash Paghadar</td>
-          </tr>
-          <tr>
-            <td>Enrollment No.</td>
-            <td>23IT001</td>
-          </tr>
-          <tr>
-            <td>Department</td>
-            <td>Information Technology</td>
-          </tr>
-          <tr>
-            <td>Semester</td>
-            <td>Semester 3</td>
-          </tr>
-          <tr>
-            <td>Email</td>
-            <td>studenthub@gmail.com</td>
-          </tr>
-        </table>
-      </section>
-
-      <hr />
-
-      <section>
-        <h2>Dashboard Menu</h2>
+    <!-- Navigation -->
+    <nav>
         <ul>
-          <li><a href="profile.html">View Profile</a></li>
-          <li><a href="event.html">View Events</a></li>
-          <li><a href="feedback.html">Submit Feedback</a></li>
-          <li><a href="contact.html">Contact Support</a></li>
-          <li><a href="faq.html">Frequently Asked Questions</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="admin.html">Admin</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
         </ul>
-      </section>
+    </nav>
 
-      <hr />
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb">
+        <p><a href="index.html">Home</a> > Dashboard</p>
+    </nav>
 
-      <section>
-        <h2>Latest Announcements</h2>
-        <ul>
-          <li>
-            Semester Registration starts on <strong>30 July 2026</strong>.
-          </li>
-          <li>
-            AI & Machine Learning Workshop will be held on
-            <strong>02 August 2026</strong>.
-          </li>
-          <li>Annual Tech Fest 2026 registration is now open.</li>
-          <li>Placement Training begins on <strong>12 August 2026</strong>.</li>
-        </ul>
-      </section>
+    <!-- Main Content -->
+    <main id="main-content">
 
-      <hr />
+        <section>
+            <h2>Welcome, Student</h2>
+            <p>
+                This is your dashboard. Here you can view your profile,
+                upcoming events, announcements, and academic information.
+            </p>
+        </section>
 
-      <section>
-        <h2>Upcoming Events</h2>
-        <table border="1" cellpadding="8">
-          <tr>
-            <th>Event</th>
-            <th>Date</th>
-            <th>Venue</th>
-          </tr>
-          <tr>
-            <td>AI & Machine Learning Workshop</td>
-            <td>02 August 2026</td>
-            <td>Seminar Hall</td>
-          </tr>
-          <tr>
-            <td>Annual Tech Fest 2026</td>
-            <td>08 August 2026</td>
-            <td>Main Auditorium</td>
-          </tr>
-          <tr>
-            <td>Coding Competition</td>
-            <td>22 August 2026</td>
-            <td>Computer Lab</td>
-          </tr>
-        </table>
-      </section>
+        <section>
 
-      <hr />
+            <article>
+                <h3>Student Information</h3>
+                <p><strong>Name:</strong> Yash Paghadar</p>
+                <p><strong>Enrollment No:</strong> 23012011100</p>
+                <p><strong>Course:</strong> Information Technology</p>
+                <p><strong>Semester:</strong> 3</p>
+            </article>
 
-      <section>
-        <h2>Quick Statistics</h2>
-        <table border="1" cellpadding="8">
-          <tr>
-            <th>Category</th>
-            <th>Total</th>
-          </tr>
-          <tr>
-            <td>Registered Events</td>
-            <td>3</td>
-          </tr>
-          <tr>
-            <td>New Announcements</td>
-            <td>4</td>
-          </tr>
-          <tr>
-            <td>Pending Feedback</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td>Completed Activities</td>
-            <td>6</td>
-          </tr>
-        </table>
-      </section>
+            <article>
+                <h3>Recent Activities</h3>
+                <ul>
+                    <li>Profile Updated</li>
+                    <li>Registered for Web Development Workshop</li>
+                    <li>Feedback Submitted</li>
+                </ul>
+            </article>
+
+        </section>
+
+        <aside>
+            <h3>Upcoming Events</h3>
+            <ul>
+                <li>Web Development Workshop</li>
+                <li>Sports Week</li>
+                <li>Placement Seminar</li>
+                <li>Technical Quiz</li>
+            </ul>
+        </aside>
+
     </main>
 
-    <hr />
-
+    <!-- Footer -->
     <footer>
-      <p><strong>StudentHub Portal</strong></p>
-      <p>CHARUSAT University, Changa, Anand, Gujarat - 388421</p>
-      <p>Email: studenthub@gmail.com</p>
-      <p>Phone: +91 9876543210</p>
-      <p>
-        <a href="#">Privacy Policy</a> |
-        <a href="#">Terms & Conditions</a>
-      </p>
-      <p>&copy; 2026 StudentHub Portal. All Rights Reserved.</p>
+        <p>&copy; 2026 StudentHub. All Rights Reserved.</p>
     </footer>
-  </body>
+
+</body>
 </html>

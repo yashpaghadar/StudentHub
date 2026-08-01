@@ -3,139 +3,80 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>StudentHub | Home</title>
+    <title>StudentHub - Home</title>
+    <link rel="stylesheet" href="../css/style.css" />
   </head>
 
   <body>
+    <!-- Skip Navigation -->
+    <a href="#main-content" class="skip-link">Skip to Main Content</a>
+
+    <!-- Header -->
     <header>
-      <h1>StudentHub Portal</h1>
-      <p>Your One-Stop Campus Management System</p>
-
-      <hr />
-
-      <nav aria-label="Main Navigation">
-        <a href="index.html">Home</a> | <a href="about.html">About</a> |
-        <a href="event.html">Events</a> | <a href="contact.html">Contact</a> |
-        <a href="login.html">Login</a> | <a href="register.html">Register</a> |
-        <a href="faq.html">FAQ</a>
-      </nav>
-
-      <hr />
+      <img src="../img/logo.png" alt="StudentHub Logo" width="60" />
+      <h1>StudentHub</h1>
+      <p>Student Portal</p>
     </header>
 
-    <main>
+    <!-- Navigation -->
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="register.html">Register</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="profile.html">Profile</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="admin.html">Admin</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="feedback.html">Feedback</a></li>
+      </ul>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb">
+      <p>Home</p>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
       <section>
-        <h2>Welcome to StudentHub Portal</h2>
-
+        <h2>Welcome to StudentHub</h2>
         <p>
-          StudentHub is a web portal designed to help students, faculty members,
-          and administrators manage campus activities in one place.
+          StudentHub is a simple student portal where students can register, log
+          in, manage their profile, view events, and submit feedback.
         </p>
-
-        <p>
-          Through this portal, students can access announcements, events,
-          academic information, profiles, and feedback services.
-        </p>
-
-        <a href="login.html">
-          <button>Get Started</button>
-        </a>
       </section>
-
-      <hr />
-
-      <section>
-        <h2>Upcoming Events</h2>
-
-        <article>
-          <h3>AI & Machine Learning Workshop</h3>
-          <p><strong>Date:</strong> 02 August 2026</p>
-          <p>
-            Learn the basics of Artificial Intelligence, Machine Learning and
-            Generative AI through practical sessions.
-          </p>
-        </article>
-
-        <article>
-          <h3>Annual Tech Fest 2026</h3>
-          <p><strong>Date:</strong> 08 August 2026</p>
-          <p>
-            Participate in coding competitions, robotics exhibitions, gaming
-            tournaments, and technical presentations.
-          </p>
-        </article>
-
-        <article>
-          <h3>Coding Challenge</h3>
-          <p><strong>Date:</strong> 22 August 2026</p>
-          <p>
-            Solve programming problems individually and compete for exciting
-            prizes.
-          </p>
-        </article>
-      </section>
-
-      <hr />
 
       <section>
         <h2>Latest Announcements</h2>
 
-        <ul>
-          <li>
-            Semester Registration begins on <strong>30 July 2026</strong>.
-          </li>
+        <article>
+          <h3>Semester Begins</h3>
+          <p>The new academic semester starts from 10 August 2026.</p>
+        </article>
 
-          <li>
-            Internal Examination Schedule released on
-            <strong>01 August 2026</strong>.
-          </li>
-
-          <li>Library Book Fair starts on <strong>07 August 2026</strong>.</li>
-
-          <li>
-            Placement Training Registration closes on
-            <strong>18 August 2026</strong>.
-          </li>
-        </ul>
+        <article>
+          <h3>Workshop</h3>
+          <p>Web Development Workshop will be conducted on 18 August 2026.</p>
+        </article>
       </section>
 
-      <hr />
-
-      <section>
-        <h2>Portal Features</h2>
-
+      <aside>
+        <h3>Quick Links</h3>
         <ul>
-          <li>Student Registration</li>
-          <li>Secure Login</li>
-          <li>Student Dashboard</li>
-          <li>Profile Management</li>
-          <li>College Event Management</li>
-          <li>Feedback System</li>
-          <li>Admin Panel</li>
+          <li><a href="register.html">New Registration</a></li>
+          <li><a href="login.html">Student Login</a></li>
+          <li><a href="events.html">Upcoming Events</a></li>
         </ul>
-      </section>
+      </aside>
     </main>
 
-    <hr />
-
+    <!-- Footer -->
     <footer>
-      <p><strong>StudentHub Portal</strong></p>
-
-      <p>
-        CHARUSAT University,<br />
-        Changa, Anand,<br />
-        Gujarat - 388421
-      </p>
-
-      <p>Email : studenthub@gmail.com</p>
-      <p>Phone : +91 9876543210</p>
-
-      <p>
-        <a href="#">Privacy Policy</a> |
-        <a href="#">Terms & Conditions</a>
-      </p>
-
-      <p>&copy; 2026 StudentHub Portal. All Rights Reserved.</p>
+      <p>&copy; 2026 StudentHub. All Rights Reserved.</p>
     </footer>
   </body>
 </html>

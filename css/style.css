@@ -1,209 +1,222 @@
-/* ===========================
-   StudentHub Portal CSS
-   =========================== */
-
+/* Reset */
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
+/* Body */
 body{
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #f4f6f9;
-    color: #333;
-    line-height: 1.6;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f4f4f4;
+    color:#333;
+    line-height:1.6;
 }
 
+/* Skip Link */
+.skip-link{
+    position:absolute;
+    left:-9999px;
+}
+
+.skip-link:focus{
+    left:10px;
+    top:10px;
+    background:#000;
+    color:#fff;
+    padding:10px;
+    text-decoration:none;
+}
+
+/* Header */
 header{
-    background-color: #0d47a1;
-    color: white;
-    text-align: center;
-    padding: 20px;
+    background:#0077cc;
+    color:white;
+    text-align:center;
+    padding:20px;
 }
 
 header h1{
-    margin-bottom: 10px;
+    margin-bottom:5px;
 }
 
-header p{
-    font-size: 18px;
-}
-
+/* Navigation */
 nav{
-    margin-top: 15px;
+    background:#333;
 }
 
-nav a{
-    color: white;
-    text-decoration: none;
-    padding: 10px 15px;
-    display: inline-block;
-    border-radius: 5px;
+nav ul{
+    list-style:none;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
 }
 
-nav a:hover{
-    background-color: white;
-    color: #0d47a1;
+nav ul li{
+    margin:5px;
 }
 
+nav ul li a{
+    color:white;
+    text-decoration:none;
+    padding:10px 15px;
+    display:block;
+}
+
+nav ul li a:hover{
+    background:#0077cc;
+    border-radius:5px;
+}
+
+/* Breadcrumb */
+nav p{
+    background:#e9e9e9;
+    padding:10px;
+    text-align:center;
+    color:#444;
+}
+
+/* Main */
 main{
-    width: 90%;
-    margin: 20px auto;
+    width:90%;
+    max-width:1100px;
+    margin:20px auto;
 }
 
-section{
-    background-color: white;
-    margin-bottom: 20px;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+/* Sections */
+section,
+article,
+aside{
+    background:white;
+    margin-bottom:20px;
+    padding:20px;
+    border-radius:6px;
+    box-shadow:0 2px 5px rgba(0,0,0,0.1);
 }
 
-h2{
-    color: #0d47a1;
-    margin-bottom: 15px;
-    border-bottom: 2px solid #0d47a1;
-    padding-bottom: 5px;
+section h2,
+article h3,
+aside h3{
+    color:#0077cc;
+    margin-bottom:10px;
 }
 
-h3{
-    color: #1565c0;
-    margin-bottom: 10px;
-}
-
-p{
-    margin-bottom: 10px;
-}
-
-ul,
-ol{
-    margin-left: 25px;
-    margin-top: 10px;
+/* Lists */
+ul{
+    margin-left:20px;
 }
 
 li{
-    margin-bottom: 8px;
+    margin:8px 0;
 }
 
+/* Forms */
+form{
+    margin-top:15px;
+}
+
+label{
+    display:block;
+    margin-top:12px;
+    margin-bottom:5px;
+    font-weight:bold;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:5px;
+    margin-bottom:10px;
+}
+
+textarea{
+    resize:vertical;
+}
+
+/* Buttons */
+input[type="submit"],
+input[type="reset"]{
+    width:auto;
+    background:#0077cc;
+    color:white;
+    border:none;
+    padding:10px 20px;
+    cursor:pointer;
+    margin-right:10px;
+}
+
+input[type="submit"]:hover,
+input[type="reset"]:hover{
+    background:#005fa3;
+}
+
+/* Checkbox */
+input[type="checkbox"]{
+    width:auto;
+    margin-right:5px;
+}
+
+/* Links */
+a{
+    color:#0077cc;
+}
+
+a:hover{
+    text-decoration:underline;
+}
+
+/* Table (if used later) */
 table{
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
 }
 
 table,
 th,
 td{
-    border: 1px solid #999;
+    border:1px solid #ccc;
+}
+
+th,
+td{
+    padding:10px;
+    text-align:left;
 }
 
 th{
-    background-color: #0d47a1;
-    color: white;
-    padding: 10px;
+    background:#0077cc;
+    color:white;
 }
 
-td{
-    padding: 10px;
-    text-align: left;
-}
-
-tr:nth-child(even){
-    background-color: #f2f2f2;
-}
-
-form{
-    margin-top: 10px;
-}
-
-fieldset{
-    border: 2px solid #0d47a1;
-    border-radius: 6px;
-    padding: 20px;
-}
-
-legend{
-    font-weight: bold;
-    color: #0d47a1;
-    padding: 0 10px;
-}
-
-label{
-    font-weight: bold;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="date"],
-input[type="tel"],
-select,
-textarea{
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    border: 1px solid #bbb;
-    border-radius: 5px;
-}
-
-textarea{
-    resize: vertical;
-}
-
-input[type="radio"],
-input[type="checkbox"]{
-    margin-right: 5px;
-}
-
-button{
-    background-color: #0d47a1;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-right: 10px;
-}
-
-button:hover{
-    background-color: #1565c0;
-}
-
-details{
-    margin-bottom: 12px;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 10px;
-}
-
-summary{
-    font-weight: bold;
-    cursor: pointer;
-    color: #0d47a1;
-}
-
-hr{
-    margin: 20px 0;
-    border: 1px solid #ddd;
-}
-
+/* Footer */
 footer{
-    background-color: #0d47a1;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    margin-top: 20px;
+    background:#333;
+    color:white;
+    text-align:center;
+    padding:15px;
+    margin-top:20px;
 }
 
-footer a{
-    color: white;
-    text-decoration: none;
-}
+/* Responsive Design */
+@media screen and (max-width:768px){
 
-footer a:hover{
-    text-decoration: underline;
-    color: yellow;
+    nav ul{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    main{
+        width:95%;
+    }
+
+    input[type="submit"],
+    input[type="reset"]{
+        width:100%;
+        margin-top:10px;
+    }
+
 }

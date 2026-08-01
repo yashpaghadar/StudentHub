@@ -1,216 +1,107 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>StudentHub | Register</title>
-  </head>
-  <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentHub - Register</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- Skip Navigation -->
+    <a href="#main-content" class="skip-link">Skip to Main Content</a>
+
+    <!-- Header -->
     <header>
-      <h1>StudentHub Portal</h1>
-      <p>Student Registration</p>
-      <hr />
-      <nav aria-label="Main Navigation">
-        <a href="index.html">Home</a> | <a href="about.html">About</a> |
-        <a href="event.html">Events</a> | <a href="contact.html">Contact</a> |
-        <a href="faq.html">FAQ</a> |
-        <a href="login.html">Login</a>
-      </nav>
-      <hr />
+        <img src="../img/logo.png" alt="StudentHub Logo" width="60" />
+        <h1>StudentHub</h1>
+        <p>Student Registration</p>
     </header>
 
-    <main>
-      <section>
-        <h2>Create Your StudentHub Account</h2>
-        <p>
-          Complete the registration form below to access the StudentHub Portal.
-        </p>
-      </section>
-
-      <hr />
-
-      <section>
-        <form action="#" method="post">
-          <fieldset>
-            <legend>Personal Information</legend>
-
-            <label for="fullname">Full Name</label><br />
-            <input
-              type="text"
-              id="fullname"
-              name="fullname"
-              placeholder="Enter your full name"
-              required
-            /><br /><br />
-
-            <label for="enrollment">Enrollment Number</label><br />
-            <input
-              type="text"
-              id="enrollment"
-              name="enrollment"
-              placeholder="Enter enrollment number"
-              required
-            /><br /><br />
-
-            <label for="department">Department</label><br />
-            <select id="department" name="department">
-              <option>Information Technology</option>
-              <option>Computer Engineering</option>
-              <option>Mechanical Engineering</option>
-              <option>Civil Engineering</option>
-              <option>Electrical Engineering</option></select
-            ><br /><br />
-
-            <label for="semester">Semester</label><br />
-            <select id="semester" name="semester">
-              <option>Semester 1</option>
-              <option>Semester 2</option>
-              <option>Semester 3</option>
-              <option>Semester 4</option>
-              <option>Semester 5</option>
-              <option>Semester 6</option>
-              <option>Semester 7</option>
-              <option>Semester 8</option></select
-            ><br /><br />
-
-            <label for="dob">Date of Birth</label><br />
-            <input type="date" id="dob" name="dob" /><br /><br />
-
-            <label>Gender</label><br />
-            <input type="radio" id="male" name="gender" />
-            <label for="male">Male</label>
-
-            <input type="radio" id="female" name="gender" />
-            <label for="female">Female</label>
-
-            <input type="radio" id="other" name="gender" />
-            <label for="other">Other</label><br /><br />
-
-            <label for="mobile">Mobile Number</label><br />
-            <input
-              type="tel"
-              id="mobile"
-              name="mobile"
-              maxlength="10"
-              placeholder="Enter mobile number"
-              required
-            /><br /><br />
-
-            <label for="email">Email Address</label><br />
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Enter your email"
-              required
-            /><br /><br />
-
-            <label for="address">Address</label><br />
-            <textarea
-              id="address"
-              name="address"
-              rows="4"
-              cols="40"
-              placeholder="Enter your address"
-            ></textarea
-            ><br /><br />
-
-            <label for="password">Password</label><br />
-            <input
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Create password"
-              required
-            /><br /><br />
-
-            <label for="confirm">Confirm Password</label><br />
-            <input
-              type="password"
-              id="confirm"
-              name="confirm"
-              placeholder="Confirm password"
-              required
-            /><br /><br />
-
-            <input type="checkbox" id="terms" required />
-            <label for="terms">I agree to the Terms and Conditions.</label
-            ><br /><br />
-
-            <button type="submit">Register</button>
-            <button type="reset">Clear</button>
-          </fieldset>
-        </form>
-      </section>
-
-      <hr />
-
-      <section>
-        <h2>Registration Benefits</h2>
+    <!-- Navigation -->
+    <nav>
         <ul>
-          <li>Access your Student Dashboard.</li>
-          <li>Register for college events.</li>
-          <li>View announcements and notices.</li>
-          <li>Manage your student profile.</li>
-          <li>Submit feedback online.</li>
-          <li>Receive important college updates.</li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="admin.html">Admin</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
         </ul>
-      </section>
+    </nav>
 
-      <hr />
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb">
+        <p><a href="index.html">Home</a> > Register</p>
+    </nav>
 
-      <section>
-        <h2>Registration Schedule</h2>
-        <table border="1" cellpadding="8">
-          <tr>
-            <th>Activity</th>
-            <th>Date</th>
-          </tr>
-          <tr>
-            <td>Registration Opens</td>
-            <td>30 July 2026</td>
-          </tr>
-          <tr>
-            <td>Last Date for Registration</td>
-            <td>20 August 2026</td>
-          </tr>
-          <tr>
-            <td>Profile Verification</td>
-            <td>22 August 2026</td>
-          </tr>
-          <tr>
-            <td>Portal Access Starts</td>
-            <td>25 August 2026</td>
-          </tr>
-        </table>
-      </section>
+    <!-- Main Content -->
+    <main id="main-content">
 
-      <hr />
+        <section>
+            <h2>Student Registration Form</h2>
 
-      <section>
-        <h2>Already Registered?</h2>
-        <p>
-          If you already have a StudentHub account, click the button below to
-          log in.
-        </p>
-        <a href="login.html">
-          <button type="button">Go to Login</button>
-        </a>
-      </section>
+            <form action="#" method="post">
+
+                <label for="fullname">Full Name</label>
+                <input type="text" id="fullname" name="fullname" required>
+
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="mobile">Mobile Number</label>
+                <input type="tel" id="mobile" name="mobile" required>
+
+                <label for="course">Course</label>
+                <select id="course" name="course">
+                    <option>Information Technology</option>
+                    <option>Computer Engineering</option>
+                    <option>Mechanical Engineering</option>
+                    <option>Civil Engineering</option>
+                </select>
+
+                <label for="year">Academic Year</label>
+                <select id="year" name="year">
+                    <option>First Year</option>
+                    <option>Second Year</option>
+                    <option>Third Year</option>
+                    <option>Final Year</option>
+                </select>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+
+                <label for="confirm">Confirm Password</label>
+                <input type="password" id="confirm" name="confirm" required>
+
+                <input type="submit" value="Register">
+                <input type="reset" value="Reset">
+
+            </form>
+        </section>
+
+        <aside>
+            <h3>Registration Tips</h3>
+            <ul>
+                <li>Fill all required fields.</li>
+                <li>Use a valid email address.</li>
+                <li>Create a strong password.</li>
+                <li>Check details before submitting.</li>
+            </ul>
+        </aside>
+
     </main>
 
-    <hr />
-
+    <!-- Footer -->
     <footer>
-      <p><strong>StudentHub Portal</strong></p>
-      <p>CHARUSAT University, Changa, Anand, Gujarat - 388421</p>
-      <p>Email: studenthub@gmail.com</p>
-      <p>Phone: +91 9876543210</p>
-      <p>
-        <a href="#">Privacy Policy</a> |
-        <a href="#">Terms & Conditions</a>
-      </p>
-      <p>&copy; 2026 StudentHub Portal. All Rights Reserved.</p>
+        <p>&copy; 2026 StudentHub. All Rights Reserved.</p>
     </footer>
-  </body>
+
+</body>
 </html>
