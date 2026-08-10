@@ -1,94 +1,345 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudentHub - Dashboard</title>
-    <link rel="stylesheet" href="../css/style.css">
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StudentHub | Dashboard</title>
 
-<body>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
 
-    <!-- Skip Navigation -->
-    <a href="#main-content" class="skip-link">Skip to Main Content</a>
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
 
-    <!-- Header -->
-    <header>
-        <img src="../img/logo.png" alt="StudentHub Logo" width="60" />
-        <h1>StudentHub</h1>
-        <p>Student Dashboard</p>
-    </header>
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-    <!-- Navigation -->
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="register.html">Register</a></li>
-            <li><a href="login.html">Login</a></li>
-            <li><a href="dashboard.html">Dashboard</a></li>
-            <li><a href="events.html">Events</a></li>
-            <li><a href="profile.html">Profile</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="admin.html">Admin</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-            <li><a href="feedback.html">Feedback</a></li>
-        </ul>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+
+  <body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+      <div class="container-fluid">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <img
+            src="../img/logo.png"
+            width="50"
+            class="me-3"
+            alt="StudentHub Logo"
+          />
+
+          <div>
+            <h5 class="mb-0 fw-bold">StudentHub Portal</h5>
+            <small> Student Dashboard </small>
+          </div>
+        </a>
+
+        <div class="dropdown">
+          <a
+            href="#"
+            class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+            data-bs-toggle="dropdown"
+          >
+            <span class="me-3 fw-semibold"> Welcome, Student </span>
+            <i class="bi bi-person-circle fs-2"></i>
+          </a>
+
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li>
+              <a class="dropdown-item" href="profile.html">
+                <i class="bi bi-person me-2"></i>
+                Profile
+              </a>
+            </li>
+
+            <li>
+              <a class="dropdown-item text-danger" href="login.html">
+                <i class="bi bi-box-arrow-right me-2"></i>
+                Logout
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </nav>
 
-    <!-- Breadcrumb -->
-    <nav aria-label="Breadcrumb">
-        <p><a href="index.html">Home</a> > Dashboard</p>
-    </nav>
+    <!-- ====================== DASHBOARD ====================== -->
 
-    <!-- Main Content -->
-    <main id="main-content">
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Sidebar -->
 
-        <section>
-            <h2>Welcome, Student</h2>
-            <p>
-                This is your dashboard. Here you can view your profile,
-                upcoming events, announcements, and academic information.
-            </p>
-        </section>
+        <aside class="col-lg-2 col-md-3 bg-white shadow-sm min-vh-100 p-0">
+          <div class="list-group list-group-flush">
+            <a
+              href="index.html"
+              class="list-group-item list-group-item-action active py-3"
+            >
+              <i class="bi bi-house-door-fill me-2"></i>
+              Home
+            </a>
 
-        <section>
+            <a
+              href="profile.html"
+              class="list-group-item list-group-item-action py-3"
+            >
+              <i class="bi bi-person-fill me-2"></i>
+              Profile
+            </a>
 
-            <article>
-                <h3>Student Information</h3>
-                <p><strong>Name:</strong> Yash Paghadar</p>
-                <p><strong>Enrollment No:</strong> D26IT111</p>
-                <p><strong>Course:</strong> Information Technology</p>
-                <p><strong>Semester:</strong> 3</p>
-            </article>
+            <a
+              href="events.html"
+              class="list-group-item list-group-item-action py-3"
+            >
+              <i class="bi bi-calendar-event me-2"></i>
+              Events
+            </a>
 
-            <article>
-                <h3>Recent Activities</h3>
-                <ul>
-                    <li>Profile Updated</li>
-                    <li>Registered for Web Development Workshop</li>
-                    <li>Feedback Submitted</li>
-                </ul>
-            </article>
-
-        </section>
-
-        <aside>
-            <h3>Upcoming Events</h3>
-            <ul>
-                <li>Web Development Workshop</li>
-                <li>Sports Week</li>
-                <li>Placement Seminar</li>
-                <li>Technical Quiz</li>
-            </ul>
+            <a
+              href="contact.html"
+              class="list-group-item list-group-item-action py-3"
+            >
+              <i class="bi bi-envelope me-1"></i>
+              Contect US
+            </a>
+      
+            <a
+              href="faq.html"
+              class="list-group-item list-group-item-action py-3"
+            >
+              <i class="bi bi-question-circle me-1"></i>
+              FAQ
+            </a>
+      
+            <a
+              href="feedback.html"
+              class="list-group-item list-group-item-action py-3"
+            >
+              <i class="bi bi-chat-dots me-2"></i>
+              Feedback
+            </a>
+            
+            <a
+              href="login.html"
+              class="list-group-item list-group-item-action text-danger py-3"
+            >
+              <i class="bi bi-box-arrow-right me-2"></i>
+              Logout
+            </a>
+          </div>
         </aside>
 
-    </main>
+        <!-- Main Content -->
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 StudentHub. All Rights Reserved.</p>
+        <main class="col-lg-10 col-md-9 py-4">
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+              <h2 class="fw-bold">Dashboard</h2>
+              <p class="text-muted mb-0">
+                Welcome back! Here's what's happening today.
+              </p>
+            </div>
+          </div>
+
+          <!-- Upcoming Events -->
+
+          <div class="card shadow-sm border-0 mb-4">
+            <div
+              class="card-header bg-white d-flex justify-content-between align-items-center"
+            >
+              <h5 class="fw-bold mb-0">
+                <i class="bi bi-calendar-event text-primary me-2"></i>
+
+                Upcoming Events
+              </h5>
+
+              <a href="events.html" class="text-decoration-none fw-semibold">
+                View All
+              </a>
+            </div>
+
+            <div class="card-body">
+              <div class="row g-4">
+                <!-- Event 1 -->
+
+                <div class="col-lg-4 col-md-6">
+                  <div class="card h-100 dashboard-event-card">
+                    <img
+                      src="../banners/Annual_tech_fest.jpg"
+                      class="card-img-top"
+                      alt="Annual Tech Fest"
+                    />
+
+                    <div class="card-body">
+                      <h6 class="fw-bold">Annual Tech Fest</h6>
+
+                      <p class="text-muted mb-3">
+                        <i class="bi bi-calendar3 me-1"></i>
+
+                        20 May 2026
+                      </p>
+
+                      <a href="events.html" class="btn btn-primary btn-sm">
+                        View Details
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Event 2 -->
+
+                <div class="col-lg-4 col-md-6">
+                  <div class="card h-100 dashboard-event-card">
+                    <img
+                      src="../banners/Workshop_on_ai.jpg"
+                      class="card-img-top"
+                      alt="Workshop on AI"
+                    />
+
+                    <div class="card-body">
+                      <h6 class="fw-bold">Workshop on AI</h6>
+
+                      <p class="text-muted mb-3">
+                        <i class="bi bi-calendar3 me-1"></i>
+
+                        25 May 2026
+                      </p>
+
+                      <a href="events.html" class="btn btn-primary btn-sm">
+                        View Details
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Event 3 -->
+
+                <div class="col-lg-4 col-md-6">
+                  <div class="card h-100 dashboard-event-card">
+                    <img
+                      src="../banners/Community_meetup.jpg"
+                      class="card-img-top"
+                      alt="Community Meetup"
+                    />
+
+                    <div class="card-body">
+                      <h6 class="fw-bold">Community Meetup</h6>
+
+                      <p class="text-muted mb-3">
+                        <i class="bi bi-calendar3 me-1"></i>
+
+                        30 May 2026
+                      </p>
+
+                      <a href="events.html" class="btn btn-primary btn-sm">
+                        View Details
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Notifications -->
+
+          <div class="card shadow-sm border-0">
+            <div class="card-header bg-white">
+              <h5 class="fw-bold mb-0">
+                <i class="bi bi-bell-fill text-warning me-2"></i>
+
+                Notifications
+              </h5>
+            </div>
+
+            <div class="card-body">
+              <div
+                class="d-flex justify-content-between align-items-start mb-3"
+              >
+                <div>
+                  <i class="bi bi-dot fs-3 text-primary"></i>
+
+                  Registration for Annual Tech Fest is open.
+                </div>
+
+                <small class="text-muted"> 2 days ago </small>
+              </div>
+
+              <div
+                class="d-flex justify-content-between align-items-start mb-3"
+              >
+                <div>
+                  <i class="bi bi-dot fs-3 text-primary"></i>
+
+                  Exam schedule released.
+                </div>
+
+                <small class="text-muted"> 5 days ago </small>
+              </div>
+
+              <div class="d-flex justify-content-between align-items-start">
+                <div>
+                  <i class="bi bi-dot fs-3 text-primary"></i>
+
+                  New AI Workshop announced.
+                </div>
+
+                <small class="text-muted"> 1 week ago </small>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- ====================== FOOTER ====================== -->
+
+    <footer class="bg-primary text-white py-4 mt-4">
+      <div class="container-fluid">
+        <div class="row align-items-center">
+          <div class="col-lg-4 text-center text-lg-start">
+            © 2026 StudentHub Portal
+          </div>
+
+          <div class="col-lg-4 text-center my-3 my-lg-0">
+            <a href="#" class="text-white text-decoration-none me-4">
+              Privacy Policy
+            </a>
+
+            <a href="#" class="text-white text-decoration-none">
+              Terms of Use
+            </a>
+          </div>
+
+          <div class="col-lg-4 text-center text-lg-end">
+            <a href="#" class="text-white fs-4 me-3">
+              <i class="bi bi-facebook"></i>
+            </a>
+
+            <a href="#" class="text-white fs-4 me-3">
+              <i class="bi bi-twitter-x"></i>
+            </a>
+
+            <a href="#" class="text-white fs-4">
+              <i class="bi bi-instagram"></i>
+            </a>
+          </div>
+        </div>
+      </div>
     </footer>
 
-</body>
+    <!-- Bootstrap JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>

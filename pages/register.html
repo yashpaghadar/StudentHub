@@ -1,107 +1,363 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudentHub - Register</title>
-    <link rel="stylesheet" href="../css/style.css">
-</head>
+  <head>
+    <meta charset="UTF-8" />
 
-<body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Skip Navigation -->
-    <a href="#main-content" class="skip-link">Skip to Main Content</a>
+    <title>StudentHub | Register</title>
 
-    <!-- Header -->
-    <header>
-        <img src="../img/logo.png" alt="StudentHub Logo" width="60" />
-        <h1>StudentHub</h1>
-        <p>Student Registration</p>
-    </header>
+    <!-- Bootstrap CSS -->
 
-    <!-- Navigation -->
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="register.html">Register</a></li>
-            <li><a href="login.html">Login</a></li>
-            <li><a href="dashboard.html">Dashboard</a></li>
-            <li><a href="events.html">Events</a></li>
-            <li><a href="profile.html">Profile</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="admin.html">Admin</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-            <li><a href="feedback.html">Feedback</a></li>
-        </ul>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap Icons -->
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <!-- Google Font -->
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS -->
+
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+
+  <body>
+    <!-- ====================== NAVBAR ====================== -->
+
+    <nav
+      class="navbar navbar-expand-lg navbar-dark bg-primary shadow sticky-top"
+    >
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <img
+            src="../img/logo.png"
+            width="55"
+            class="me-3"
+            alt="StudentHub Logo"
+          />
+
+          <div>
+            <h4 class="mb-0 fw-bold">StudentHub</h4>
+
+            <small> Campus Management System </small>
+          </div>
+        </a>
+
+        <button
+          class="navbar-toggler"
+          data-bs-toggle="collapse"
+          data-bs-target="#menu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menu">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html"> Home </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="about.html"> About </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="events.html"> Events </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html"> Contact </a>
+            </li>
+
+            <li class="nav-item ms-lg-3">
+              <a class="btn btn-outline-light me-2" href="login.html">
+                Login
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="btn btn-warning" href="register.html"> Register </a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </nav>
 
-    <!-- Breadcrumb -->
-    <nav aria-label="Breadcrumb">
-        <p><a href="index.html">Home</a> > Register</p>
-    </nav>
+    <!-- ====================== BREADCRUMB ====================== -->
 
-    <!-- Main Content -->
-    <main id="main-content">
+    <div class="bg-light border-bottom">
+      <div class="container py-2">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item">
+              <a href="index.html"> Home </a>
+            </li>
 
-        <section>
-            <h2>Student Registration Form</h2>
+            <li class="breadcrumb-item active">Register</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
 
-            <form action="#" method="post">
+    <!-- ====================== REGISTER FORM ====================== -->
 
-                <label for="fullname">Full Name</label>
-                <input type="text" id="fullname" name="fullname" required>
+    <section class="py-5 bg-light">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-7 col-xl-6">
+            <div class="card border-0 shadow-lg rounded-4">
+              <div class="card-body p-5">
+                <div class="text-center mb-4">
+                  <img
+                    src="../img/logo.png"
+                    width="90"
+                    class="mb-3"
+                    alt="Logo"
+                  />
 
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" required>
+                  <h2 class="fw-bold">StudentHub</h2>
 
-                <label for="mobile">Mobile Number</label>
-                <input type="tel" id="mobile" name="mobile" required>
+                  <p class="text-muted">Create a New Account</p>
 
-                <label for="course">Course</label>
-                <select id="course" name="course">
-                    <option>Information Technology</option>
-                    <option>Computer Engineering</option>
-                    <option>Mechanical Engineering</option>
-                    <option>Civil Engineering</option>
-                </select>
+                  <hr />
+                </div>
 
-                <label for="year">Academic Year</label>
-                <select id="year" name="year">
-                    <option>First Year</option>
-                    <option>Second Year</option>
-                    <option>Third Year</option>
-                    <option>Final Year</option>
-                </select>
+                <form>
+                  <!-- Full Name -->
 
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
+                  <div class="mb-4">
+                    <label class="form-label fw-semibold"> Full Name </label>
 
-                <label for="confirm">Confirm Password</label>
-                <input type="password" id="confirm" name="confirm" required>
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        class="form-control form-control-lg"
+                        placeholder="Enter your full name"
+                        required
+                      />
 
-                <input type="submit" value="Register">
-                <input type="reset" value="Reset">
+                      <span class="input-group-text">
+                        <i class="bi bi-person"></i>
+                      </span>
+                    </div>
+                  </div>
 
-            </form>
-        </section>
+                  <!-- Enrollment -->
 
-        <aside>
-            <h3>Registration Tips</h3>
-            <ul>
-                <li>Fill all required fields.</li>
-                <li>Use a valid email address.</li>
-                <li>Create a strong password.</li>
-                <li>Check details before submitting.</li>
-            </ul>
-        </aside>
+                  <div class="mb-4">
+                    <label class="form-label fw-semibold">
+                      Enrollment Number
+                    </label>
 
-    </main>
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        class="form-control form-control-lg"
+                        placeholder="Enter your enrollment number"
+                        required
+                      />
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 StudentHub. All Rights Reserved.</p>
+                      <span class="input-group-text">
+                        <i class="bi bi-person-vcard"></i>
+                      </span>
+                    </div>
+                  </div>
+
+                  <!-- Email -->
+
+                  <div class="mb-4">
+                    <label class="form-label fw-semibold">
+                      Email Address
+                    </label>
+
+                    <div class="input-group">
+                      <input
+                        type="email"
+                        class="form-control form-control-lg"
+                        placeholder="Enter your email address"
+                        required
+                      />
+
+                      <span class="input-group-text">
+                        <i class="bi bi-envelope"></i>
+                      </span>
+                    </div>
+                  </div>
+
+                  <!-- Password -->
+
+                  <div class="mb-4">
+                    <label class="form-label fw-semibold"> Password </label>
+
+                    <div class="input-group">
+                      <input
+                        type="password"
+                        class="form-control form-control-lg"
+                        placeholder="Enter your password"
+                        required
+                      />
+
+                      <span class="input-group-text">
+                        <i class="bi bi-lock"></i>
+                      </span>
+                    </div>
+                  </div>
+
+                  <!-- Confirm Password -->
+
+                  <div class="mb-4">
+                    <label class="form-label fw-semibold">
+                      Confirm Password
+                    </label>
+
+                    <div class="input-group">
+                      <input
+                        type="password"
+                        class="form-control form-control-lg"
+                        placeholder="Confirm your password"
+                        required
+                      />
+
+                      <span class="input-group-text">
+                        <i class="bi bi-shield-lock"></i>
+                      </span>
+                    </div>
+                  </div>
+
+                  <!-- Select Role -->
+
+                  <div class="mb-4">
+                    <label class="form-label fw-semibold"> Select Role </label>
+
+                    <select class="form-select form-select-lg">
+                      <option selected disabled>Select your role</option>
+
+                      <option>Student</option>
+
+                      <option>Faculty</option>
+
+                      <option>Administrator</option>
+                    </select>
+                  </div>
+
+                  <!-- Terms -->
+
+                  <div class="form-check mb-4">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="agree"
+                      required
+                    />
+
+                    <label class="form-check-label" for="agree">
+                      I agree to the
+
+                      <a href="#" class="text-decoration-none">
+                        Terms &amp; Conditions
+                      </a>
+
+                      and
+
+                      <a href="#" class="text-decoration-none">
+                        Privacy Policy
+                      </a>
+                    </label>
+                  </div>
+
+                  <!-- Register Button -->
+
+                  <div class="d-grid mb-4">
+                    <button
+                      type="submit"
+                      class="btn btn-primary btn-lg fw-semibold"
+                    >
+                      Register
+                    </button>
+                  </div>
+
+                  <!-- Divider -->
+
+                  <div class="d-flex align-items-center my-4">
+                    <hr class="flex-grow-1" />
+
+                    <span class="px-3 text-muted"> OR </span>
+
+                    <hr class="flex-grow-1" />
+                  </div>
+
+                  <!-- Login Link -->
+
+                  <div class="text-center">
+                    <p class="mb-0">
+                      Already have an account?
+
+                      <a
+                        href="login.html"
+                        class="fw-semibold text-decoration-none"
+                      >
+                        Login here
+                      </a>
+                    </p>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================== FOOTER ====================== -->
+
+    <footer class="bg-primary text-white py-4 mt-5">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-4 text-center text-lg-start">
+            <p class="mb-0">© 2026 StudentHub Portal</p>
+          </div>
+
+          <div class="col-lg-4 text-center my-3 my-lg-0">
+            <a href="#" class="text-white text-decoration-none me-4">
+              Privacy Policy
+            </a>
+
+            <a href="#" class="text-white text-decoration-none">
+              Terms of Use
+            </a>
+          </div>
+
+          <div class="col-lg-4 text-center text-lg-end">
+            <a href="#" class="text-white fs-4 me-3">
+              <i class="bi bi-facebook"></i>
+            </a>
+
+            <a href="#" class="text-white fs-4 me-3">
+              <i class="bi bi-twitter-x"></i>
+            </a>
+
+            <a href="#" class="text-white fs-4">
+              <i class="bi bi-instagram"></i>
+            </a>
+          </div>
+        </div>
+      </div>
     </footer>
 
-</body>
+    <!-- Bootstrap JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>

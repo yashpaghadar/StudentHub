@@ -3,82 +3,383 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>StudentHub - Contact</title>
+    <title>StudentHub - Contact Us</title>
+
+    <!-- Bootstrap 5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+
+    <!-- StudentHub Custom CSS -->
     <link rel="stylesheet" href="../css/style.css" />
   </head>
 
   <body>
-    <!-- Skip Navigation -->
-    <a href="#main-content" class="skip-link">Skip to Main Content</a>
+    <header class="student-header">
+      <div class="container">
+        <div class="d-flex align-items-center justify-content-between py-3">
+          <!-- Logo + Brand -->
 
-    <!-- Header -->
-    <header>
-      <img src="../img/logo.png" alt="StudentHub Logo" width="60" />
-      <h1>StudentHub</h1>
-      <p>Contact Us</p>
+          <div class="d-flex align-items-center gap-3">
+            <img
+              src="../img/logo.png"
+              alt="StudentHub Logo"
+              class="student-logo"
+            />
+
+            <div>
+              <h1 class="student-brand-title mb-0">StudentHub</h1>
+
+              <small class="student-header-subtitle"> Contact Us </small>
+            </div>
+          </div>
+
+          <!-- Header Buttons -->
+
+          <div class="d-flex align-items-center gap-2">
+            <a href="login.html" class="btn btn-light btn-sm px-3">
+              <i class="bi bi-box-arrow-in-right me-1"></i>
+              Login
+            </a>
+
+            <a href="register.html" class="btn btn-outline-light btn-sm px-3">
+              Register
+            </a>
+          </div>
+        </div>
+      </div>
     </header>
 
-    <!-- Navigation -->
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="register.html">Register</a></li>
-        <li><a href="login.html">Login</a></li>
-        <li><a href="dashboard.html">Dashboard</a></li>
-        <li><a href="events.html">Events</a></li>
-        <li><a href="profile.html">Profile</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="admin.html">Admin</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="feedback.html">Feedback</a></li>
-      </ul>
+    <nav
+      class="navbar navbar-expand-lg student-navbar"
+      aria-label="Main Navigation"
+    >
+      <div class="container">
+        <!-- Mobile Menu -->
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNavigation"
+          aria-controls="mainNavigation"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navigation Links -->
+
+        <div class="collapse navbar-collapse" id="mainNavigation">
+          <ul class="navbar-nav mx-auto gap-lg-1">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">
+                <i class="bi bi-house-door me-1"></i>
+                Home
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">
+                <i class="bi bi-info-circle me-1"></i>
+                About
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="events.html">
+                <i class="bi bi-calendar-event me-1"></i>
+                Events
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="dashboard.html">
+                <i class="bi bi-speedometer2 me-1"></i>
+                Student Dashboard
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="profile.html">
+                <i class="bi bi-person me-1"></i>
+                Profile
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="contact.html"
+              >
+                <i class="bi bi-envelope me-1"></i>
+                Contact
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="admin.html">
+                <i class="bi bi-shield-lock me-1"></i>
+                Admin
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="faq.html">
+                <i class="bi bi-question-circle me-1"></i>
+                FAQ
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="feedback.html">
+                <i class="bi bi-chat-dots me-1"></i>
+                Feedback
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </nav>
 
-    <!-- Breadcrumb -->
-    <nav aria-label="Breadcrumb">
-      <p><a href="index.html">Home</a> > Contact</p>
-    </nav>
+    <main id="main-content" class="contact-main">
+      <div class="container py-4 py-lg-5">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item">
+              <a href="index.html"> Home </a>
+            </li>
 
-    <!-- Main Content -->
-    <main id="main-content">
-      <section>
-        <h2>Contact Form</h2>
+            <li class="breadcrumb-item active" aria-current="page">Contact</li>
+          </ol>
+        </nav>
 
-        <form action="#" method="post">
-          <label for="name">Full Name</label>
-          <input type="text" id="name" name="name" required />
+        <section class="contact-intro text-center mb-5">
+          <div class="contact-main-icon">
+            <i class="bi bi-headset"></i>
+          </div>
 
-          <label for="email">Email Address</label>
-          <input type="email" id="email" name="email" required />
+          <h2>Contact Us</h2>
+          <p>Have a question or need assistance? We're here to help.</p>
+        </section>
 
-          <label for="subject">Subject</label>
-          <input type="text" id="subject" name="subject" required />
+        <div class="row g-4">
+          <div class="col-lg-8">
+            <section class="card contact-card h-100">
+              <div class="card-body p-4 p-lg-5">
+                <div class="d-flex align-items-center gap-3 mb-4">
+                  <div class="contact-section-icon">
+                    <i class="bi bi-send"></i>
+                  </div>
 
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="5" required></textarea>
+                  <div>
+                    <h2 class="contact-title mb-1">Contact Form</h2>
 
-          <input type="submit" value="Send Message" />
-          <input type="reset" value="Clear" />
-        </form>
-      </section>
+                    <p class="text-muted mb-0">Send us your message</p>
+                  </div>
+                </div>
 
-      <aside>
-        <h3>College Contact</h3>
+                <form action="#" method="post">
+                  <!-- Full Name -->
 
-        <p><strong>Address:</strong> StudentHub Campus, Anand, Gujarat</p>
-        <p><strong>Phone:</strong> +91 98765 43210</p>
-        <p><strong>Email:</strong> info@studenthub.com</p>
+                  <div class="mb-3">
+                    <label for="name" class="form-label"> Full Name </label>
 
-        <h3>Office Hours</h3>
-        <p>Monday - Friday</p>
-        <p>9:00 AM - 5:00 PM</p>
-      </aside>
+                    <div class="input-group">
+                      <span class="input-group-text">
+                        <i class="bi bi-person"></i>
+                      </span>
+
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="name"
+                        name="name"
+                        placeholder="Enter your full name"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <!-- Email -->
+
+                  <div class="mb-3">
+                    <label for="email" class="form-label">
+                      Email Address
+                    </label>
+
+                    <div class="input-group">
+                      <span class="input-group-text">
+                        <i class="bi bi-envelope"></i>
+                      </span>
+
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email address"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <!-- Subject -->
+
+                  <div class="mb-3">
+                    <label for="subject" class="form-label"> Subject </label>
+                    <div class="input-group">
+                      <span class="input-group-text">
+                        <i class="bi bi-chat-left-text"></i>
+                      </span>
+
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="subject"
+                        name="subject"
+                        placeholder="Enter message subject"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <!-- Message -->
+
+                  <div class="mb-4">
+                    <label for="message" class="form-label"> Message </label>
+                    <textarea
+                      class="form-control"
+                      id="message"
+                      name="message"
+                      rows="6"
+                      placeholder="Write your message here..."
+                      required
+                    ></textarea>
+                  </div>
+
+                  <!-- Buttons -->
+
+                  <div class="d-flex gap-2 flex-wrap">
+                    <button
+                      type="submit"
+                      class="btn btn-primary contact-submit-btn"
+                    >
+                      <i class="bi bi-send me-2"></i>
+                      Send Message
+                    </button>
+
+                    <button type="reset" class="btn btn-outline-secondary">
+                      <i class="bi bi-arrow-counterclockwise me-2"></i>
+                      Clear
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </section>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="d-flex flex-column gap-4 h-100">
+              <!-- College Contact Card -->
+
+              <aside class="card contact-info-card">
+                <div class="card-body p-4">
+                  <div class="d-flex align-items-center gap-3 mb-4">
+                    <div class="contact-info-icon">
+                      <i class="bi bi-building"></i>
+                    </div>
+                    <h3 class="contact-info-title mb-0">College Contact</h3>
+                  </div>
+
+                  <!-- Address -->
+
+                  <div class="contact-detail">
+                    <div class="contact-detail-icon">
+                      <i class="bi bi-geo-alt"></i>
+                    </div>
+
+                    <div>
+                      <small> Address </small>
+                      <p>StudentHub Campus, Anand, Gujarat</p>
+                    </div>
+                  </div>
+
+                  <!-- Phone -->
+
+                  <div class="contact-detail">
+                    <div class="contact-detail-icon">
+                      <i class="bi bi-telephone"></i>
+                    </div>
+
+                    <div>
+                      <small> Phone </small>
+                      <p>+91 98765 43210</p>
+                    </div>
+                  </div>
+
+                  <!-- Email -->
+
+                  <div class="contact-detail">
+                    <div class="contact-detail-icon">
+                      <i class="bi bi-envelope"></i>
+                    </div>
+
+                    <div>
+                      <small> Email </small>
+                      <p>info@studenthub.com</p>
+                    </div>
+                  </div>
+                </div>
+              </aside>
+
+              <!-- Office Hours -->
+
+              <aside class="card contact-info-card flex-grow-1">
+                <div class="card-body p-4">
+                  <div class="d-flex align-items-center gap-3 mb-4">
+                    <div class="contact-info-icon office-icon">
+                      <i class="bi bi-clock"></i>
+                    </div>
+                    <h3 class="contact-info-title mb-0">Office Hours</h3>
+                  </div>
+
+                  <div class="office-hours">
+                    <div class="d-flex justify-content-between">
+                      <span> Monday - Friday </span>
+                      <strong> 9:00 AM - 5:00 PM </strong>
+                    </div>
+                  </div>
+
+                  <div class="contact-help-box mt-4">
+                    <i class="bi bi-info-circle"></i>
+                    <span>
+                      Our support team will respond during office hours.
+                    </span>
+                  </div>
+                </div>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
 
-    <!-- Footer -->
-    <footer>
-      <p>&copy; 2026 StudentHub. All Rights Reserved.</p>
+    <footer class="student-footer">
+      <p class="mb-0">&copy; 2026 StudentHub. All Rights Reserved.</p>
     </footer>
+
+    <!-- Bootstrap JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

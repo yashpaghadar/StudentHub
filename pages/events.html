@@ -1,98 +1,328 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>StudentHub - Events</title>
-    <link rel="stylesheet" href="../css/style.css">
-</head>
 
-<body>
+    <!-- Bootstrap 5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
 
-    <!-- Skip Navigation -->
-    <a href="#main-content" class="skip-link">Skip to Main Content</a>
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
 
-    <!-- Header -->
-    <header>
-        <img src="../img/logo.png" alt="StudentHub Logo" width="60" />
-        <h1>StudentHub</h1>
-        <p>College Events</p>
+    <!-- StudentHub Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+
+  <body>
+    <header class="student-header">
+      <div class="container-fluid px-4">
+        <div class="d-flex align-items-center justify-content-between">
+          <!-- Logo + Brand -->
+          <div class="d-flex align-items-center gap-3">
+            <img
+              src="../img/logo.png"
+              alt="StudentHub Logo"
+              class="student-logo"
+            />
+
+            <div>
+              <h1 class="mb-0">StudentHub</h1>
+
+              <small class="student-header-subtitle"> College Events </small>
+            </div>
+
+            <!-- Menu -->
+            <button
+              type="button"
+              class="btn header-menu-btn d-none d-lg-flex"
+              aria-label="Menu"
+            >
+              <i class="bi bi-list fs-3"></i>
+            </button>
+          </div>
+
+          <!-- Right Side -->
+          <div class="d-flex align-items-center gap-3">
+            <!-- Notification -->
+            <button
+              type="button"
+              class="btn header-icon-btn"
+              aria-label="Notifications"
+            >
+              <i class="bi bi-bell fs-5"></i>
+            </button>
+
+            <!-- Student -->
+            <div class="d-flex align-items-center gap-2">
+              <div class="header-profile-icon">
+                <i class="bi bi-person"></i>
+              </div>
+
+              <span class="fw-medium d-none d-sm-inline"> Hi, Student </span>
+
+              <i class="bi bi-chevron-down small"></i>
+            </div>
+          </div>
+        </div>
+      </div>
     </header>
 
-    <!-- Navigation -->
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="register.html">Register</a></li>
-            <li><a href="login.html">Login</a></li>
-            <li><a href="dashboard.html">Dashboard</a></li>
-            <li><a href="events.html">Events</a></li>
-            <li><a href="profile.html">Profile</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="admin.html">Admin</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-            <li><a href="feedback.html">Feedback</a></li>
-        </ul>
-    </nav>
+    <div class="container-fluid">
+      <div class="row min-vh-100">
+        <aside class="col-lg-2 student-sidebar">
+          <nav class="py-4">
+            <ul class="nav flex-column">
+              <!-- Dashboard -->
+              <li class="nav-item">
+                <a href="dashboard.html" class="nav-link student-nav-link">
+                  <i class="bi bi-house-door"></i>
+                  <span>Dashboard</span>
+                </a>
+              </li>
 
-    <!-- Breadcrumb -->
-    <nav aria-label="Breadcrumb">
-        <p><a href="index.html">Home</a> > Events</p>
-    </nav>
+              <!-- Profile -->
+              <li class="nav-item">
+                <a href="profile.html" class="nav-link student-nav-link">
+                  <i class="bi bi-person"></i>
+                  <span>Profile</span>
+                </a>
+              </li>
 
-    <!-- Main Content -->
-    <main id="main-content">
+              <!-- Events -->
+              <li class="nav-item">
+                <a
+                  href="events.html"
+                  class="nav-link student-nav-link active"
+                  aria-current="page"
+                >
+                  <i class="bi bi-calendar-event"></i>
+                  <span>Events</span>
+                </a>
+              </li>
 
-        <section>
-            <h2>Upcoming Events</h2>
+              <!-- Feedback -->
+              <li class="nav-item">
+                <a href="feedback.html" class="nav-link student-nav-link">
+                  <i class="bi bi-chat-dots"></i>
+                  <span>Feedback</span>
+                </a>
+              </li>
 
-            <article>
-                <h3>Web Development Workshop</h3>
-                <p><strong>Date:</strong> 18 August 2026</p>
-                <p><strong>Venue:</strong> Seminar Hall</p>
-                <p>
-                    Learn the basics of HTML, CSS, and JavaScript through
-                    practical sessions.
-                </p>
-            </article>
-
-            <article>
-                <h3>Technical Quiz Competition</h3>
-                <p><strong>Date:</strong> 25 August 2026</p>
-                <p><strong>Venue:</strong> Computer Lab</p>
-                <p>
-                    Test your technical knowledge and win exciting prizes.
-                </p>
-            </article>
-
-            <article>
-                <h3>Sports Week</h3>
-                <p><strong>Date:</strong> 5 September 2026</p>
-                <p><strong>Venue:</strong> College Ground</p>
-                <p>
-                    Participate in indoor and outdoor sports activities.
-                </p>
-            </article>
-
-        </section>
-
-        <aside>
-            <h3>Event Guidelines</h3>
-            <ul>
-                <li>Register before the last date.</li>
-                <li>Carry your college ID card.</li>
-                <li>Reach the venue on time.</li>
-                <li>Follow college rules.</li>
+              <!-- Logout -->
+              <li class="nav-item mt-2">
+                <a
+                  href="login.html"
+                  class="nav-link student-nav-link logout-link"
+                >
+                  <i class="bi bi-box-arrow-right"></i>
+                  <span>Logout</span>
+                </a>
+              </li>
             </ul>
+          </nav>
         </aside>
 
-    </main>
+        <main id="main-content" class="col-lg-10 student-main">
+          <!-- Breadcrumb -->
+          <nav aria-label="breadcrumb" class="mb-3">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a href="index.html"> Home </a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">Events</li>
+            </ol>
+          </nav>
+          <section class="events-page-header mb-4">
+            <h2 class="events-title">Upcoming Events</h2>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 StudentHub. All Rights Reserved.</p>
+            <p class="text-muted mb-0">
+              Explore upcoming college events and participate in activities.
+            </p>
+          </section>
+
+          <div class="row g-4">
+            <section class="col-xl-9">
+              <div class="row g-4">
+                <!-- Event 1 -->
+                <div class="col-md-6 col-xl-4">
+                  <article class="card event-card h-100">
+                    <div class="event-image event-web">
+                      <i class="bi bi-code-slash"></i>
+                    </div>
+
+                    <div class="card-body">
+                      <span class="badge event-badge mb-3"> Workshop </span>
+                      <h3 class="event-title">Web Development Workshop</h3>
+                      <div class="event-info">
+                        <p>
+                          <i class="bi bi-calendar3"></i>
+                          <strong>Date:</strong>
+                          18 August 2026
+                        </p>
+
+                        <p>
+                          <i class="bi bi-geo-alt"></i>
+                          <strong>Venue:</strong>
+                          Seminar Hall
+                        </p>
+                      </div>
+
+                      <p class="event-description">
+                        Learn the basics of HTML, CSS, and JavaScript through
+                        practical sessions.
+                      </p>
+                    </div>
+
+                    <div class="card-footer bg-white border-0">
+                      <a href="#" class="btn btn-primary event-btn">
+                        View Details
+                        <i class="bi bi-arrow-right ms-2"></i>
+                      </a>
+                    </div>
+                  </article>
+                </div>
+
+                <!-- Event 2 -->
+                <div class="col-md-6 col-xl-4">
+                  <article class="card event-card h-100">
+                    <div class="event-image event-quiz">
+                      <i class="bi bi-question-circle"></i>
+                    </div>
+
+                    <div class="card-body">
+                      <span class="badge event-badge mb-3"> Competition </span>
+                      <h3 class="event-title">Technical Quiz Competition</h3>
+                      <div class="event-info">
+                        <p>
+                          <i class="bi bi-calendar3"></i>
+                          <strong>Date:</strong>
+                          25 August 2026
+                        </p>
+
+                        <p>
+                          <i class="bi bi-geo-alt"></i>
+                          <strong>Venue:</strong>
+                          Computer Lab
+                        </p>
+                      </div>
+
+                      <p class="event-description">
+                        Test your technical knowledge and win exciting prizes.
+                      </p>
+                    </div>
+
+                    <div class="card-footer bg-white border-0">
+                      <a href="#" class="btn btn-primary event-btn">
+                        View Details
+                        <i class="bi bi-arrow-right ms-2"></i>
+                      </a>
+                    </div>
+                  </article>
+                </div>
+
+                <!-- Event 3 -->
+                <div class="col-md-6 col-xl-4">
+                  <article class="card event-card h-100">
+                    <div class="event-image event-sports">
+                      <i class="bi bi-trophy"></i>
+                    </div>
+
+                    <div class="card-body">
+                      <span class="badge event-badge mb-3"> Sports </span>
+                      <h3 class="event-title">Sports Week</h3>
+                      <div class="event-info">
+                        <p>
+                          <i class="bi bi-calendar3"></i>
+                          <strong>Date:</strong>
+                          5 September 2026
+                        </p>
+
+                        <p>
+                          <i class="bi bi-geo-alt"></i>
+                          <strong>Venue:</strong>
+                          College Ground
+                        </p>
+                      </div>
+
+                      <p class="event-description">
+                        Participate in indoor and outdoor sports activities.
+                      </p>
+                    </div>
+
+                    <div class="card-footer bg-white border-0">
+                      <a href="#" class="btn btn-primary event-btn">
+                        View Details
+                        <i class="bi bi-arrow-right ms-2"></i>
+                      </a>
+                    </div>
+                  </article>
+                </div>
+              </div>
+            </section>
+            <aside class="col-xl-3">
+              <div class="card event-guidelines h-100">
+                <div class="card-body p-4">
+                  <div class="guideline-heading">
+                    <div class="guideline-icon">
+                      <i class="bi bi-info-circle"></i>
+                    </div>
+
+                    <h3>Event Guidelines</h3>
+                  </div>
+
+                  <ul class="guideline-list">
+                    <li>
+                      <i class="bi bi-check-circle-fill"></i>
+                      <span> Register before the last date. </span>
+                    </li>
+
+                    <li>
+                      <i class="bi bi-check-circle-fill"></i>
+                      <span> Carry your college ID card. </span>
+                    </li>
+
+                    <li>
+                      <i class="bi bi-check-circle-fill"></i>
+                      <span> Reach the venue on time. </span>
+                    </li>
+
+                    <li>
+                      <i class="bi bi-check-circle-fill"></i>
+                      <span> Follow college rules. </span>
+                    </li>
+                  </ul>
+
+                  <!-- Small notice -->
+                  <div class="event-notice">
+                    <i class="bi bi-bell"></i>
+
+                    <div>
+                      <strong> Stay Updated </strong>
+                      <p>Check notifications regularly for event updates.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <footer class="student-footer">
+      <p class="mb-0">&copy; 2026 StudentHub. All Rights Reserved.</p>
     </footer>
 
-</body>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>

@@ -1,92 +1,279 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudentHub - Login</title>
-    <link rel="stylesheet" href="../css/style.css">
-</head>
+  <head>
+    <meta charset="UTF-8" />
 
-<body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Skip Navigation -->
-    <a href="#main-content" class="skip-link">Skip to Main Content</a>
+    <title>StudentHub | Login</title>
 
-    <!-- Header -->
-    <header>
-        <img src="../img/logo.png" alt="StudentHub Logo" width="60" />
-        <h1>StudentHub</h1>
-        <p>Student Login</p>
-    </header>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
 
-    <!-- Navigation -->
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="register.html">Register</a></li>
-            <li><a href="login.html">Login</a></li>
-            <li><a href="dashboard.html">Dashboard</a></li>
-            <li><a href="events.html">Events</a></li>
-            <li><a href="profile.html">Profile</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="admin.html">Admin</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-            <li><a href="feedback.html">Feedback</a></li>
-        </ul>
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+
+  <body>
+    <!-- ====================== NAVBAR ====================== -->
+
+    <nav
+      class="navbar navbar-expand-lg navbar-dark bg-primary shadow sticky-top"
+    >
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <img
+            src="../img/logo.png"
+            alt="StudentHub Logo"
+            width="55"
+            class="me-3"
+          />
+
+          <div>
+            <h4 class="mb-0 fw-bold">StudentHub</h4>
+
+            <small> Campus Management System </small>
+          </div>
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarMenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarMenu">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="events.html">Events</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+
+            <li class="nav-item ms-lg-3">
+              <a class="btn btn-warning active" href="login.html"> Login </a>
+            </li>
+
+            <li class="nav-item ms-lg-2">
+              <a class="btn btn-outline-light" href="register.html">
+                Register
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </nav>
 
-    <!-- Breadcrumb -->
-    <nav aria-label="Breadcrumb">
-        <p><a href="index.html">Home</a> > Login</p>
-    </nav>
+    <!-- ====================== BREADCRUMB ====================== -->
 
-    <!-- Main Content -->
-    <main id="main-content">
+    <div class="bg-light border-bottom">
+      <div class="container py-2">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item">
+              <a href="index.html"> Home </a>
+            </li>
 
-        <section>
-            <h2>Student Login</h2>
+            <li class="breadcrumb-item active">Login</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
 
-            <form action="#" method="post">
+    <!-- ====================== LOGIN SECTION ====================== -->
 
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" required>
+    <section class="py-5 bg-light">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-5 col-md-7">
+            <div class="card border-0 shadow-lg rounded-4">
+              <div class="card-body p-5">
+                <div class="text-center mb-4">
+                  <img
+                    src="../img/logo.png"
+                    alt="Logo"
+                    width="80"
+                    class="mb-3"
+                  />
 
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
+                  <h2 class="fw-bold">Login to Your Account</h2>
 
-                <input type="checkbox" id="remember" name="remember">
-                <label for="remember">Remember Me</label>
+                  <p class="text-muted">Welcome back to StudentHub</p>
 
-                <br><br>
+                  <hr />
+                </div>
 
-                <input type="submit" value="Login">
-                <input type="reset" value="Clear">
+                <form>
+                  <!-- Email -->
 
-            </form>
+                  <div class="mb-4">
+                    <label class="form-label fw-semibold">
+                      Email / Username
+                    </label>
 
-            <p>
-                Don't have an account?
-                <a href="register.html">Register Here</a>
-            </p>
+                    <div class="input-group">
+                      <span class="input-group-text">
+                        <i class="bi bi-person-fill"></i>
+                      </span>
 
-        </section>
+                      <input
+                        type="email"
+                        class="form-control form-control-lg"
+                        placeholder="Enter your email or username"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <!-- Password -->
 
-        <aside>
-            <h3>Login Help</h3>
-            <ul>
-                <li>Use your registered email.</li>
-                <li>Enter the correct password.</li>
-                <li>Contact the admin if you forget your password.</li>
-            </ul>
-        </aside>
+                  <div class="mb-4">
+                    <label class="form-label fw-semibold"> Password </label>
 
-    </main>
+                    <div class="input-group">
+                      <span class="input-group-text">
+                        <i class="bi bi-lock-fill"></i>
+                      </span>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 StudentHub. All Rights Reserved.</p>
+                      <input
+                        type="password"
+                        class="form-control form-control-lg"
+                        placeholder="Enter your password"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <!-- Remember Me & Forgot Password -->
+
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-4"
+                  >
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="rememberMe"
+                      />
+
+                      <label class="form-check-label" for="rememberMe">
+                        Remember Me
+                      </label>
+                    </div>
+
+                    <a href="#" class="text-decoration-none">
+                      Forgot Password?
+                    </a>
+                  </div>
+
+                  <!-- Login Button -->
+
+                  <div class="d-grid mb-4">
+                    <button
+                      type="submit"
+                      class="btn btn-primary btn-lg fw-semibold"
+                    >
+                      Login
+                    </button>
+                  </div>
+
+                  <!-- Divider -->
+
+                  <div class="d-flex align-items-center mb-4">
+                    <hr class="flex-grow-1" />
+
+                    <span class="px-3 text-muted"> OR </span>
+
+                    <hr class="flex-grow-1" />
+                  </div>
+
+                  <!-- Register Link -->
+
+                  <div class="text-center">
+                    <p class="mb-0">
+                      Don't have an account?
+
+                      <a
+                        href="register.html"
+                        class="fw-semibold text-decoration-none"
+                      >
+                        Register
+                      </a>
+                    </p>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================== FOOTER ====================== -->
+
+    <footer class="bg-primary text-white py-4 mt-5">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-4 text-center text-lg-start">
+            <p class="mb-0">© 2026 StudentHub Portal</p>
+          </div>
+
+          <div class="col-lg-4 text-center my-3 my-lg-0">
+            <a href="#" class="text-white text-decoration-none me-4">
+              Privacy Policy
+            </a>
+
+            <a href="#" class="text-white text-decoration-none">
+              Terms of Use
+            </a>
+          </div>
+
+          <div class="col-lg-4 text-center text-lg-end">
+            <a href="#" class="text-white fs-4 me-3">
+              <i class="bi bi-facebook"></i>
+            </a>
+
+            <a href="#" class="text-white fs-4 me-3">
+              <i class="bi bi-twitter-x"></i>
+            </a>
+
+            <a href="#" class="text-white fs-4">
+              <i class="bi bi-instagram"></i>
+            </a>
+          </div>
+        </div>
+      </div>
     </footer>
 
-</body>
+    <!-- Bootstrap JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>
