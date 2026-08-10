@@ -67,7 +67,7 @@ StudentHub/
 │   ├── register.html
 │   ├── login.html
 │   ├── dashboard.html
-│   ├── event.html
+│   ├── events.html
 │   ├── profile.html
 │   ├── contact.html
 │   ├── admin.html
@@ -83,6 +83,7 @@ StudentHub/
 
 - HTML5
 - CSS3
+- BootStrap
 - Visual Studio Code
 
 ---
