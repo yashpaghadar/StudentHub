@@ -59,10 +59,18 @@ StudentHub/
 │   └── wireframe/
 │
 ├── img/
-│   └── logo.png
-│
+|   ├── Annual_tech_fest.jpg
+|   ├── banner1.jpg
+|   ├── banner2.jpg
+|   ├── banner3.jpg
+|   ├── Community_meetup.jpg
+│   ├── logo.png
+│   └── Workshop_on_ai.jpg
+|  
+├── js/
+│   └── script.js
+|
 ├── pages/
-│   ├── index.html
 │   ├── about.html
 │   ├── register.html
 │   ├── login.html
@@ -74,6 +82,7 @@ StudentHub/
 │   ├── faq.html
 │   └── feedback.html
 │
+├── index.html
 └── README.md
 ```
 
@@ -84,6 +93,7 @@ StudentHub/
 - HTML5
 - CSS3
 - BootStrap
+- JavaScript
 - Visual Studio Code
 
 ---
