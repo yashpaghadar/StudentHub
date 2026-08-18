@@ -17,131 +17,93 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
-
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <!-- StudentHub Custom CSS -->
     <link rel="stylesheet" href="../css/style.css" />
   </head>
 
   <body>
-    <header class="student-header">
-      <div class="container-fluid px-4">
-        <div class="d-flex align-items-center justify-content-between">
-          <!-- Logo + Brand -->
-          <div class="d-flex align-items-center gap-3">
-            <img
-              src="../img/logo.png"
-              alt="StudentHub Logo"
-              class="student-logo"
-            />
-
-            <div>
-              <h1 class="mb-0">StudentHub</h1>
-
-              <small class="student-header-subtitle"> College Events </small>
-            </div>
-
-            <!-- Menu -->
-            <button
-              type="button"
-              class="btn header-menu-btn d-none d-lg-flex"
-              aria-label="Menu"
-            >
-              <i class="bi bi-list fs-3"></i>
-            </button>
+    <nav
+      class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm sticky-top">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+          <img
+            src="../img/logo.png"
+            alt="StudentHub Logo"
+            width="55"
+            height="55"
+            class="me-3 rounded"
+          />
+          <div>
+            <h4 class="mb-0 fw-bold">StudentHub Portal</h4>
+            <small class="text-light"> Event Page </small>
           </div>
+        </a>
 
-          <!-- Right Side -->
-          <div class="d-flex align-items-center gap-3">
-            <!-- Notification -->
-            <button
-              type="button"
-              class="btn header-icon-btn"
-              aria-label="Notifications"
-            >
-              <i class="bi bi-bell fs-5"></i>
-            </button>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarMenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <!-- Student -->
-            <div class="d-flex align-items-center gap-2">
-              <div class="header-profile-icon">
-                <i class="bi bi-person"></i>
-              </div>
+        <div class="collapse navbar-collapse" id="navbarMenu">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
+            <li class="nav-item">
+              <a class="nav-link" href="../index.html"> Home </a>
+            </li>
 
-              <span class="fw-medium d-none d-sm-inline"> Hi, Student </span>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html"> About </a>
+            </li>
 
-              <i class="bi bi-chevron-down small"></i>
-            </div>
-          </div>
+            <li class="nav-item">
+              <a class="nav-link active" href="events.html"> Events </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="dashboard.html"> Student Dashboard </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="admin.html"> Admin </a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html"> Support </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="faq.html"> FAQ </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="feedback.html"> Feedback </a>
+            </li>
+            
+            <li class="nav-item ms-lg-3">
+              <a class="btn btn-warning me-2 " href="login.html">
+                Login
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="btn btn-warning" href="register.html"> Register </a>
+            </li>
+          </ul>
         </div>
       </div>
-    </header>
+    </nav>
 
-    <div class="container-fluid">
-      <div class="row min-vh-100">
-        <aside class="col-lg-2 student-sidebar">
-          <nav class="py-4">
-            <ul class="nav flex-column">
-              <!-- Dashboard -->
-              <li class="nav-item">
-                <a href="dashboard.html" class="nav-link student-nav-link">
-                  <i class="bi bi-house-door"></i>
-                  <span>Dashboard</span>
-                </a>
-              </li>
-
-              <!-- Profile -->
-              <li class="nav-item">
-                <a href="profile.html" class="nav-link student-nav-link">
-                  <i class="bi bi-person"></i>
-                  <span>Profile</span>
-                </a>
-              </li>
-
-              <!-- Events -->
-              <li class="nav-item">
-                <a
-                  href="events.html"
-                  class="nav-link student-nav-link active"
-                  aria-current="page"
-                >
-                  <i class="bi bi-calendar-event"></i>
-                  <span>Events</span>
-                </a>
-              </li>
-
-              <!-- Feedback -->
-              <li class="nav-item">
-                <a href="feedback.html" class="nav-link student-nav-link">
-                  <i class="bi bi-chat-dots"></i>
-                  <span>Feedback</span>
-                </a>
-              </li>
-
-              <!-- Logout -->
-              <li class="nav-item mt-2">
-                <a
-                  href="login.html"
-                  class="nav-link student-nav-link logout-link"
-                >
-                  <i class="bi bi-box-arrow-right"></i>
-                  <span>Logout</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </aside>
-
-        <main id="main-content" class="col-lg-10 student-main">
-          <!-- Breadcrumb -->
-          <nav aria-label="breadcrumb" class="mb-3">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item">
-                <a href="index.html"> Home </a>
-              </li>
-              <li class="breadcrumb-item active" aria-current="page">Events</li>
-            </ol>
-          </nav>
-          <section class="events-page-header mb-4">
+ 
+        <main id="main-content" class="col-lg-10 student-main mx-auto" >
+         <section class="events-page-header mb-4 text-center">
             <h2 class="events-title">Upcoming Events</h2>
 
             <p class="text-muted mb-0">

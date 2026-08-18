@@ -17,131 +17,84 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
 
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- StudentHub Custom CSS -->
     <link rel="stylesheet" href="../css/style.css" />
   </head>
 
   <body>
-    <header class="student-header">
-      <div class="container">
-        <div class="d-flex align-items-center justify-content-between py-3">
-          <!-- Logo + Brand -->
-
-          <div class="d-flex align-items-center gap-3">
-            <img
-              src="../img/logo.png"
-              alt="StudentHub Logo"
-              class="student-logo"
-            />
-
-            <div>
-              <h1 class="student-brand-title mb-0">StudentHub</h1>
-              <small class="student-header-subtitle">
-                Frequently Asked Questions
-              </small>
-            </div>
-          </div>
-
-          <!-- Header Buttons -->
-
-          <div class="d-flex align-items-center gap-2">
-            <a href="login.html" class="btn btn-light btn-sm px-3">
-              <i class="bi bi-box-arrow-in-right me-1"></i>
-              Login
-            </a>
-
-            <a href="register.html" class="btn btn-outline-light btn-sm px-3">
-              Register
-            </a>
-          </div>
-        </div>
-      </div>
-    </header>
-
     <nav
-      class="navbar navbar-expand-lg student-navbar"
-      aria-label="Main Navigation"
+      class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm sticky-top"
     >
       <div class="container">
-        <!-- Mobile Toggle -->
+        <a class="navbar-brand d-flex align-items-center" href="#">
+          <img
+            src="../img/logo.png"
+            alt="StudentHub Logo"
+            width="55"
+            height="55"
+            class="me-3 rounded"
+          />
+          <div>
+            <h4 class="mb-0 fw-bold">StudentHub Portal</h4>
+            <small class="text-light"> FAQ Page </small>
+          </div>
+        </a>
 
         <button
           class="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
-          data-bs-target="#mainNavigation"
-          aria-controls="mainNavigation"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+          data-bs-target="#navbarMenu"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!-- Navigation Links -->
-
-        <div class="collapse navbar-collapse" id="mainNavigation">
-          <ul class="navbar-nav mx-auto gap-lg-1">
+        <div class="collapse navbar-collapse" id="navbarMenu">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
             <li class="nav-item">
-              <a class="nav-link" href="../index.html">
-                <i class="bi bi-house-door me-1"></i>
-                Home
-              </a>
+              <a class="nav-link" href="../index.html"> Home </a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="about.html">
-                <i class="bi bi-info-circle me-1"></i>
-                About
-              </a>
+              <a class="nav-link" href="about.html"> About </a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="events.html">
-                <i class="bi bi-calendar-event me-1"></i>
-                Events
-              </a>
+              <a class="nav-link" href="events.html"> Events </a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="dashboard.html">
-                <i class="bi bi-speedometer2 me-1"></i>
-                Student Dashboard
-              </a>
+              <a class="nav-link" href="dashboard.html"> Student Dashboard </a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="profile.html">
-                <i class="bi bi-person me-1"></i>
-                Profile
-              </a>
+              <a class="nav-link" href="admin.html"> Admin </a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html"> Support </a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="contact.html">
-                <i class="bi bi-envelope me-1"></i>
-                Contact
-              </a>
+              <a class="nav-link active" href="faq.html"> FAQ </a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="admin.html">
-                <i class="bi bi-shield-lock me-1"></i>
-                Admin
-              </a>
+              <a class="nav-link" href="feedback.html"> Feedback </a>
+            </li>
+            
+            <li class="nav-item ms-lg-3">
+              <a class="btn btn-warning me-2" href="login.html"> Login </a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="faq.html">
-                <i class="bi bi-question-circle me-1"></i>
-                FAQ
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="feedback.html">
-                <i class="bi bi-chat-dots me-1"></i>
-                Feedback
-              </a>
+              <a class="btn btn-warning" href="register.html"> Register </a>
             </li>
           </ul>
         </div>
@@ -150,15 +103,6 @@
 
     <main id="main-content" class="faq-main">
       <div class="container py-4 py-lg-5">
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item">
-              <a href="index.html"> Home </a>
-            </li>
-            <li class="breadcrumb-item active" aria-current="page">FAQ</li>
-          </ol>
-        </nav>
-
         <section class="faq-intro text-center mb-5">
           <div class="faq-main-icon">
             <i class="bi bi-question-circle-fill"></i>
@@ -178,10 +122,9 @@
                       <button
                         class="accordion-button"
                         type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#collapseOne"
                         aria-expanded="true"
-                        aria-controls="collapseOne">
+                        aria-controls="collapseOne"
+                      >
                         <span class="faq-number"> 01 </span>
                         How do I register?
                       </button>
@@ -191,11 +134,10 @@
                       id="collapseOne"
                       class="accordion-collapse collapse show"
                       aria-labelledby="headingOne"
-                      data-bs-parent="#faqAccordion"
                     >
-                      <div class="accordion-body">                        Open the
-                        <a href="register.html"> Register page </a>, fill in
-                        your details, and click the Register button.
+                      <div class="accordion-body">
+                        Open the <a href="register.html"> Register page </a>,
+                        fill in your details, and click the Register button.
                       </div>
                     </div>
                   </div>
@@ -205,8 +147,6 @@
                       <button
                         class="accordion-button collapsed"
                         type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#collapseTwo"
                         aria-expanded="false"
                         aria-controls="collapseTwo"
                       >
@@ -219,7 +159,6 @@
                       id="collapseTwo"
                       class="accordion-collapse collapse"
                       aria-labelledby="headingTwo"
-                      data-bs-parent="#faqAccordion"
                     >
                       <div class="accordion-body">
                         Go to the
@@ -234,8 +173,6 @@
                       <button
                         class="accordion-button collapsed"
                         type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#collapseThree"
                         aria-expanded="false"
                         aria-controls="collapseThree"
                       >
@@ -248,7 +185,6 @@
                       id="collapseThree"
                       class="accordion-collapse collapse"
                       aria-labelledby="headingThree"
-                      data-bs-parent="#faqAccordion"
                     >
                       <div class="accordion-body">
                         After logging in, open the
@@ -263,8 +199,6 @@
                       <button
                         class="accordion-button collapsed"
                         type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#collapseFour"
                         aria-expanded="false"
                         aria-controls="collapseFour"
                       >
@@ -278,7 +212,6 @@
                       id="collapseFour"
                       class="accordion-collapse collapse"
                       aria-labelledby="headingFour"
-                      data-bs-parent="#faqAccordion"
                     >
                       <div class="accordion-body">
                         Click on the
@@ -294,8 +227,6 @@
                       <button
                         class="accordion-button collapsed"
                         type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#collapseFive"
                         aria-expanded="false"
                         aria-controls="collapseFive"
                       >
@@ -308,7 +239,6 @@
                       id="collapseFive"
                       class="accordion-collapse collapse"
                       aria-labelledby="headingFive"
-                      data-bs-parent="#faqAccordion"
                     >
                       <div class="accordion-body">
                         Visit the
@@ -370,5 +300,6 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/script.js"></script>
   </body>
 </html>

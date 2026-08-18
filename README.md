@@ -95,7 +95,6 @@ StudentHub/
 - `<main>`
 - `<section>`
 - `<article>`
-- `<aside>`
 - `<footer>`
 
 ---

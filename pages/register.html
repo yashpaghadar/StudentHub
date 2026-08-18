@@ -35,35 +35,34 @@
 
   <body>
     <!-- ====================== NAVBAR ====================== -->
-
     <nav
-      class="navbar navbar-expand-lg navbar-dark bg-primary shadow sticky-top"
+      class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm sticky-top"
     >
       <div class="container">
-        <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <a class="navbar-brand d-flex align-items-center" href="#">
           <img
             src="../img/logo.png"
-            width="55"
-            class="me-3"
             alt="StudentHub Logo"
+            width="55"
+            height="55"
+            class="me-3 rounded"
           />
-
           <div>
-            <h4 class="mb-0 fw-bold">StudentHub</h4>
-
-            <small> Campus Management System </small>
+            <h4 class="mb-0 fw-bold">StudentHub Portal</h4>
+            <small class="text-light"> Event Page </small>
           </div>
         </a>
 
         <button
           class="navbar-toggler"
+          type="button"
           data-bs-toggle="collapse"
-          data-bs-target="#menu"
+          data-bs-target="#navbarMenu"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="menu">
+        <div class="collapse navbar-collapse" id="navbarMenu">
           <ul class="navbar-nav ms-auto align-items-lg-center">
             <li class="nav-item">
               <a class="nav-link" href="../index.html"> Home </a>
@@ -78,13 +77,19 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="contact.html"> Contact </a>
+              <a class="nav-link" href="dashboard.html"> Student Dashboard </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html"> Support </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="faq.html"> FAQ </a>
             </li>
 
             <li class="nav-item ms-lg-3">
-              <a class="btn btn-outline-light me-2" href="login.html">
-                Login
-              </a>
+              <a class="btn btn-warning me-2" href="login.html"> Login </a>
             </li>
 
             <li class="nav-item">
@@ -94,22 +99,6 @@
         </div>
       </div>
     </nav>
-
-    <!-- ====================== BREADCRUMB ====================== -->
-
-    <div class="bg-light border-bottom">
-      <div class="container py-2">
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb mb-0">
-            <li class="breadcrumb-item">
-              <a href="index.html"> Home </a>
-            </li>
-
-            <li class="breadcrumb-item active">Register</li>
-          </ol>
-        </nav>
-      </div>
-    </div>
 
     <!-- ====================== REGISTER FORM ====================== -->
 
@@ -143,7 +132,7 @@
                     <div class="input-group">
                       <input
                         type="text"
-                        class="form-control form-control-lg"
+                        class="form-control"
                         placeholder="Enter your full name"
                         required
                       />
@@ -164,7 +153,7 @@
                     <div class="input-group">
                       <input
                         type="text"
-                        class="form-control form-control-lg"
+                        class="form-control"
                         placeholder="Enter your enrollment number"
                         required
                       />
@@ -185,7 +174,7 @@
                     <div class="input-group">
                       <input
                         type="email"
-                        class="form-control form-control-lg"
+                        class="form-control"
                         placeholder="Enter your email address"
                         required
                       />
@@ -204,7 +193,7 @@
                     <div class="input-group">
                       <input
                         type="password"
-                        class="form-control form-control-lg"
+                        class="form-control"
                         placeholder="Enter your password"
                         required
                       />
@@ -225,7 +214,7 @@
                     <div class="input-group">
                       <input
                         type="password"
-                        class="form-control form-control-lg"
+                        class="form-control"
                         placeholder="Confirm your password"
                         required
                       />
@@ -241,7 +230,7 @@
                   <div class="mb-4">
                     <label class="form-label fw-semibold"> Select Role </label>
 
-                    <select class="form-select form-select-lg">
+                    <select class="form-select">
                       <option selected disabled>Select your role</option>
 
                       <option>Student</option>
@@ -282,7 +271,7 @@
                   <div class="d-grid mb-4">
                     <button
                       type="submit"
-                      class="btn btn-primary btn-lg fw-semibold"
+                      class="btn btn-primary  fw-semibold"
                     >
                       Register
                     </button>
@@ -321,39 +310,8 @@
     </section>
 
     <!-- ====================== FOOTER ====================== -->
-
-    <footer class="bg-primary text-white py-4 mt-5">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-4 text-center text-lg-start">
-            <p class="mb-0">© 2026 StudentHub Portal</p>
-          </div>
-
-          <div class="col-lg-4 text-center my-3 my-lg-0">
-            <a href="#" class="text-white text-decoration-none me-4">
-              Privacy Policy
-            </a>
-
-            <a href="#" class="text-white text-decoration-none">
-              Terms of Use
-            </a>
-          </div>
-
-          <div class="col-lg-4 text-center text-lg-end">
-            <a href="#" class="text-white fs-4 me-3">
-              <i class="bi bi-facebook"></i>
-            </a>
-
-            <a href="#" class="text-white fs-4 me-3">
-              <i class="bi bi-twitter-x"></i>
-            </a>
-
-            <a href="#" class="text-white fs-4">
-              <i class="bi bi-instagram"></i>
-            </a>
-          </div>
-        </div>
-      </div>
+    <footer class="student-footer">
+      <p class="mb-0">&copy; 2026 StudentHub. All Rights Reserved.</p>
     </footer>
 
     <!-- Bootstrap JS -->
