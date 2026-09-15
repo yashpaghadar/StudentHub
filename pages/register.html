@@ -8,33 +8,30 @@
     <title>StudentHub | Register</title>
 
     <!-- Bootstrap CSS -->
-
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
 
     <!-- Bootstrap Icons -->
-
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css"
       rel="stylesheet"
     />
 
     <!-- Google Font -->
-
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
 
     <!-- Custom CSS -->
-
     <link rel="stylesheet" href="../css/style.css" />
   </head>
 
   <body>
     <!-- ====================== NAVBAR ====================== -->
+
     <nav
       class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm sticky-top"
     >
@@ -47,9 +44,10 @@
             height="55"
             class="me-3 rounded"
           />
+
           <div>
             <h4 class="mb-0 fw-bold">StudentHub Portal</h4>
-            <small class="text-light"> Event Page </small>
+            <small class="text-light">Event Page</small>
           </div>
         </a>
 
@@ -58,6 +56,7 @@
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarMenu"
+          aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -65,31 +64,31 @@
         <div class="collapse navbar-collapse" id="navbarMenu">
           <ul class="navbar-nav ms-auto align-items-lg-center">
             <li class="nav-item">
-              <a class="nav-link" href="../index.html"> Home </a>
+              <a class="nav-link" href="../index.html">Home</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="about.html"> About </a>
+              <a class="nav-link" href="about.html">About</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="events.html"> Events </a>
+              <a class="nav-link" href="events.html">Events</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="students.html"> Students </a>
+              <a class="nav-link" href="students.html">Students</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="dashboard.html"> St_Dashboard </a>
+              <a class="nav-link" href="dashboard.html">St_Dashboard</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="contact.html"> Support </a>
+              <a class="nav-link" href="contact.html">Support</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="faq.html"> FAQ </a>
+              <a class="nav-link" href="faq.html">FAQ</a>
             </li>
 
             <li class="nav-item ms-lg-3">
@@ -112,32 +111,42 @@
           <div class="col-lg-7 col-xl-6">
             <div class="card border-0 shadow-lg rounded-4">
               <div class="card-body p-5">
+                <!-- Form Header -->
+
                 <div class="text-center mb-4">
                   <img
                     src="../img/logo.png"
                     width="90"
                     class="mb-3"
-                    alt="Logo"
+                    alt="StudentHub Logo"
                   />
 
                   <h2 class="fw-bold">StudentHub</h2>
 
-                  <p class="text-muted">Create a New Account</p>
+                  <p class="text-muted">Create a New Student Account</p>
 
                   <hr />
                 </div>
 
-                <form>
+                <!-- ================= FORM ================= -->
+
+                <form id="registerForm" novalidate>
                   <!-- Full Name -->
 
                   <div class="mb-4">
-                    <label class="form-label fw-semibold"> Full Name </label>
+                    <label for="fullName" class="form-label fw-semibold">
+                      Full Name
+                    </label>
 
                     <div class="input-group">
                       <input
                         type="text"
+                        id="fullName"
+                        name="fullName"
                         class="form-control"
                         placeholder="Enter your full name"
+                        autocomplete="name"
+                        aria-describedby="nameError"
                         required
                       />
 
@@ -145,20 +154,29 @@
                         <i class="bi bi-person"></i>
                       </span>
                     </div>
+
+                    <div
+                      id="nameError"
+                      class="text-danger small mt-1"
+                      aria-live="polite"
+                    ></div>
                   </div>
 
-                  <!-- Enrollment -->
+                  <!-- Enrollment Number -->
 
                   <div class="mb-4">
-                    <label class="form-label fw-semibold">
+                    <label for="enrollment" class="form-label fw-semibold">
                       Enrollment Number
                     </label>
 
                     <div class="input-group">
                       <input
                         type="text"
+                        id="enrollment"
+                        name="enrollment"
                         class="form-control"
                         placeholder="Enter your enrollment number"
+                        aria-describedby="enrollmentError"
                         required
                       />
 
@@ -166,20 +184,30 @@
                         <i class="bi bi-person-vcard"></i>
                       </span>
                     </div>
+
+                    <div
+                      id="enrollmentError"
+                      class="text-danger small mt-1"
+                      aria-live="polite"
+                    ></div>
                   </div>
 
                   <!-- Email -->
 
                   <div class="mb-4">
-                    <label class="form-label fw-semibold">
+                    <label for="email" class="form-label fw-semibold">
                       Email Address
                     </label>
 
                     <div class="input-group">
                       <input
                         type="email"
+                        id="email"
+                        name="email"
                         class="form-control"
                         placeholder="Enter your email address"
+                        autocomplete="email"
+                        aria-describedby="emailError"
                         required
                       />
 
@@ -187,18 +215,62 @@
                         <i class="bi bi-envelope"></i>
                       </span>
                     </div>
+
+                    <div
+                      id="emailError"
+                      class="text-danger small mt-1"
+                      aria-live="polite"
+                    ></div>
+                  </div>
+
+                  <!-- Mobile Number -->
+
+                  <div class="mb-4">
+                    <label for="mobile" class="form-label fw-semibold">
+                      Mobile Number
+                    </label>
+
+                    <div class="input-group">
+                      <input
+                        type="tel"
+                        id="mobile"
+                        name="mobile"
+                        class="form-control"
+                        placeholder="Enter 10-digit mobile number"
+                        inputmode="numeric"
+                        maxlength="10"
+                        aria-describedby="mobileError"
+                        required
+                      />
+
+                      <span class="input-group-text">
+                        <i class="bi bi-phone"></i>
+                      </span>
+                    </div>
+
+                    <div
+                      id="mobileError"
+                      class="text-danger small mt-1"
+                      aria-live="polite"
+                    ></div>
                   </div>
 
                   <!-- Password -->
 
                   <div class="mb-4">
-                    <label class="form-label fw-semibold"> Password </label>
+                    <label for="password" class="form-label fw-semibold">
+                      Password
+                    </label>
 
                     <div class="input-group">
                       <input
                         type="password"
+                        id="password"
+                        name="password"
                         class="form-control"
-                        placeholder="Enter your password"
+                        placeholder="Create a strong password"
+                        autocomplete="new-password"
+                        aria-describedby="passwordError passwordStrength"
                         required
                       />
 
@@ -206,20 +278,36 @@
                         <i class="bi bi-lock"></i>
                       </span>
                     </div>
+
+                    <div
+                      id="passwordStrength"
+                      class="small mt-2"
+                      aria-live="polite"
+                    ></div>
+
+                    <div
+                      id="passwordError"
+                      class="text-danger small mt-1"
+                      aria-live="polite"
+                    ></div>
                   </div>
 
                   <!-- Confirm Password -->
 
                   <div class="mb-4">
-                    <label class="form-label fw-semibold">
+                    <label for="confirmPassword" class="form-label fw-semibold">
                       Confirm Password
                     </label>
 
                     <div class="input-group">
                       <input
                         type="password"
+                        id="confirmPassword"
+                        name="confirmPassword"
                         class="form-control"
                         placeholder="Confirm your password"
+                        autocomplete="new-password"
+                        aria-describedby="confirmPasswordError"
                         required
                       />
 
@@ -227,56 +315,191 @@
                         <i class="bi bi-shield-lock"></i>
                       </span>
                     </div>
+
+                    <div
+                      id="confirmPasswordError"
+                      class="text-danger small mt-1"
+                      aria-live="polite"
+                    ></div>
                   </div>
 
-                  <!-- Select Role -->
+                  <!-- Course -->
 
                   <div class="mb-4">
-                    <label class="form-label fw-semibold"> Select Role </label>
+                    <label for="course" class="form-label fw-semibold">
+                      Course
+                    </label>
 
-                    <select class="form-select">
-                      <option selected disabled>Select your role</option>
+                    <select
+                      id="course"
+                      name="course"
+                      class="form-select"
+                      aria-describedby="courseError"
+                      required
+                    >
+                      <option value="" selected disabled>
+                        Select your course
+                      </option>
 
-                      <option>Student</option>
+                      <option value="B.Tech IT">
+                        B.Tech Information Technology
+                      </option>
 
-                      <option>Faculty</option>
+                      <option value="B.Tech CSE">
+                        B.Tech Computer Science
+                      </option>
 
-                      <option>Administrator</option>
+                      <option value="BCA">
+                        Bachelor of Computer Applications
+                      </option>
+
+                      <option value="MCA">
+                        Master of Computer Applications
+                      </option>
+
+                      <option value="Diploma IT">
+                        Diploma Information Technology
+                      </option>
                     </select>
+
+                    <div
+                      id="courseError"
+                      class="text-danger small mt-1"
+                      aria-live="polite"
+                    ></div>
+                  </div>
+
+                  <!-- Year -->
+
+                  <div class="mb-4">
+                    <label for="year" class="form-label fw-semibold">
+                      Year
+                    </label>
+
+                    <select
+                      id="year"
+                      name="year"
+                      class="form-select"
+                      aria-describedby="yearError"
+                      required
+                    >
+                      <option value="" selected disabled>
+                        Select your year
+                      </option>
+
+                      <option value="1">First Year</option>
+                      <option value="2">Second Year</option>
+                      <option value="3">Third Year</option>
+                      <option value="4">Fourth Year</option>
+                    </select>
+
+                    <div
+                      id="yearError"
+                      class="text-danger small mt-1"
+                      aria-live="polite"
+                    ></div>
+                  </div>
+
+                  <!-- Gender -->
+
+                  <div class="mb-4">
+                    <label class="form-label fw-semibold"> Gender </label>
+
+                    <div
+                      class="d-flex gap-4"
+                      role="radiogroup"
+                      aria-label="Gender"
+                    >
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="gender"
+                          id="male"
+                          value="Male"
+                        />
+
+                        <label class="form-check-label" for="male">
+                          Male
+                        </label>
+                      </div>
+
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="gender"
+                          id="female"
+                          value="Female"
+                        />
+
+                        <label class="form-check-label" for="female">
+                          Female
+                        </label>
+                      </div>
+
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="gender"
+                          id="other"
+                          value="Other"
+                        />
+
+                        <label class="form-check-label" for="other">
+                          Other
+                        </label>
+                      </div>
+                    </div>
+
+                    <div
+                      id="genderError"
+                      class="text-danger small mt-1"
+                      aria-live="polite"
+                    ></div>
                   </div>
 
                   <!-- Terms -->
 
-                  <div class="form-check mb-4">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      id="agree"
-                      required
-                    />
+                  <div class="mb-4">
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="agree"
+                        name="agree"
+                        aria-describedby="termsError"
+                        required
+                      />
 
-                    <label class="form-check-label" for="agree">
-                      I agree to the
+                      <label class="form-check-label" for="agree">
+                        I agree to the
 
-                      <a href="#" class="text-decoration-none">
-                        Terms &amp; Conditions
-                      </a>
+                        <a href="#" class="text-decoration-none">
+                          Terms &amp; Conditions
+                        </a>
 
-                      and
+                        and
 
-                      <a href="#" class="text-decoration-none">
-                        Privacy Policy
-                      </a>
-                    </label>
+                        <a href="#" class="text-decoration-none">
+                          Privacy Policy
+                        </a>
+                      </label>
+                    </div>
+
+                    <div
+                      id="termsError"
+                      class="text-danger small mt-1"
+                      aria-live="polite"
+                    ></div>
                   </div>
 
                   <!-- Register Button -->
 
                   <div class="d-grid mb-4">
-                    <button
-                      type="submit"
-                      class="btn btn-primary  fw-semibold"
-                    >
+                    <button type="submit" class="btn btn-primary fw-semibold">
+                      <i class="bi bi-person-plus me-2"></i>
                       Register
                     </button>
                   </div>
@@ -291,7 +514,7 @@
                     <hr class="flex-grow-1" />
                   </div>
 
-                  <!-- Login Link -->
+                  <!-- Login -->
 
                   <div class="text-center">
                     <p class="mb-0">
@@ -314,6 +537,7 @@
     </section>
 
     <!-- ====================== FOOTER ====================== -->
+
     <footer class="student-footer">
       <p class="mb-0">&copy; 2026 StudentHub. All Rights Reserved.</p>
     </footer>
@@ -321,5 +545,8 @@
     <!-- Bootstrap JS -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Registration Validation JS -->
+    <script src="../js/register.js"></script>
   </body>
 </html>
