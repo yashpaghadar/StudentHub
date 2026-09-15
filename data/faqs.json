@@ -1,0 +1,77 @@
+[
+  {
+    "id": 1,
+    "question": "What is StudentHub?",
+    "answer": "StudentHub is a student-focused platform that provides useful information, resources, events, and services in one place."
+  },
+  {
+    "id": 2,
+    "question": "How can I register on StudentHub?",
+    "answer": "You can register on StudentHub by opening the registration page and entering your required student details."
+  },
+  {
+    "id": 3,
+    "question": "How can I log in to StudentHub?",
+    "answer": "You can log in by entering your registered email address and password on the login page."
+  },
+  {
+    "id": 4,
+    "question": "How can I view college events?",
+    "answer": "Open the Events section of StudentHub to view upcoming technical, cultural, sports, workshop, and career events."
+  },
+  {
+    "id": 5,
+    "question": "Can I search for a specific event?",
+    "answer": "Yes, you can use the search box on the Events page to search for an event by its title."
+  },
+  {
+    "id": 6,
+    "question": "Can I filter events by category?",
+    "answer": "Yes, events can be filtered by categories such as Technical, Workshop, Sports, Cultural, and Career."
+  },
+  {
+    "id": 7,
+    "question": "How can I find student information?",
+    "answer": "Open the Students section to view student information such as name, email, course, and academic year."
+  },
+  {
+    "id": 8,
+    "question": "Can I search for a student?",
+    "answer": "Yes, you can search for a student by entering the student's name in the search box."
+  },
+  {
+    "id": 9,
+    "question": "Can students be filtered by course?",
+    "answer": "Yes, the Students page allows you to filter students according to their course."
+  },
+  {
+    "id": 10,
+    "question": "Can students be filtered by academic year?",
+    "answer": "Yes, students can be filtered according to their academic year, such as Year 1, Year 2, Year 3, or Year 4."
+  },
+  {
+    "id": 11,
+    "question": "Can I sort the student list?",
+    "answer": "Yes, the student list can be sorted by student name or academic year."
+  },
+  {
+    "id": 12,
+    "question": "How can I search the FAQs?",
+    "answer": "Enter a keyword or question in the FAQ search box to find matching frequently asked questions."
+  },
+  {
+    "id": 13,
+    "question": "Can FAQs be sorted?",
+    "answer": "Yes, FAQs can be sorted alphabetically from A to Z or from Z to A."
+  },
+  {
+    "id": 14,
+    "question": "Does StudentHub work on mobile devices?",
+    "answer": "Yes, StudentHub is designed to provide a user-friendly experience on different screen sizes, including mobile devices."
+  },
+  {
+    "id": 15,
+    "question": "How can I report a problem on StudentHub?",
+    "answer": "You can report a problem by contacting the StudentHub support or administration team with details about the issue."
+  }
+]

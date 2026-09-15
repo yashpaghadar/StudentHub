@@ -1,0 +1,107 @@
+[
+  {
+    "id": 1,
+    "title": "Tech Fest 2026",
+    "date": "2026-09-20",
+    "location": "Main Auditorium",
+    "category": "Technical"
+  },
+  {
+    "id": 2,
+    "title": "Coding Competition",
+    "date": "2026-09-24",
+    "location": "Computer Lab 1",
+    "category": "Technical"
+  },
+  {
+    "id": 3,
+    "title": "Web Development Workshop",
+    "date": "2026-09-28",
+    "location": "Innovation Lab",
+    "category": "Workshop"
+  },
+  {
+    "id": 4,
+    "title": "Sports Festival",
+    "date": "2026-10-02",
+    "location": "University Sports Ground",
+    "category": "Sports"
+  },
+  {
+    "id": 5,
+    "title": "AI and Machine Learning Seminar",
+    "date": "2026-10-06",
+    "location": "Seminar Hall",
+    "category": "Technical"
+  },
+  {
+    "id": 6,
+    "title": "Cultural Night",
+    "date": "2026-10-10",
+    "location": "Open Air Theatre",
+    "category": "Cultural"
+  },
+  {
+    "id": 7,
+    "title": "Cyber Security Workshop",
+    "date": "2026-10-14",
+    "location": "Computer Lab 2",
+    "category": "Workshop"
+  },
+  {
+    "id": 8,
+    "title": "Hackathon 2026",
+    "date": "2026-10-18",
+    "location": "Innovation Center",
+    "category": "Technical"
+  },
+  {
+    "id": 9,
+    "title": "Career Guidance Session",
+    "date": "2026-10-22",
+    "location": "Seminar Hall",
+    "category": "Career"
+  },
+  {
+    "id": 10,
+    "title": "Entrepreneurship Workshop",
+    "date": "2026-10-26",
+    "location": "Management Block",
+    "category": "Workshop"
+  },
+  {
+    "id": 11,
+    "title": "Photography Competition",
+    "date": "2026-10-30",
+    "location": "Student Activity Center",
+    "category": "Cultural"
+  },
+  {
+    "id": 12,
+    "title": "Placement Preparation Workshop",
+    "date": "2026-11-03",
+    "location": "Seminar Hall",
+    "category": "Career"
+  },
+  {
+    "id": 13,
+    "title": "Cricket Tournament",
+    "date": "2026-11-07",
+    "location": "University Sports Ground",
+    "category": "Sports"
+  },
+  {
+    "id": 14,
+    "title": "Java Programming Workshop",
+    "date": "2026-11-11",
+    "location": "Computer Lab 1",
+    "category": "Workshop"
+  },
+  {
+    "id": 15,
+    "title": "Project Exhibition 2026",
+    "date": "2026-11-15",
+    "location": "Main Auditorium",
+    "category": "Technical"
+  }
+]

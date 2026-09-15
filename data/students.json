@@ -1,0 +1,107 @@
+[
+  {
+    "id": 1,
+    "name": "Aarav Patel",
+    "email": "aarav.patel@studenthub.com",
+    "course": "B.Tech IT",
+    "year": 3
+  },
+  {
+    "id": 2,
+    "name": "Riya Shah",
+    "email": "riya.shah@studenthub.com",
+    "course": "B.Tech CSE",
+    "year": 2
+  },
+  {
+    "id": 3,
+    "name": "Krish Joshi",
+    "email": "krish.joshi@studenthub.com",
+    "course": "B.Tech IT",
+    "year": 3
+  },
+  {
+    "id": 4,
+    "name": "Ananya Mehta",
+    "email": "ananya.mehta@studenthub.com",
+    "course": "BCA",
+    "year": 1
+  },
+  {
+    "id": 5,
+    "name": "Rohan Mehta",
+    "email": "rohan.mehta@studenthub.com",
+    "course": "B.Tech IT",
+    "year": 3
+  },
+  {
+    "id": 6,
+    "name": "Isha Patel",
+    "email": "isha.patel@studenthub.com",
+    "course": "B.Tech CSE",
+    "year": 2
+  },
+  {
+    "id": 7,
+    "name": "Yash Mehta",
+    "email": "yash.mehta@studenthub.com",
+    "course": "BCA",
+    "year": 3
+  },
+  {
+    "id": 8,
+    "name": "Dhruv Shah",
+    "email": "dhruv.shah@studenthub.com",
+    "course": "B.Tech IT",
+    "year": 4
+  },
+  {
+    "id": 9,
+    "name": "Kavya Patel",
+    "email": "kavya.patel@studenthub.com",
+    "course": "B.Tech CSE",
+    "year": 1
+  },
+  {
+    "id": 10,
+    "name": "Harsh Desai",
+    "email": "harsh.desai@studenthub.com",
+    "course": "BCA",
+    "year": 2
+  },
+  {
+    "id": 11,
+    "name": "Mihir Shah",
+    "email": "mihir.shah@studenthub.com",
+    "course": "B.Tech IT",
+    "year": 2
+  },
+  {
+    "id": 12,
+    "name": "Neha Joshi",
+    "email": "neha.joshi@studenthub.com",
+    "course": "B.Tech CSE",
+    "year": 4
+  },
+  {
+    "id": 13,
+    "name": "Dev Patel",
+    "email": "dev.patel@studenthub.com",
+    "course": "BCA",
+    "year": 1
+  },
+  {
+    "id": 14,
+    "name": "Pooja Shah",
+    "email": "pooja.shah@studenthub.com",
+    "course": "B.Tech IT",
+    "year": 4
+  },
+  {
+    "id": 15,
+    "name": "Jay Mehta",
+    "email": "jay.mehta@studenthub.com",
+    "course": "B.Tech CSE",
+    "year": 3
+  }
+]

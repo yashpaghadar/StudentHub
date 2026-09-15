@@ -17,18 +17,22 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
+
     <!-- Google Font -->
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
+
     <!-- StudentHub Custom CSS -->
     <link rel="stylesheet" href="../css/style.css" />
   </head>
 
   <body>
+    <!-- ================= NAVBAR ================= -->
     <nav
-      class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm sticky-top">
+      class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm sticky-top"
+    >
       <div class="container">
         <a class="navbar-brand d-flex align-items-center" href="#">
           <img
@@ -38,9 +42,10 @@
             height="55"
             class="me-3 rounded"
           />
+
           <div>
             <h4 class="mb-0 fw-bold">StudentHub Portal</h4>
-            <small class="text-light"> Event Page </small>
+            <small class="text-light">Event Page</small>
           </div>
         </a>
 
@@ -56,15 +61,15 @@
         <div class="collapse navbar-collapse" id="navbarMenu">
           <ul class="navbar-nav ms-auto align-items-lg-center">
             <li class="nav-item">
-              <a class="nav-link" href="../index.html"> Home </a>
+              <a class="nav-link" href="../index.html">Home</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="about.html"> About </a>
+              <a class="nav-link" href="about.html">About</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link active" href="events.html"> Events </a>
+              <a class="nav-link active" href="events.html">Events</a>
             </li>
 
             <li class="nav-item">
@@ -72,25 +77,23 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="admin.html"> Admin </a>
-            </li>
-            
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html"> Support </a>
+              <a class="nav-link" href="admin.html">Admin</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="faq.html"> FAQ </a>
+              <a class="nav-link" href="contact.html">Support</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="feedback.html"> Feedback </a>
+              <a class="nav-link" href="faq.html">FAQ</a>
             </li>
-            
+
+            <li class="nav-item">
+              <a class="nav-link" href="feedback.html">Feedback</a>
+            </li>
+
             <li class="nav-item ms-lg-3">
-              <a class="btn btn-warning me-2 " href="login.html">
-                Login
-              </a>
+              <a class="btn btn-warning me-2" href="login.html"> Login </a>
             </li>
 
             <li class="nav-item">
@@ -101,190 +104,194 @@
       </div>
     </nav>
 
- 
-        <main id="main-content" class="col-lg-10 student-main mx-auto" >
-         <section class="events-page-header mb-4 text-center">
-            <h2 class="events-title">Upcoming Events</h2>
+    <!-- ================= MAIN CONTENT ================= -->
 
-            <p class="text-muted mb-0">
-              Explore upcoming college events and participate in activities.
-            </p>
-          </section>
+    <main id="main-content" class="col-lg-10 student-main mx-auto">
+      <!-- PAGE HEADER -->
+      <section class="events-page-header mb-4 text-center">
+        <h2 class="events-title">Upcoming Events</h2>
 
-          <div class="row g-4">
-            <section class="col-xl-9">
-              <div class="row g-4">
-                <!-- Event 1 -->
-                <div class="col-md-6 col-xl-4">
-                  <article class="card event-card h-100">
-                    <div class="event-image event-web">
-                      <i class="bi bi-code-slash"></i>
-                    </div>
+        <p class="text-muted mb-0">
+          Explore upcoming college events and participate in activities.
+        </p>
+      </section>
 
-                    <div class="card-body">
-                      <span class="badge event-badge mb-3"> Workshop </span>
-                      <h3 class="event-title">Web Development Workshop</h3>
-                      <div class="event-info">
-                        <p>
-                          <i class="bi bi-calendar3"></i>
-                          <strong>Date:</strong>
-                          18 August 2026
-                        </p>
+      <!-- ================= SEARCH / FILTER / SORT ================= -->
 
-                        <p>
-                          <i class="bi bi-geo-alt"></i>
-                          <strong>Venue:</strong>
-                          Seminar Hall
-                        </p>
-                      </div>
+      <section class="card shadow-sm mb-4">
+        <div class="card-body">
+          <div class="row g-3 align-items-end">
+            <!-- Search -->
+            <div class="col-md-5">
+              <label for="searchInput" class="form-label fw-semibold">
+                Search Event
+              </label>
 
-                      <p class="event-description">
-                        Learn the basics of HTML, CSS, and JavaScript through
-                        practical sessions.
-                      </p>
-                    </div>
+              <div class="input-group">
+                <span class="input-group-text">
+                  <i class="bi bi-search"></i>
+                </span>
 
-                    <div class="card-footer bg-white border-0">
-                      <a href="#" class="btn btn-primary event-btn">
-                        View Details
-                        <i class="bi bi-arrow-right ms-2"></i>
-                      </a>
-                    </div>
-                  </article>
-                </div>
-
-                <!-- Event 2 -->
-                <div class="col-md-6 col-xl-4">
-                  <article class="card event-card h-100">
-                    <div class="event-image event-quiz">
-                      <i class="bi bi-question-circle"></i>
-                    </div>
-
-                    <div class="card-body">
-                      <span class="badge event-badge mb-3"> Competition </span>
-                      <h3 class="event-title">Technical Quiz Competition</h3>
-                      <div class="event-info">
-                        <p>
-                          <i class="bi bi-calendar3"></i>
-                          <strong>Date:</strong>
-                          25 August 2026
-                        </p>
-
-                        <p>
-                          <i class="bi bi-geo-alt"></i>
-                          <strong>Venue:</strong>
-                          Computer Lab
-                        </p>
-                      </div>
-
-                      <p class="event-description">
-                        Test your technical knowledge and win exciting prizes.
-                      </p>
-                    </div>
-
-                    <div class="card-footer bg-white border-0">
-                      <a href="#" class="btn btn-primary event-btn">
-                        View Details
-                        <i class="bi bi-arrow-right ms-2"></i>
-                      </a>
-                    </div>
-                  </article>
-                </div>
-
-                <!-- Event 3 -->
-                <div class="col-md-6 col-xl-4">
-                  <article class="card event-card h-100">
-                    <div class="event-image event-sports">
-                      <i class="bi bi-trophy"></i>
-                    </div>
-
-                    <div class="card-body">
-                      <span class="badge event-badge mb-3"> Sports </span>
-                      <h3 class="event-title">Sports Week</h3>
-                      <div class="event-info">
-                        <p>
-                          <i class="bi bi-calendar3"></i>
-                          <strong>Date:</strong>
-                          5 September 2026
-                        </p>
-
-                        <p>
-                          <i class="bi bi-geo-alt"></i>
-                          <strong>Venue:</strong>
-                          College Ground
-                        </p>
-                      </div>
-
-                      <p class="event-description">
-                        Participate in indoor and outdoor sports activities.
-                      </p>
-                    </div>
-
-                    <div class="card-footer bg-white border-0">
-                      <a href="#" class="btn btn-primary event-btn">
-                        View Details
-                        <i class="bi bi-arrow-right ms-2"></i>
-                      </a>
-                    </div>
-                  </article>
-                </div>
+                <input
+                  type="text"
+                  id="searchInput"
+                  class="form-control"
+                  placeholder="Search by event title..."
+                />
               </div>
-            </section>
-            <aside class="col-xl-3">
-              <div class="card event-guidelines h-100">
-                <div class="card-body p-4">
-                  <div class="guideline-heading">
-                    <div class="guideline-icon">
-                      <i class="bi bi-info-circle"></i>
-                    </div>
+            </div>
 
-                    <h3>Event Guidelines</h3>
-                  </div>
+            <!-- Category Filter -->
+            <div class="col-md-4">
+              <label for="categoryFilter" class="form-label fw-semibold">
+                Category
+              </label>
 
-                  <ul class="guideline-list">
-                    <li>
-                      <i class="bi bi-check-circle-fill"></i>
-                      <span> Register before the last date. </span>
-                    </li>
+              <select id="categoryFilter" class="form-select">
+                <option value="all">All Categories</option>
 
-                    <li>
-                      <i class="bi bi-check-circle-fill"></i>
-                      <span> Carry your college ID card. </span>
-                    </li>
+                <option value="Technical">Technical</option>
 
-                    <li>
-                      <i class="bi bi-check-circle-fill"></i>
-                      <span> Reach the venue on time. </span>
-                    </li>
+                <option value="Workshop">Workshop</option>
 
-                    <li>
-                      <i class="bi bi-check-circle-fill"></i>
-                      <span> Follow college rules. </span>
-                    </li>
-                  </ul>
+                <option value="Sports">Sports</option>
 
-                  <!-- Small notice -->
-                  <div class="event-notice">
-                    <i class="bi bi-bell"></i>
+                <option value="Cultural">Cultural</option>
 
-                    <div>
-                      <strong> Stay Updated </strong>
-                      <p>Check notifications regularly for event updates.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </aside>
+                <option value="Career">Career</option>
+              </select>
+            </div>
+
+            <!-- Sort -->
+            <div class="col-md-3">
+              <label for="sortEvents" class="form-label fw-semibold">
+                Sort Events
+              </label>
+
+              <select id="sortEvents" class="form-select">
+                <option value="default">Default</option>
+
+                <option value="az">A - Z</option>
+
+                <option value="za">Z - A</option>
+
+                <option value="dateAsc">Date: Earliest</option>
+
+                <option value="dateDesc">Date: Latest</option>
+              </select>
+            </div>
           </div>
-        </main>
+        </div>
+      </section>
+
+      <!-- ================= CONTENT ================= -->
+
+      <div class="row g-4">
+        <!-- EVENTS -->
+        <section class="col-xl-9">
+          <!-- Loading message -->
+          <div id="loadingMessage" class="text-center py-4">
+            Loading events...
+          </div>
+
+          <!-- Error message -->
+          <div
+            id="errorMessage"
+            class="alert alert-danger d-none"
+            role="alert"
+          ></div>
+
+          <!-- Dynamic Event Cards -->
+          <div id="eventList" class="row g-4"></div>
+
+          <!-- ================= PAGINATION ================= -->
+
+          <div
+            id="pagination"
+            class="d-flex justify-content-center align-items-center gap-3 mt-4"
+          >
+            <button id="prevPage" type="button" class="btn btn-primary">
+              <i class="bi bi-arrow-left me-1"></i>
+              Previous
+            </button>
+
+            <span id="pageNumber" class="fw-semibold"> Page 1 of 1 </span>
+
+            <button id="nextPage" type="button" class="btn btn-primary">
+              Next
+              <i class="bi bi-arrow-right ms-1"></i>
+            </button>
+          </div>
+        </section>
+
+        <!-- ================= GUIDELINES ================= -->
+
+        <aside class="col-xl-3">
+          <div class="card event-guidelines h-100">
+            <div class="card-body p-4">
+              <div class="guideline-heading">
+                <div class="guideline-icon">
+                  <i class="bi bi-info-circle"></i>
+                </div>
+
+                <h3>Event Guidelines</h3>
+              </div>
+
+              <ul class="guideline-list">
+                <li>
+                  <i class="bi bi-check-circle-fill"></i>
+
+                  <span> Register before the last date. </span>
+                </li>
+
+                <li>
+                  <i class="bi bi-check-circle-fill"></i>
+
+                  <span> Carry your college ID card. </span>
+                </li>
+
+                <li>
+                  <i class="bi bi-check-circle-fill"></i>
+
+                  <span> Reach the venue on time. </span>
+                </li>
+
+                <li>
+                  <i class="bi bi-check-circle-fill"></i>
+
+                  <span> Follow college rules. </span>
+                </li>
+              </ul>
+
+              <!-- Notice -->
+
+              <div class="event-notice">
+                <i class="bi bi-bell"></i>
+
+                <div>
+                  <strong> Stay Updated </strong>
+
+                  <p>Check notifications regularly for event updates.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </aside>
       </div>
-    </div>
+    </main>
+
+    <!-- ================= FOOTER ================= -->
 
     <footer class="student-footer">
       <p class="mb-0">&copy; 2026 StudentHub. All Rights Reserved.</p>
     </footer>
 
     <!-- Bootstrap JS -->
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- StudentHub JavaScript -->
+
+    <script src="../js/script.js"></script>
   </body>
 </html>
