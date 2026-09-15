@@ -181,9 +181,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       }
 
-      // ================================
+      // ===============================
       // FILTER BY CATEGORY
-      // ================================
+      // ===============================
 
      const selectedCategory = categoryFilter ? categoryFilter.value.trim() : "All";
 
@@ -201,22 +201,28 @@ document.addEventListener("DOMContentLoaded", function () {
       // ================================
 
       const sortValue = sortEvents ? sortEvents.value : "default";
+      console.log("Selected sort:", sortValue);
 
       if (sortValue === "title-asc") {
         filteredEvents.sort(function (a, b) {
           return a.title.localeCompare(b.title);
         });
+
       } else if (sortValue === "title-desc") {
         filteredEvents.sort(function (a, b) {
           return b.title.localeCompare(a.title);
         });
+
       } else if (sortValue === "date-asc") {
         filteredEvents.sort(function (a, b) {
-          return new Date(a.date) - new Date(b.date);
+          return new Date(a.date).getTime() -
+                new Date(b.date).getTime();
         });
+
       } else if (sortValue === "date-desc") {
         filteredEvents.sort(function (a, b) {
-          return new Date(b.date) - new Date(a.date);
+          return new Date(b.date).getTime() -
+                new Date(a.date).getTime();
         });
       }
 
@@ -354,6 +360,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (sortEvents) {
       sortEvents.addEventListener("change", function () {
+        console.log("Sorting changed:", this.value);
         currentPage = 1;
         renderEvents();
       });
