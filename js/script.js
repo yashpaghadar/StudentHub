@@ -50,7 +50,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // ================================
 
   const heading = document.getElementById("welcomeHeading");
-
   const changeBtn = document.getElementById("changeBtn");
 
   if (heading && changeBtn) {
