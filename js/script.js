@@ -27,32 +27,27 @@ console.log(
   "Parameterized Function calling....." + welcome_Student("Yash Paghadar"),
 );
 
-document.addEventListener("DOMContentLoaded", function () {
-  console.log("StudentHub buttons loaded");
+document.addEventListener("DOMContentLoaded", () => {
 
   // ================================
   // CLOSE NOTIFICATION
   // ================================
-
-  const closeButton = document.getElementById("closeBtn");
+  const closeBtn = document.getElementById("closeBtn");
   const notification = document.getElementById("notification");
 
-  if (closeButton && notification) {
-    closeButton.addEventListener("click", function () {
-      console.log("Close button clicked");
-      notification.style.display = "none";
-    });
+  if (closeBtn && notification) {
+    closeBtn.onclick = () => notification.style.display = "none";
   }
+
 
   // ================================
   // CHANGE HEADING
   // ================================
-
   const heading = document.getElementById("welcomeHeading");
   const changeBtn = document.getElementById("changeBtn");
 
   if (heading && changeBtn) {
-    changeBtn.onclick = function () {
+    changeBtn.onclick = () => {
       heading.textContent =
         heading.textContent === "Welcome to StudentHub"
           ? "Welcome to StudentHub Portal!"
@@ -60,197 +55,128 @@ document.addEventListener("DOMContentLoaded", function () {
     };
   }
 
-  // ==========================================
+
+  // ================================
   // DARK MODE
-  // ==========================================
-
+  // ================================
   const themeBtn = document.getElementById("themeBtn");
+
   if (themeBtn) {
-    // Load saved theme when page opens
-    const savedTheme = localStorage.getItem("theme");
+    const setTheme = (dark) => {
+      document.body.classList.toggle("dark-mode", dark);
+      themeBtn.textContent = dark ? "Light Mode" : "Dark Mode";
+      localStorage.setItem("theme", dark ? "dark" : "light");
+    };
 
-    if (savedTheme === "dark") {
-      document.body.classList.add("dark-mode");
-      themeBtn.textContent = "Light Mode";
-    } else {
-      document.body.classList.remove("dark-mode");
-      themeBtn.textContent = "Dark Mode";
-    }
+    setTheme(localStorage.getItem("theme") === "dark");
 
-    // Change theme when button is clicked
-    themeBtn.addEventListener("click", function () {
-      document.body.classList.toggle("dark-mode");
-
-      if (document.body.classList.contains("dark-mode")) {
-        themeBtn.textContent = "Light Mode";
-
-        // Save dark mode
-        localStorage.setItem("theme", "dark");
-      } else {
-        themeBtn.textContent = "Dark Mode";
-
-        // Save light mode
-        localStorage.setItem("theme", "light");
-      }
-    });
+    themeBtn.onclick = () => {
+      setTheme(!document.body.classList.contains("dark-mode"));
+    };
   }
 
-  // ==========================================
-  // PRACTICAL 6 - EVENTS
-  // Fetch + Search + Filter + Sort + Pagination
-  // ==========================================
 
+  // ================================
+  // COMMON JSON LOADER
+  // ================================
+  function loadJSON(url, loading, error, callback) {
+    if (loading) loading.style.display = "block";
+    if (error) error.style.display = "none";
+
+    fetch(url)
+      .then(response => {
+        if (!response.ok) throw new Error("Unable to load data.");
+        return response.json();
+      })
+      .then(data => {
+        if (loading) loading.style.display = "none";
+        callback(data);
+      })
+      .catch(err => {
+        console.error(err);
+        if (loading) loading.style.display = "none";
+
+        if (error) {
+          error.textContent = "Failed to load data. Please try again.";
+          error.style.display = "block";
+        }
+      });
+  }
+
+
+  // ================================
+  // COMMON PAGINATION
+  // ================================
+  function paginate(data, page, perPage) {
+    const totalPages = Math.ceil(data.length / perPage);
+    const start = (page - 1) * perPage;
+
+    return {
+      items: data.slice(start, start + perPage),
+      totalPages
+    };
+  }
+
+
+  // ================================
+  // EVENTS
+  // ================================
   const eventList = document.getElementById("eventList");
 
   if (eventList) {
-    const searchInput = document.getElementById("searchInput");
-    const categoryFilter = document.getElementById("categoryFilter");
-    const sortEvents = document.getElementById("sortEvents");
-    const loadingMessage = document.getElementById("loadingMessage");
-    const errorMessage = document.getElementById("errorMessage");
-    const prevPage = document.getElementById("prevPage");
-    const nextPage = document.getElementById("nextPage");
-    const pageNumber = document.getElementById("pageNumber");
+    const search = document.getElementById("searchInput");
+    const category = document.getElementById("categoryFilter");
+    const sort = document.getElementById("sortEvents");
+    const loading = document.getElementById("loadingMessage");
+    const error = document.getElementById("errorMessage");
+    const prev = document.getElementById("prevPage");
+    const next = document.getElementById("nextPage");
+    const pageNo = document.getElementById("pageNumber");
 
-    let allEvents = [];
-    let currentPage = 1;
-    const recordsPerPage = 5;
+    let data = [];
+    let page = 1;
 
-    // ================================
-    // FETCH EVENTS JSON
-    // ================================
+    function render() {
+      let result = [...data];
+      const text = search?.value.toLowerCase().trim() || "";
+      const cat = category?.value || "All";
+      const sortValue = sort?.value || "default";
 
-    function loadEvents() {
-      if (loadingMessage) {
-        loadingMessage.style.display = "block";
+      // Search
+      if (text) {
+        result = result.filter(e =>
+          e.title.toLowerCase().includes(text)
+        );
       }
 
-      if (errorMessage) {
-        errorMessage.style.display = "none";
+      // Category filter
+      if (cat && cat.toLowerCase() !== "all") {
+        result = result.filter(e => e.category === cat);
       }
 
-      fetch("../data/events.json")
-        .then(function (response) {
-          if (!response.ok) {
-            throw new Error("Unable to load events data.");
-          }
-          return response.json();
-        })
+      // Sort
+      if (sortValue === "title-asc")
+        result.sort((a, b) => a.title.localeCompare(b.title));
 
-        .then(function (data) {
-          allEvents = data;
-          console.log("Events loaded:", allEvents);
-          if (loadingMessage) {
-            loadingMessage.style.display = "none";
-          }
-          renderEvents();
-        })
+      if (sortValue === "title-desc")
+        result.sort((a, b) => b.title.localeCompare(a.title));
 
-        .catch(function (error) {
-          console.error("Error:", error);
-          if (loadingMessage) {
-            loadingMessage.style.display = "none";
-          }
+      if (sortValue === "date-asc")
+        result.sort((a, b) => new Date(a.date) - new Date(b.date));
 
-          if (errorMessage) {
-            errorMessage.textContent =
-              "Failed to load events. Please try again.";
-            errorMessage.style.display = "block";
-          }
-        });
-    }
+      if (sortValue === "date-desc")
+        result.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-    // ================================
-    // DISPLAY EVENTS
-    // ================================
+      const resultPage = paginate(result, page, 5);
 
-    function renderEvents() {
-      let filteredEvents = [...allEvents];
-
-      // ================================
-      // SEARCH BY TITLE
-      // ================================
-
-      const searchText = searchInput
-        ? searchInput.value.toLowerCase().trim()
-        : "";
-
-      if (searchText !== "") {
-        filteredEvents = filteredEvents.filter(function (event) {
-          return event.title.toLowerCase().includes(searchText);
-        });
+      if (page > resultPage.totalPages && resultPage.totalPages > 0) {
+        page = resultPage.totalPages;
+        return render();
       }
-
-      // ===============================
-      // FILTER BY CATEGORY
-      // ===============================
-
-     const selectedCategory = categoryFilter ? categoryFilter.value.trim() : "All";
-
-      if (
-        selectedCategory !== "" &&
-        selectedCategory.toLowerCase() !== "all"
-      ) {
-        filteredEvents = filteredEvents.filter(function (event) {
-          return event.category === selectedCategory;
-        });
-      }
-
-      // ================================
-      // SORT EVENTS
-      // ================================
-
-      const sortValue = sortEvents ? sortEvents.value : "default";
-      console.log("Selected sort:", sortValue);
-
-      if (sortValue === "title-asc") {
-        filteredEvents.sort(function (a, b) {
-          return a.title.localeCompare(b.title);
-        });
-
-      } else if (sortValue === "title-desc") {
-        filteredEvents.sort(function (a, b) {
-          return b.title.localeCompare(a.title);
-        });
-
-      } else if (sortValue === "date-asc") {
-        filteredEvents.sort(function (a, b) {
-          return new Date(a.date).getTime() -
-                new Date(b.date).getTime();
-        });
-
-      } else if (sortValue === "date-desc") {
-        filteredEvents.sort(function (a, b) {
-          return new Date(b.date).getTime() -
-                new Date(a.date).getTime();
-        });
-      }
-
-      // ================================
-      // PAGINATION
-      // ================================
-
-      const totalPages = Math.ceil(filteredEvents.length / recordsPerPage);
-
-      if (currentPage > totalPages && totalPages > 0) {
-        currentPage = totalPages;
-      }
-
-      const startIndex = (currentPage - 1) * recordsPerPage;
-      const endIndex = startIndex + recordsPerPage;
-      const eventsToDisplay = filteredEvents.slice(startIndex, endIndex);
-
-      // ================================
-      // CLEAR OLD DATA
-      // ================================
 
       eventList.innerHTML = "";
 
-      // ================================
-      // NO RESULTS
-      // ================================
-
-      if (eventsToDisplay.length === 0) {
+      if (!resultPage.items.length) {
         eventList.innerHTML = `
           <div class="col-12">
             <div class="alert alert-info text-center">
@@ -259,575 +185,281 @@ document.addEventListener("DOMContentLoaded", function () {
           </div>
         `;
 
-        if (pageNumber) {
-          pageNumber.textContent = "0";
-        }
-
-        if (prevPage) {
-          prevPage.disabled = true;
-        }
-
-        if (nextPage) {
-          nextPage.disabled = true;
-        }
-
+        if (pageNo) pageNo.textContent = "0";
+        if (prev) prev.disabled = true;
+        if (next) next.disabled = true;
         return;
       }
 
-      // ================================
-      // CREATE EVENT CARDS
-      // ================================
-
-      eventsToDisplay.forEach(function (event) {
-        const col = document.createElement("div");
-        col.className = "col-md-6 col-lg-4 mb-4";
-
-        const card = document.createElement("div");
-        card.className = "card h-100 shadow-sm";
-
-        const cardBody = document.createElement("div");
-        cardBody.className = "card-body";
-
-        const title = document.createElement("h5");
-        title.className = "card-title";
-        title.textContent = event.title;
-
-        const date = document.createElement("p");
-        date.className = "card-text";
-        date.innerHTML = `<strong>Date:</strong> ${event.date}`;
-
-        const location = document.createElement("p");
-        location.className = "card-text";
-        location.innerHTML = `<strong>Location:</strong> ${event.location}`;
-
-        const category = document.createElement("span");
-        category.className = "badge bg-primary";
-        category.textContent = event.category;
-
-        cardBody.appendChild(title);
-        cardBody.appendChild(date);
-        cardBody.appendChild(location);
-        cardBody.appendChild(category);
-
-        card.appendChild(cardBody);
-        col.appendChild(card);
-
-        eventList.appendChild(col);
+      resultPage.items.forEach(event => {
+        eventList.innerHTML += `
+          <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">${event.title}</h5>
+                <p class="card-text"><strong>Date:</strong> ${event.date}</p>
+                <p class="card-text"><strong>Location:</strong> ${event.location}</p>
+                <span class="badge bg-primary">${event.category}</span>
+              </div>
+            </div>
+          </div>
+        `;
       });
 
-      // ================================
-      // UPDATE PAGINATION
-      // ================================
+      if (pageNo) pageNo.textContent = page;
+      if (prev) prev.disabled = page === 1;
+      if (next) next.disabled = page === resultPage.totalPages;
+    }
 
-      if (pageNumber) {
-        pageNumber.textContent = totalPages > 0 ? currentPage : 0;
+    loadJSON(
+      "../data/events.json",
+      loading,
+      error,
+      result => {
+        data = result;
+        render();
       }
+    );
 
-      if (prevPage) {
-        prevPage.disabled = currentPage === 1;
+    [search, category, sort].forEach(input => {
+      if (input) {
+        input.addEventListener(
+          input === search ? "input" : "change",
+          () => {
+            page = 1;
+            render();
+          }
+        );
       }
+    });
 
-      if (nextPage) {
-        nextPage.disabled = currentPage === totalPages;
-      }
-    }
-
-    // ================================
-    // SEARCH EVENT
-    // ================================
-
-    if (searchInput) {
-      searchInput.addEventListener("input", function () {
-        currentPage = 1;
-        renderEvents();
-      });
-    }
-
-    // ================================
-    // CATEGORY FILTER
-    // ================================
-
-    if (categoryFilter) {
-      categoryFilter.addEventListener("change", function () {
-        currentPage = 1;
-        renderEvents();
-      });
-    }
-
-    // ================================
-    // SORT EVENTS
-    // ================================
-
-    if (sortEvents) {
-      sortEvents.addEventListener("change", function () {
-        console.log("Sorting changed:", this.value);
-        currentPage = 1;
-        renderEvents();
-      });
-    }
-
-    // ================================
-    // PREVIOUS PAGE
-    // ================================
-
-    if (prevPage) {
-      prevPage.addEventListener("click", function () {
-        if (currentPage > 1) {
-          currentPage--;
-
-          renderEvents();
+    if (prev) {
+      prev.onclick = () => {
+        if (page > 1) {
+          page--;
+          render();
         }
-      });
+      };
     }
 
-    // ================================
-    // NEXT PAGE
-    // ================================
-
-    if (nextPage) {
-      nextPage.addEventListener("click", function () {
-        currentPage++;
-
-        renderEvents();
-      });
+    if (next) {
+      next.onclick = () => {
+        page++;
+        render();
+      };
     }
-
-    // Start loading events
-    loadEvents();
   }
 
-  // ==========================================
-  // PRACTICAL 6 - FAQ
-  // Fetch + Search + Sort + Pagination
-  // ==========================================
 
+  // ================================
+  // FAQs
+  // ================================
   const faqAccordion = document.getElementById("faqAccordion");
 
   if (faqAccordion) {
-    const faqSearchInput = document.getElementById("faqSearchInput");
-    const faqSort = document.getElementById("faqSort");
-    const faqLoadingMessage = document.getElementById("faqLoadingMessage");
-    const faqErrorMessage = document.getElementById("faqErrorMessage");
-    const faqPrevPage = document.getElementById("faqPrevPage");
-    const faqNextPage = document.getElementById("faqNextPage");
-    const faqPageNumber = document.getElementById("faqPageNumber");
+    const search = document.getElementById("faqSearchInput");
+    const sort = document.getElementById("faqSort");
+    const loading = document.getElementById("faqLoadingMessage");
+    const error = document.getElementById("faqErrorMessage");
+    const prev = document.getElementById("faqPrevPage");
+    const next = document.getElementById("faqNextPage");
+    const pageNo = document.getElementById("faqPageNumber");
 
-    let allFAQs = [];
-    let currentFAQPage = 1;
+    let data = [];
+    let page = 1;
 
-    const faqsPerPage = 5;
+    function render() {
+      let result = [...data];
+      const text = search?.value.toLowerCase().trim() || "";
+      const sortValue = sort?.value || "default";
 
-    // ================================
-    // FETCH FAQ JSON
-    // ================================
-
-    function loadFAQs() {
-      if (faqLoadingMessage) {
-        faqLoadingMessage.style.display = "block";
+      // Search
+      if (text) {
+        result = result.filter(faq =>
+          faq.question.toLowerCase().includes(text)
+        );
       }
 
-      if (faqErrorMessage) {
-        faqErrorMessage.style.display = "none";
+      // Sort
+      if (sortValue === "az")
+        result.sort((a, b) =>
+          a.question.localeCompare(b.question)
+        );
+
+      if (sortValue === "za")
+        result.sort((a, b) =>
+          b.question.localeCompare(a.question)
+        );
+
+      const resultPage = paginate(result, page, 5);
+
+      if (page > resultPage.totalPages && resultPage.totalPages > 0) {
+        page = resultPage.totalPages;
+        return render();
       }
-
-      fetch("../data/faqs.json")
-        .then(function (response) {
-          if (!response.ok) {
-            throw new Error("Unable to load FAQ data.");
-          }
-
-          return response.json();
-        })
-
-        .then(function (data) {
-          allFAQs = data;
-
-          console.log("FAQs loaded:", allFAQs);
-          if (faqLoadingMessage) {
-            faqLoadingMessage.style.display = "none";
-          }
-
-          renderFAQs();
-        })
-
-        .catch(function (error) {
-          console.error("FAQ Error:", error);
-          if (faqLoadingMessage) {
-            faqLoadingMessage.style.display = "none";
-          }
-
-          if (faqErrorMessage) {
-            faqErrorMessage.textContent =
-              "Failed to load FAQs. Please try again.";
-            faqErrorMessage.style.display = "block";
-          }
-        });
-    }
-
-    // ================================
-    // DISPLAY FAQs
-    // ================================
-
-    function renderFAQs() {
-      let filteredFAQs = [...allFAQs];
-
-      // ================================
-      // SEARCH FAQ
-      // ================================
-
-      const searchText = faqSearchInput
-        ? faqSearchInput.value.toLowerCase().trim()
-        : "";
-
-      if (searchText !== "") {
-        filteredFAQs = filteredFAQs.filter(function (faq) {
-          return faq.question.toLowerCase().includes(searchText);
-        });
-      }
-
-      // ================================
-      // SORT FAQ
-      // ================================
-
-      const sortValue = faqSort ? faqSort.value : "default";
-
-      if (sortValue === "az") {
-        filteredFAQs.sort(function (a, b) {
-          return a.question.localeCompare(b.question);
-        });
-      } else if (sortValue === "za") {
-        filteredFAQs.sort(function (a, b) {
-          return b.question.localeCompare(a.question);
-        });
-      }
-
-      // ================================
-      // PAGINATION
-      // ================================
-
-      const totalPages = Math.ceil(filteredFAQs.length / faqsPerPage);
-
-      if (currentFAQPage > totalPages && totalPages > 0) {
-        currentFAQPage = totalPages;
-      }
-
-      const startIndex = (currentFAQPage - 1) * faqsPerPage;
-
-      const endIndex = startIndex + faqsPerPage;
-
-      const faqsToDisplay = filteredFAQs.slice(startIndex, endIndex);
-
-      // ================================
-      // CLEAR OLD FAQs
-      // ================================
 
       faqAccordion.innerHTML = "";
 
-      // ================================
-      // NO RESULTS
-      // ================================
-
-      if (faqsToDisplay.length === 0) {
+      if (!resultPage.items.length) {
         faqAccordion.innerHTML = `
           <div class="alert alert-info text-center">
             No FAQs found.
           </div>
         `;
 
-        if (faqPageNumber) {
-          faqPageNumber.textContent = "0";
-        }
-
-        if (faqPrevPage) {
-          faqPrevPage.disabled = true;
-        }
-
-        if (faqNextPage) {
-          faqNextPage.disabled = true;
-        }
-
+        if (pageNo) pageNo.textContent = "0";
+        if (prev) prev.disabled = true;
+        if (next) next.disabled = true;
         return;
       }
 
-      // ================================
-      // CREATE FAQ ACCORDION
-      // ================================
+      resultPage.items.forEach(faq => {
+        const id = "faqCollapse" + faq.id;
 
-      faqsToDisplay.forEach(function (faq, index) {
-        const item = document.createElement("div");
-        item.className = "accordion-item";
+        faqAccordion.innerHTML += `
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#${id}"
+                aria-expanded="false"
+                aria-controls="${id}">
+                ${faq.question}
+              </button>
+            </h2>
 
-        const header = document.createElement("h2");
-        header.className = "accordion-header";
-
-        const button = document.createElement("button");
-        button.className = "accordion-button collapsed";
-        button.type = "button";
-
-        button.setAttribute("data-bs-toggle", "collapse");
-
-        const collapseId = "faqCollapse" + faq.id;
-
-        button.setAttribute("data-bs-target", "#" + collapseId);
-
-        button.setAttribute("aria-expanded", "false");
-
-        button.setAttribute("aria-controls", collapseId);
-
-        button.textContent = faq.question;
-
-        const collapse = document.createElement("div");
-
-        collapse.id = collapseId;
-
-        collapse.className = "accordion-collapse collapse";
-
-        collapse.setAttribute("data-bs-parent", "#faqAccordion");
-
-        const body = document.createElement("div");
-
-        body.className = "accordion-body";
-
-        body.textContent = faq.answer;
-
-        collapse.appendChild(body);
-        header.appendChild(button);
-
-        item.appendChild(header);
-        item.appendChild(collapse);
-
-        faqAccordion.appendChild(item);
+            <div
+              id="${id}"
+              class="accordion-collapse collapse"
+              data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                ${faq.answer}
+              </div>
+            </div>
+          </div>
+        `;
       });
 
-      // ================================
-      // UPDATE FAQ PAGINATION
-      // ================================
-
-      if (faqPageNumber) {
-        faqPageNumber.textContent = totalPages > 0 ? currentFAQPage : 0;
-      }
-
-      if (faqPrevPage) {
-        faqPrevPage.disabled = currentFAQPage === 1;
-      }
-
-      if (faqNextPage) {
-        faqNextPage.disabled = currentFAQPage === totalPages;
-      }
+      if (pageNo) pageNo.textContent = page;
+      if (prev) prev.disabled = page === 1;
+      if (next) next.disabled = page === resultPage.totalPages;
     }
 
-    // ================================
-    // FAQ SEARCH
-    // ================================
+    loadJSON(
+      "../data/faqs.json",
+      loading,
+      error,
+      result => {
+        data = result;
+        render();
+      }
+    );
 
-    if (faqSearchInput) {
-      faqSearchInput.addEventListener("input", function () {
-        currentFAQPage = 1;
-        renderFAQs();
-      });
+    if (search) {
+      search.oninput = () => {
+        page = 1;
+        render();
+      };
     }
 
-    // ================================
-    // FAQ SORT
-    // ================================
-
-    if (faqSort) {
-      faqSort.addEventListener("change", function () {
-        currentFAQPage = 1;
-        renderFAQs();
-      });
+    if (sort) {
+      sort.onchange = () => {
+        page = 1;
+        render();
+      };
     }
 
-    // ================================
-    // FAQ PREVIOUS PAGE
-    // ================================
-
-    if (faqPrevPage) {
-      faqPrevPage.addEventListener("click", function () {
-        if (currentFAQPage > 1) {
-          currentFAQPage--;
-
-          renderFAQs();
+    if (prev) {
+      prev.onclick = () => {
+        if (page > 1) {
+          page--;
+          render();
         }
-      });
+      };
     }
 
-    // ================================
-    // FAQ NEXT PAGE
-    // ================================
-
-    if (faqNextPage) {
-      faqNextPage.addEventListener("click", function () {
-        currentFAQPage++;
-
-        renderFAQs();
-      });
+    if (next) {
+      next.onclick = () => {
+        page++;
+        render();
+      };
     }
-
-    // Start loading FAQs
-    loadFAQs();
   }
 
-  // ==========================================
-  // PRACTICAL 6 - STUDENTS
-  // Fetch + Search + Filter + Sort + Pagination
-  // ==========================================
 
+  // ================================
+  // STUDENTS
+  // ================================
   const studentList = document.getElementById("studentList");
+
   if (studentList) {
-    const studentSearchInput = document.getElementById("studentSearchInput");
-    const courseFilter = document.getElementById("courseFilter");
-    const yearFilter = document.getElementById("yearFilter");
-    const sortStudents = document.getElementById("sortStudents");
-    const studentLoadingMessage = document.getElementById("studentLoadingMessage");
-    const studentErrorMessage = document.getElementById("studentErrorMessage");
-    const studentPrevPage = document.getElementById("studentPrevPage");
-    const studentNextPage = document.getElementById("studentNextPage");
-    const studentPageNumber = document.getElementById("studentPageNumber");
+    const search = document.getElementById("studentSearchInput");
+    const course = document.getElementById("courseFilter");
+    const year = document.getElementById("yearFilter");
+    const sort = document.getElementById("sortStudents");
+    const loading = document.getElementById("studentLoadingMessage");
+    const error = document.getElementById("studentErrorMessage");
+    const prev = document.getElementById("studentPrevPage");
+    const next = document.getElementById("studentNextPage");
+    const pageNo = document.getElementById("studentPageNumber");
 
-    let allStudents = [];
-    let currentStudentPage = 1;
-    const studentsPerPage = 5;
+    let data = [];
+    let page = 1;
 
-    // ================================
-    // FETCH STUDENTS JSON
-    // ================================
+    function render() {
+      let result = [...data];
 
-    function loadStudents() {
-      if (studentLoadingMessage) {
-        studentLoadingMessage.style.display = "block";
+      const text = search?.value.toLowerCase().trim() || "";
+      const selectedCourse = course?.value || "All";
+      const selectedYear = year?.value || "All";
+      const sortValue = sort?.value || "default";
+
+      // Search
+      if (text) {
+        result = result.filter(student =>
+          student.name.toLowerCase().includes(text)
+        );
       }
 
-      if (studentErrorMessage) {
-        studentErrorMessage.style.display = "none";
-      }
-
-      fetch("../data/students.json")
-        .then(function (response) {
-          if (!response.ok) {
-            throw new Error("Unable to load students data.");
-          }
-
-          return response.json();
-        })
-
-        .then(function (data) {
-          allStudents = data;
-          console.log("Students loaded:", allStudents);
-
-          if (studentLoadingMessage) {
-            studentLoadingMessage.style.display = "none";
-          }
-
-          renderStudents();
-        })
-
-        .catch(function (error) {
-          console.error("Student Error:", error);
-          if (studentLoadingMessage) {
-            studentLoadingMessage.style.display = "none";
-          }
-
-          if (studentErrorMessage) {
-            studentErrorMessage.textContent =
-              "Failed to load students. Please try again.";
-
-            studentErrorMessage.style.display = "block";
-          }
-        });
-    }
-
-    // ================================
-    // RENDER STUDENTS
-    // ================================
-
-    function renderStudents() {
-      let filteredStudents = [...allStudents];
-
-      // ================================
-      // SEARCH BY NAME
-      // ================================
-
-      const searchText = studentSearchInput
-        ? studentSearchInput.value.toLowerCase().trim()
-        : "";
-
-      if (searchText !== "") {
-        filteredStudents = filteredStudents.filter(function (student) {
-          return student.name.toLowerCase().includes(searchText);
-        });
-      }
-
-      // ================================
-      // FILTER BY COURSE
-      // ================================
-
-      const selectedCourse = courseFilter ? courseFilter.value : "All";
+      // Course filter
       if (selectedCourse !== "All" && selectedCourse !== "") {
-        filteredStudents = filteredStudents.filter(function (student) {
-          return student.course === selectedCourse;
-        });
+        result = result.filter(
+          student => student.course === selectedCourse
+        );
       }
 
-      // ================================
-      // FILTER BY YEAR
-      // ================================
-
-      const selectedYear = yearFilter ? yearFilter.value : "All";
+      // Year filter
       if (selectedYear !== "All" && selectedYear !== "") {
-        filteredStudents = filteredStudents.filter(function (student) {
-          return student.year == selectedYear;
-        });
+        result = result.filter(
+          student => student.year == selectedYear
+        );
       }
 
-      // ================================
-      // SORT STUDENTS
-      // ================================
+      // Sort
+      if (sortValue === "name-asc")
+        result.sort((a, b) => a.name.localeCompare(b.name));
 
-      const sortValue = sortStudents ? sortStudents.value : "default";
+      if (sortValue === "name-desc")
+        result.sort((a, b) => b.name.localeCompare(a.name));
 
-      if (sortValue === "name-asc") {
-        filteredStudents.sort(function (a, b) {
-          return a.name.localeCompare(b.name);
-        });
-      } else if (sortValue === "name-desc") {
-        filteredStudents.sort(function (a, b) {
-          return b.name.localeCompare(a.name);
-        });
-      } else if (sortValue === "year-asc") {
-        filteredStudents.sort(function (a, b) {
-          return a.year - b.year;
-        });
-      } else if (sortValue === "year-desc") {
-        filteredStudents.sort(function (a, b) {
-          return b.year - a.year;
-        });
+      if (sortValue === "year-asc")
+        result.sort((a, b) => a.year - b.year);
+
+      if (sortValue === "year-desc")
+        result.sort((a, b) => b.year - a.year);
+
+      const resultPage = paginate(result, page, 5);
+
+      if (page > resultPage.totalPages && resultPage.totalPages > 0) {
+        page = resultPage.totalPages;
+        return render();
       }
-
-      // ================================
-      // PAGINATION
-      // ================================
-
-      const totalPages = Math.ceil(filteredStudents.length / studentsPerPage);
-      if (currentStudentPage > totalPages && totalPages > 0) {
-        currentStudentPage = totalPages;
-      }
-
-      const startIndex = (currentStudentPage - 1) * studentsPerPage;
-      const endIndex = startIndex + studentsPerPage;
-      const studentsToDisplay = filteredStudents.slice(startIndex, endIndex);
-
-      // ================================
-      // CLEAR OLD STUDENTS
-      // ================================
 
       studentList.innerHTML = "";
 
-      // ================================
-      // NO RESULTS
-      // ================================
-
-      if (studentsToDisplay.length === 0) {
+      if (!resultPage.items.length) {
         studentList.innerHTML = `
           <div class="col-12">
             <div class="alert alert-info text-center">
@@ -836,160 +468,84 @@ document.addEventListener("DOMContentLoaded", function () {
           </div>
         `;
 
-        if (studentPageNumber) {
-          studentPageNumber.textContent = "0";
-        }
-
-        if (studentPrevPage) {
-          studentPrevPage.disabled = true;
-        }
-
-        if (studentNextPage) {
-          studentNextPage.disabled = true;
-        }
-
+        if (pageNo) pageNo.textContent = "0";
+        if (prev) prev.disabled = true;
+        if (next) next.disabled = true;
         return;
       }
 
-      // ================================
-      // CREATE STUDENT CARDS
-      // ================================
+      resultPage.items.forEach(student => {
+        studentList.innerHTML += `
+          <div class="col-md-6 col-lg-4">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body">
+                <div class="text-center mb-3">
+                  <i class="bi bi-person-circle fs-1"></i>
+                </div>
 
-      studentsToDisplay.forEach(function (student) {
-        const col = document.createElement("div");
-        col.className = "col-md-6 col-lg-4";
+                <h5 class="card-title text-center fw-bold">
+                  ${student.name}
+                </h5>
 
-        const card = document.createElement("div");
-        card.className = "card h-100 shadow-sm";
+                <p class="card-text">
+                  <strong>Email:</strong> ${student.email}
+                </p>
 
-        const cardBody = document.createElement("div");
-        cardBody.className = "card-body";
+                <p class="card-text">
+                  <strong>Course:</strong> ${student.course}
+                </p>
 
-        // Student Icon
-        const icon = document.createElement("div");
-        icon.className = "text-center mb-3";
-        icon.innerHTML = `<i class="bi bi-person-circle fs-1"></i>`;
-
-        // Student Name
-        const name = document.createElement("h5");
-        name.className = "card-title text-center fw-bold";
-        name.textContent = student.name;
-
-        // Email
-        const email = document.createElement("p");
-        email.className = "card-text";
-        email.innerHTML = `<strong>Email:</strong> ${student.email}`;
-
-        // Course
-        const course = document.createElement("p");
-        course.className = "card-text";
-        course.innerHTML = `<strong>Course:</strong> ${student.course}`;
-
-        // Year
-        const year = document.createElement("p");
-        year.className = "card-text";
-        year.innerHTML = `<strong>Year:</strong> ${student.year}`;
-
-        // Add elements
-        cardBody.appendChild(icon);
-        cardBody.appendChild(name);
-        cardBody.appendChild(email);
-        cardBody.appendChild(course);
-        cardBody.appendChild(year);
-        card.appendChild(cardBody);
-        col.appendChild(card);
-        studentList.appendChild(col);
+                <p class="card-text">
+                  <strong>Year:</strong> ${student.year}
+                </p>
+              </div>
+            </div>
+          </div>
+        `;
       });
 
-      // ================================
-      // UPDATE PAGINATION
-      // ================================
+      if (pageNo) pageNo.textContent = page;
+      if (prev) prev.disabled = page === 1;
+      if (next) next.disabled = page === resultPage.totalPages;
+    }
 
-      if (studentPageNumber) {
-        studentPageNumber.textContent = totalPages > 0 ? currentStudentPage : 0;
+    loadJSON(
+      "../data/students.json",
+      loading,
+      error,
+      result => {
+        data = result;
+        render();
       }
+    );
 
-      if (studentPrevPage) {
-        studentPrevPage.disabled = currentStudentPage === 1;
+    [search, course, year, sort].forEach(input => {
+      if (input) {
+        input.addEventListener(
+          input === search ? "input" : "change",
+          () => {
+            page = 1;
+            render();
+          }
+        );
       }
+    });
 
-      if (studentNextPage) {
-        studentNextPage.disabled = currentStudentPage === totalPages;
-      }
-    }
-
-    // ================================
-    // SEARCH EVENT
-    // ================================
-
-    if (studentSearchInput) {
-      studentSearchInput.addEventListener("input", function () {
-        currentStudentPage = 1;
-        renderStudents();
-      });
-    }
-
-    // ================================
-    // COURSE FILTER
-    // ================================
-
-    if (courseFilter) {
-      courseFilter.addEventListener("change", function () {
-        currentStudentPage = 1;
-        renderStudents();
-      });
-    }
-
-    // ================================
-    // YEAR FILTER
-    // ================================
-
-    if (yearFilter) {
-      yearFilter.addEventListener("change", function () {
-        currentStudentPage = 1;
-        renderStudents();
-      });
-    }
-
-    // ================================
-    // SORT STUDENTS
-    // ================================
-
-    if (sortStudents) {
-      sortStudents.addEventListener("change", function () {
-        currentStudentPage = 1;
-        renderStudents();
-      });
-    }
-
-    // ================================
-    // PREVIOUS PAGE
-    // ================================
-
-    if (studentPrevPage) {
-      studentPrevPage.addEventListener("click", function () {
-        if (currentStudentPage > 1) {
-          currentStudentPage--;
-          renderStudents();
+    if (prev) {
+      prev.onclick = () => {
+        if (page > 1) {
+          page--;
+          render();
         }
-      });
+      };
     }
 
-    // ================================
-    // NEXT PAGE
-    // ================================
-
-    if (studentNextPage) {
-      studentNextPage.addEventListener("click", function () {
-        currentStudentPage++;
-        renderStudents();
-      });
+    if (next) {
+      next.onclick = () => {
+        page++;
+        render();
+      };
     }
-
-    // ================================
-    // START FETCHING STUDENTS
-    // ================================
-
-    loadStudents();
   }
+
 });
