@@ -547,7 +547,4 @@ document.addEventListener("DOMContentLoaded", () => {
       };
     }
   }
-```
-
-```
 });
