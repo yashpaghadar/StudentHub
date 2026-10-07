@@ -1,0 +1,5 @@
+id,full_name,enrollment,email,mobile,password,course,year,gender,created_at
+1,"Yash Paghadar",D26IT111,yash@gmail.app,9876543210,$2y$10$nhv4nlLM5DEJGf87oGO/AuJygO0zvHL4WNKzPLpR/GWjBkJZzE4g2,"B.Tech IT",2,Male,"2026-09-22 06:58:34"
+2,"Yash Paghadar",D26IT134,d26it111@charusat.edu.in,7410852096,$2y$10$KtiLfg/VWoBEfEjCz28gnOegwSqEURenRdMFMyzv/1W./PaiIfBvy,"B.Tech IT",1,Male,"2026-09-22 07:23:16"
+3,"Fenil Rathod",D26IT117,feni@gmail.com,9099511611,$2y$10$iRJ44Zbjx419wY/LZbzYt.cT6p95ORpwN1hpGdfoEcQV5A1BicVfi,"B.Tech CSE",1,Male,"2026-10-06 06:14:52"
+4,Dhruva,D26IT107,d26it107@charusat.edu.in,9638520741,$2y$10$KFLTqHN1xCSPY3UaTZm7JuzGQn07wo1f4N5xUfRQWGfkCcdlI.fZq,"B.Tech IT",2,Female,"2026-10-07 11:59:01"

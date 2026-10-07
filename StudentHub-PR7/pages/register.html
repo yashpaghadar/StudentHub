@@ -1,111 +1,92 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta charset="UTF-8" />
 
-    <title>StudentHub | Register</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Bootstrap CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
+  <title>StudentHub | Register</title>
 
-    <!-- Bootstrap Icons -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css"
-      rel="stylesheet"
-    />
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-    <!-- Google Font -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css" rel="stylesheet" />
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="../css/style.css" />
-  </head>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
 
-  <body>
-    <!-- ====================== NAVBAR ====================== -->
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
 
-    <nav
-      class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm sticky-top"
-    >
-      <div class="container">
-        <a class="navbar-brand d-flex align-items-center" href="#">
-          <img
-            src="../img/logo.png"
-            alt="StudentHub Logo"
-            width="55"
-            height="55"
-            class="me-3 rounded"
-          />
+<body>
+  <!-- ====================== NAVBAR ====================== -->
 
-          <div>
-            <h4 class="mb-0 fw-bold">StudentHub Portal</h4>
-            <small class="text-light">Event Page</small>
-          </div>
-        </a>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="../img/logo.png" alt="StudentHub Logo" width="55" height="55" class="me-3 rounded" />
 
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarMenu"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarMenu">
-          <ul class="navbar-nav ms-auto align-items-lg-center">
-            <li class="nav-item">
-              <a class="nav-link" href="../index.html">Home</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="about.html">About</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="events.html">Events</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="students.html">Students</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="dashboard.html">St_Dashboard</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">Support</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="faq.html">FAQ</a>
-            </li>
-
-            <li class="nav-item ms-lg-3">
-              <a class="btn btn-warning me-2" href="login.html"> Login </a>
-            </li>
-
-            <li class="nav-item">
-              <a class="btn btn-warning" href="register.html"> Register </a>
-            </li>
-          </ul>
+        <div>
+          <h4 class="mb-0 fw-bold">StudentHub Portal</h4>
         </div>
-      </div>
-    </nav>
+      </a>
 
-    <div id="message"></div>
-    <!-- ====================== REGISTER FORM ====================== -->
-    <section class="py-5 bg-light">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarMenu">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">Events</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">Students</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">St_Dashboard</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">Support</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">FAQ</a>
+          </li>
+
+          <li class="nav-item ms-lg-3">
+            <a class="btn btn-warning me-2" href="#"> Login </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="btn btn-warning" href="#"> Register </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <div id="message"></div>
+
+  <!-- ====================== REGISTER FORM ====================== -->
+<section class="py-5 bg-light">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-7 col-xl-6">
@@ -130,12 +111,7 @@
 
                 <!-- ================= FORM ================= -->
 
-                <form
-                  id="registerForm"
-                  action="../php/register.php"
-                  method="POST"
-                  novalidate
-                >
+                <form id="registerForm" action="register.php" method="POST" novalidate>
                   <!-- Full Name -->
 
                   <div class="mb-4">
@@ -342,7 +318,29 @@
                       aria-describedby="courseError"
                       required
                     >
-                       <option value="">Select Course</option>
+                      <option value="" selected disabled>
+                        Select your course
+                      </option>
+
+                      <option value="B.Tech IT">
+                        B.Tech Information Technology
+                      </option>
+
+                      <option value="B.Tech CSE">
+                        B.Tech Computer Science
+                      </option>
+
+                      <option value="BCA">
+                        Bachelor of Computer Applications
+                      </option>
+
+                      <option value="MCA">
+                        Master of Computer Applications
+                      </option>
+
+                      <option value="Diploma IT">
+                        Diploma Information Technology
+                      </option>
                     </select>
 
                     <div
@@ -504,7 +502,7 @@
                       If you know about Student Data ?
 
                       <a
-                        href="../php/student.php"
+                        href="student.php"
                         class="fw-semibold text-decoration-none"
                       >
                         Student Info
@@ -519,19 +517,15 @@
       </div>
     </section>
 
-    <!-- ====================== FOOTER ====================== -->
+  <!-- ====================== FOOTER ====================== -->
 
-    <footer class="student-footer">
-      <p class="mb-0">&copy; 2026 StudentHub. All Rights Reserved.</p>
-    </footer>
+  <footer class="student-footer">
+    <p class="mb-0">&copy; 2026 StudentHub. All Rights Reserved.</p>
+  </footer>
 
-    <!-- Bootstrap JS -->
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="register.js"></script>
+</body>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Registration Validation JS -->
-    <script src="../js/register.js"></script>
-    <script src="../js/script.js"></script>
-    <script src="../js/register-courses.js"></script>
-  </body>
 </html>
