@@ -219,13 +219,13 @@ if ($result === false) {
     redirectWithErrors(["general" => "Registration failed. Data could not be saved."]);
 }
 
-header("Location: register.html?success=" . urlencode("Your account has been created successfully."));
+header("Location: ../pages/register.html?success=" . urlencode("Your account has been created successfully."));
 exit();
 
 function redirectWithErrors($errors) {
     $json = json_encode($errors, JSON_UNESCAPED_UNICODE);
     $encoded = urlencode($json);
-    header("Location: register.html?errors=" . $encoded);
+    header("Location: ../pages/register.html?errors=" . $encoded);
     exit();
 }
 ?>

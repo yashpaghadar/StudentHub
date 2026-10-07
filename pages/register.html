@@ -103,9 +103,9 @@
       </div>
     </nav>
 
-    <!-- ====================== REGISTER FORM ====================== -->
-
-    <section class="py-5 bg-light">
+    <div id="message"></div>
+  <!-- ====================== REGISTER FORM ====================== -->
+  <section class="py-5 bg-light">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-7 col-xl-6">
@@ -130,7 +130,7 @@
 
                 <!-- ================= FORM ================= -->
 
-                <form id="registerForm" novalidate>
+                <form id="registerForm" action="../php/register.php" method="POST" novalidate>
                   <!-- Full Name -->
 
                   <div class="mb-4">
@@ -518,13 +518,13 @@
 
                   <div class="text-center">
                     <p class="mb-0">
-                      Already have an account?
+                      If you know about Student Data ?
 
                       <a
-                        href="login.html"
+                        href="../php/student.php"
                         class="fw-semibold text-decoration-none"
                       >
-                        Login here
+                        Student Info
                       </a>
                     </p>
                   </div>

@@ -1,3 +1,4 @@
 id,full_name,enrollment,email,mobile,password,course,year,gender,created_at
 1,"Yash Paghadar",D26IT111,yash@gmail.app,9876543210,$2y$10$nhv4nlLM5DEJGf87oGO/AuJygO0zvHL4WNKzPLpR/GWjBkJZzE4g2,"B.Tech IT",2,Male,"2026-09-22 06:58:34"
 2,"Yash Paghadar",D26IT134,d26it111@charusat.edu.in,7410852096,$2y$10$KtiLfg/VWoBEfEjCz28gnOegwSqEURenRdMFMyzv/1W./PaiIfBvy,"B.Tech IT",1,Male,"2026-09-22 07:23:16"
+3,"Ashish Kumar",25IT111,ashish@kumar.com,7896541230,$2y$10$0BcIaI7Ww8fn2mZW70iEyeHlZQHtaMulhnQI5DQod5up50mv/76NG,"B.Tech CSE",4,Male,"2026-10-07 16:47:06"
