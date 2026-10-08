@@ -248,7 +248,7 @@ try {
             <i class="bi bi-mortarboard-fill me-2"></i>
             StudentHub
         </a>
-        <a href="register.html" class="btn btn-warning">
+        <a href="../pages/register.html" class="btn btn-warning">
             <i class="bi bi-person-plus me-1"></i>
             Add Student
         </a>
