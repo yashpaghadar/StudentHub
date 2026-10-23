@@ -295,8 +295,8 @@ $students = $stmt->get_result();
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link active" href="admin.php">Manage Students</a></li>
-                    <li class="nav-item"><a class="nav-link" href="events.html">Manage Events</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Support</a></li>
+                    <li class="nav-item"><a class="nav-link" href="events.php">Manage Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="dashboard.php">St_Dashboard</a></li>
                 </ul>
                 <div class="dropdown ms-lg-3">
                     <a href="#" class="text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown">

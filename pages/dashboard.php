@@ -99,11 +99,11 @@ $enrollmentNo = $_SESSION["enrollment"];
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="dashboard.html"> St_Dashboard </a>
+              <a class="nav-link" href="#"> St_Dashboard </a>
             </li>
             
             <li class="nav-item">
-              <a class="nav-link" href="admin.html"> Admin </a>
+              <a class="nav-link" href="admin.php"> Admin </a>
             </li>
             
             <li class="nav-item">
@@ -111,7 +111,7 @@ $enrollmentNo = $_SESSION["enrollment"];
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="events.html"> Events </a>
+              <a class="nav-link" href="events.php"> Events </a>
             </li>
 
             <li class="nav-item">

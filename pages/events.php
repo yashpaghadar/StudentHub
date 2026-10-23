@@ -589,7 +589,7 @@ $formEvent = $editEvent ?? [
             </li>
 
             <li class="nav-item">
-              <a class="nav-link active" href="events.html">Events</a>
+              <a class="nav-link active" href="events.php">Events</a>
             </li>
 
             <li class="nav-item">
@@ -597,7 +597,7 @@ $formEvent = $editEvent ?? [
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="admin.html">Admin</a>
+              <a class="nav-link" href="admin.php">Admin</a>
             </li>
 
             <li class="nav-item">
