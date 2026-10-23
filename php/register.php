@@ -1,6 +1,5 @@
 <?php
-
-require "db_connect_mysqli.php";
+require_once __DIR__ . "/db_connect_mysqli.php";
 
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     header("Location: ../pages/register.html");
@@ -13,11 +12,10 @@ $email = trim($_POST["email"] ?? "");
 $mobile = trim($_POST["mobile"] ?? "");
 $password = $_POST["password"] ?? "";
 $confirmPassword = $_POST["confirmPassword"] ?? "";
-$course = trim($_POST["course"] ?? "");
-$year = $_POST["year"] ?? "";
-$gender = $_POST["gender"] ?? "";
+$course = filter_var($_POST["course"] ?? "", FILTER_VALIDATE_INT);
+$year = trim($_POST["year"] ?? "");
+$gender = trim($_POST["gender"] ?? "");
 $agree = isset($_POST["agree"]);
-
 $errors = [];
 
 if ($fullName === "") {
@@ -70,7 +68,7 @@ if ($password === "") {
     $errors["password"] = "Password must contain at least one lowercase letter.";
 } elseif (!preg_match("/[0-9]/", $password)) {
     $errors["password"] = "Password must contain at least one number.";
-} elseif (!preg_match("/[\W\_]/", $password)) {
+} elseif (!preg_match("/[\W_]/", $password)) {
     $errors["password"] = "Password must contain at least one special character.";
 }
 
@@ -80,18 +78,22 @@ if ($confirmPassword === "") {
     $errors["confirmPassword"] = "Passwords do not match.";
 }
 
-$allowedCourses = [
-    "B.Tech IT",
-    "B.Tech CSE",
-    "BCA",
-    "MCA",
-    "Diploma IT"
-];
+/* VALIDATE COURSE ID */
+$courseId = ($course !== false && $course !== null && $course > 0) ? $course : 0;
 
-if ($course === "") {
-    $errors["course"] = "Please select your course.";
-} elseif (!in_array($course, $allowedCourses, true)) {
+if ($courseId <= 0) {
     $errors["course"] = "Please select a valid course.";
+} else {
+    $stmt = $conn->prepare("SELECT course_id FROM courses WHERE course_id = ? LIMIT 1");
+    $stmt->bind_param("i", $courseId);
+    $stmt->execute();
+    $stmt->store_result();
+
+    if ($stmt->num_rows !== 1) {
+        $errors["course"] = "Please select a valid course.";
+    }
+
+    $stmt->close();
 }
 
 $allowedYears = ["1", "2", "3", "4"];
@@ -102,11 +104,7 @@ if ($year === "") {
     $errors["year"] = "Please select a valid year.";
 }
 
-$allowedGenders = [
-    "Male",
-    "Female",
-    "Other"
-];
+$allowedGenders = ["Male", "Female", "Other"];
 
 if ($gender === "") {
     $errors["gender"] = "Please select your gender.";
@@ -123,111 +121,55 @@ if (!empty($errors)) {
 }
 
 /* CHECK DUPLICATE ENROLLMENT */
-
-$stmt = $conn->prepare(
-    "SELECT id FROM students WHERE enrollment = ? LIMIT 1"
-);
-
+$stmt = $conn->prepare("SELECT id FROM students WHERE enrollment = ? LIMIT 1");
 $stmt->bind_param("s", $enrollment);
 $stmt->execute();
 $stmt->store_result();
 
 if ($stmt->num_rows > 0) {
     $stmt->close();
-
-    redirectWithErrors([
-        "enrollment" => "This Enrollment Number already exists."
-    ]);
+    redirectWithErrors(["enrollment" => "This Enrollment Number already exists."]);
 }
-
 $stmt->close();
 
 /* CHECK DUPLICATE EMAIL */
-
-$stmt = $conn->prepare(
-    "SELECT id FROM students WHERE email = ? LIMIT 1"
-);
-
+$stmt = $conn->prepare("SELECT id FROM students WHERE email = ? LIMIT 1");
 $stmt->bind_param("s", $email);
 $stmt->execute();
 $stmt->store_result();
 
 if ($stmt->num_rows > 0) {
     $stmt->close();
-
-    redirectWithErrors([
-        "email" => "This Email Address is already registered."
-    ]);
+    redirectWithErrors(["email" => "This Email Address is already registered."]);
 }
-
 $stmt->close();
 
 /* CHECK DUPLICATE MOBILE */
-
-$stmt = $conn->prepare(
-    "SELECT id FROM students WHERE mobile = ? LIMIT 1"
-);
-
+$stmt = $conn->prepare("SELECT id FROM students WHERE mobile = ? LIMIT 1");
 $stmt->bind_param("s", $mobile);
 $stmt->execute();
 $stmt->store_result();
 
 if ($stmt->num_rows > 0) {
     $stmt->close();
-
-    redirectWithErrors([
-        "mobile" => "This Mobile Number is already registered."
-    ]);
+    redirectWithErrors(["mobile" => "This Mobile Number is already registered."]);
 }
-
 $stmt->close();
-
-/* GET COURSE ID */
-
-$stmt = $conn->prepare(
-    "SELECT course_id FROM courses WHERE course_name = ? LIMIT 1"
-);
-
-$stmt->bind_param("s", $course);
-$stmt->execute();
-
-$result = $stmt->get_result();
-$courseData = $result->fetch_assoc();
-
-$stmt->close();
-
-if (!$courseData) {
-    redirectWithErrors([
-        "course" => "Selected course was not found."
-    ]);
-}
-
-$courseId = $courseData["course_id"];
 
 /* HASH PASSWORD */
+$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-$hashedPassword = password_hash(
-    $password,
-    PASSWORD_DEFAULT
-);
+if ($hashedPassword === false) {
+    $conn->close();
+    redirectWithErrors(["general" => "Unable to secure your password. Please try again."]);
+}
 
-/* INSERT STUDENT */
-
+/* INSERT STUDENT: course_id is stored directly */
 $sql = "INSERT INTO students
-        (
-            full_name,
-            enrollment,
-            email,
-            mobile,
-            password,
-            course_id,
-            year,
-            gender
-        )
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    (full_name, enrollment, email, mobile, password, course_id, year, gender)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
 $stmt = $conn->prepare($sql);
-
 $stmt->bind_param(
     "sssssiss",
     $fullName,
@@ -242,43 +184,27 @@ $stmt->bind_param(
 
 try {
     $stmt->execute();
-
     $stmt->close();
     $conn->close();
 
-    header(
-        "Location: ../pages/register.html?success=" .
-        urlencode("Your account has been created successfully.")
-    );
-
+    header("Location: ../pages/register.html?success=" . urlencode("Your account has been created successfully."));
     exit();
-
 } catch (mysqli_sql_exception $e) {
+    error_log("Student registration failed: " . $e->getMessage());
     $stmt->close();
     $conn->close();
 
-    redirectWithErrors([
-        "general" => "Registration failed. Please try again."
-    ]);
-}
+    if ($e->getCode() === 1062) {
+        redirectWithErrors(["general" => "This enrollment number, email, or mobile number is already registered."]);
+    }
 
-/* REDIRECT WITH ERRORS */
+    redirectWithErrors(["general" => "Registration failed. Please check your details and try again."]);
+}
 
 function redirectWithErrors($errors)
 {
-    $json = json_encode(
-        $errors,
-        JSON_UNESCAPED_UNICODE
-    );
-
-    $encoded = urlencode($json);
-
-    header(
-        "Location: ../pages/register.html?errors=" .
-        $encoded
-    );
-
+    $json = json_encode($errors, JSON_UNESCAPED_UNICODE);
+    header("Location: ../pages/register.html?errors=" . urlencode($json));
     exit();
 }
-
 ?>

@@ -605,35 +605,51 @@ document.addEventListener("DOMContentLoaded", () => {
 
     createStudentModals();
 
-    async function loadUpdateCourses(selectElement, selectedCourse = "") {
+
+    async function loadUpdateCourses(selectElement, selectedCourseName = "") {
+      selectElement.disabled = true;
+      selectElement.innerHTML = '<option value="">Loading courses...</option>';
+
       try {
-        const response = await fetch("../php/get_courses.php");
+        const response = await fetch("../php/get_courses.php", { cache: "no-store" });
+        const result = await response.json();
+    
 
-        if (!response.ok) {
-          throw new Error("Failed to load courses.");
+        if (!response.ok || !result.success || !Array.isArray(result.courses)) {
+          throw new Error(result.message || "Failed to load courses.");
         }
-
-        const data = await response.json();
 
         selectElement.innerHTML = '<option value="">Select Course</option>';
 
-        if (data.success && Array.isArray(data.courses)) {
-          data.courses.forEach((course) => {
-            const option = document.createElement("option");
-            option.value = course.course_name;
-            option.textContent = course.course_name;
+        result.courses.forEach((item) => {
+          const option = document.createElement("option");
+          option.value = String(item.course_id);
+          option.textContent = item.course_name;
 
-            if (course.course_name === selectedCourse) {
-              option.selected = true;
-            }
+          if (String(item.course_name) === String(selectedCourseName)) {
+            option.selected = true;
+          }
 
-            selectElement.appendChild(option);
-          });
+          selectElement.appendChild(option);
+        });
+
+        if (
+          selectedCourseName &&
+          !result.courses.some(
+            (item) => String(item.course_name) === String(selectedCourseName)
+          )
+        ) {
+          const option = document.createElement("option");
+          option.value = "";
+          option.textContent = "Current course not found";
+          option.selected = true;
+          selectElement.appendChild(option);
         }
       } catch (error) {
         console.error("Course loading error:", error);
-        selectElement.innerHTML =
-          '<option value="">Unable to load courses</option>';
+        selectElement.innerHTML = '<option value="">Unable to load courses</option>';
+      } finally {
+        selectElement.disabled = false;
       }
     }
 
@@ -697,41 +713,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
           <div class="mb-3">
-
-            <label class="form-label">
-              Course
-            </label>
-
-            <select id="completeCourse"
-                    class="form-select">
-
-              <option value="B.Tech IT"
-                ${student.course_name === "B.Tech IT" ? "selected" : ""}>
-                B.Tech IT
-              </option>
-
-              <option value="B.Tech CSE"
-                ${student.course_name === "B.Tech CSE" ? "selected" : ""}>
-                B.Tech CSE
-              </option>
-
-              <option value="BCA"
-                ${student.course_name === "BCA" ? "selected" : ""}>
-                BCA
-              </option>
-
-              <option value="MCA"
-                ${student.course_name === "MCA" ? "selected" : ""}>
-                MCA
-              </option>
-
-              <option value="Diploma IT"
-                ${student.course_name === "Diploma IT" ? "selected" : ""}>
-                Diploma IT
-              </option>
-
+            <label for="completeCourse" class="form-label">Course</label>
+            <select id="completeCourse" class="form-select" required>
+              <option value="">Loading courses...</option>
             </select>
-
           </div>
 
 
@@ -802,45 +787,24 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
+
       // Course
       if (field === "course") {
         area.innerHTML = `
-
-          <label class="form-label fw-semibold">
-            New Course
-          </label>
-
-          <select id="updateValue"
-                  class="form-select">
-
-            <option value="B.Tech IT">
-              B.Tech IT
-            </option>
-
-            <option value="B.Tech CSE">
-              B.Tech CSE
-            </option>
-
-            <option value="BCA">
-              BCA
-            </option>
-
-            <option value="MCA">
-              MCA
-            </option>
-
-            <option value="Diploma IT">
-              Diploma IT
-            </option>
-
+          <label for="updateValue" class="form-label fw-semibold">New Course</label>
+          <select id="updateValue" class="form-select" required>
+            <option value="">Loading courses...</option>
           </select>
-
         `;
 
-        document.getElementById("updateValue").value = student.course_name;
+        loadUpdateCourses(
+          document.getElementById("updateValue"),
+          student.course_name
+        );
 
         return;
       }
+
 
       // Year
       if (field === "year") {
@@ -1066,7 +1030,15 @@ document.addEventListener("DOMContentLoaded", () => {
             body: JSON.stringify(requestData),
           });
 
-          const result = await response.json();
+          const responseText = await response.text();
+          console.log("Update PHP response:", responseText);
+
+          let result;
+          try {
+            result = JSON.parse(responseText);
+          } catch {
+            throw new Error("PHP returned HTML instead of JSON. Check the Console for the actual PHP error.");
+          }
 
           if (!response.ok || !result.success) {
             throw new Error(result.message || "Unable to update student.");

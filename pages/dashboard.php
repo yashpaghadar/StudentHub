@@ -1,3 +1,39 @@
+<?php
+session_start();
+
+if (empty($_SESSION["logged_in"]) || empty($_SESSION["user_id"])) {
+    header("Location: login.html?error=unauthorized");
+    exit();
+}
+
+$timeout = 900;
+
+if (isset($_SESSION["last_activity"]) && (time() - $_SESSION["last_activity"]) > $timeout) {
+    $_SESSION = [];
+
+    if (ini_get("session.use_cookies")) {
+        $params = session_get_cookie_params();
+        setcookie(session_name(), "", [
+            "expires" => time() - 42000,
+            "path" => $params["path"],
+            "domain" => $params["domain"],
+            "secure" => $params["secure"],
+            "httponly" => $params["httponly"],
+            "samesite" => $params["samesite"] ?? "Lax"
+        ]);
+    }
+
+    session_destroy();
+    header("Location: login.html?error=timeout");
+    exit();
+}
+
+$_SESSION["last_activity"] = time();
+
+$studentName = $_SESSION["full_name"];
+$enrollmentNo = $_SESSION["enrollment"];
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -96,12 +132,17 @@
 
         <div class="dropdown ms-lg-4">
           <a
-            href="#"
-            class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-            data-bs-toggle="dropdown"
+              href="#"
+              class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
           >
-            <span class="me-3 fw-semibold"> Welcome, Student </span>
-            <i class="bi bi-person-circle fs-2"></i>
+              <span class="me-3 fw-semibold">
+                  <?= htmlspecialchars($enrollmentNo, ENT_QUOTES, "UTF-8") ?>
+                  |
+                  <?= htmlspecialchars($studentName, ENT_QUOTES, "UTF-8") ?>
+              </span>
+              <i class="bi bi-person-circle fs-2"></i>
           </a>
 
           <ul class="dropdown-menu dropdown-menu-end">
@@ -113,7 +154,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item text-danger" href="login.html">
+              <a class="dropdown-item text-danger" href="../php/logout.php">
                 <i class="bi bi-box-arrow-right me-2"></i>
                 Logout
               </a>

@@ -62,16 +62,17 @@ if ($field === "complete") {
         $mobile
     );
 
+    if (!ctype_digit($course)) {
+        sendError("Please select a valid course.");
+    }
     $stmt = $pdo->prepare(
         "SELECT course_id
-         FROM courses
-         WHERE course_name = :course
-         LIMIT 1"
+        FROM courses
+        WHERE course_id = :course_id
+        LIMIT 1"
     );
-
-    $stmt->execute([":course" => $course]);
+    $stmt->execute([":course_id" => (int)$course]);
     $courseData = $stmt->fetch(PDO::FETCH_ASSOC);
-
     if (!$courseData) {
         sendError("Selected course was not found.");
     }
@@ -209,55 +210,42 @@ if ($field === "mobile") {
     );
 }
 
-
 if ($field === "course") {
-
-    $allowedCourses = [
-        "B.Tech IT",
-        "B.Tech CSE",
-        "BCA",
-        "MCA",
-        "Diploma IT"
-    ];
-
-    if (!in_array($value, $allowedCourses, true)) {
+    if ($value === "" || !ctype_digit($value)) {
         sendError("Please select a valid course.");
     }
 
-    $stmt = $pdo->prepare(
-        "SELECT course_id
-         FROM courses
-         WHERE course_name = :course
-         LIMIT 1"
-    );
-
-    $stmt->execute([":course" => $value]);
-    $courseData = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    if (!$courseData) {
-        sendError("Selected course was not found.");
-    }
-
     try {
+        // Check whether the selected course exists in the database
+        $stmt = $pdo->prepare(
+            "SELECT course_id
+             FROM courses
+             WHERE course_id = :course_id
+             LIMIT 1"
+        );
+        $stmt->execute([":course_id" => (int)$value]);
+        $courseData = $stmt->fetch(PDO::FETCH_ASSOC);
 
+        if (!$courseData) {
+            sendError("Selected course was not found.");
+        }
+
+        // Update the student's course
         $stmt = $pdo->prepare(
             "UPDATE students
              SET course_id = :course_id
              WHERE id = :id"
         );
-
         $stmt->execute([
             ":course_id" => $courseData["course_id"],
             ":id" => $id
         ]);
 
         sendSuccess("Course updated successfully.");
-
     } catch (PDOException $e) {
         sendError("Unable to update course.", 500);
     }
 }
-
 
 if ($field === "year") {
 
@@ -313,48 +301,23 @@ function validateStudentData(
     $year,
     $gender
 ) {
-
-    if (
-        strlen($fullName) < 2 ||
-        strlen($fullName) > 100 ||
-        !preg_match("/^[a-zA-Z .'-]+$/", $fullName)
-    ) {
+    if (strlen($fullName) < 2 || strlen($fullName) > 100 || !preg_match("/^[a-zA-Z .'-]+$/", $fullName)) {
         sendError("Please enter a valid Full Name.");
     }
 
-    if (
-        strlen($enrollment) < 3 ||
-        strlen($enrollment) > 50 ||
-        !preg_match("/^[a-zA-Z0-9\/_-]+$/", $enrollment)
-    ) {
+    if (strlen($enrollment) < 3 || strlen($enrollment) > 50 || !preg_match("/^[a-zA-Z0-9\/_-]+$/", $enrollment)) {
         sendError("Please enter a valid Enrollment Number.");
     }
 
-    if (
-        !filter_var($email, FILTER_VALIDATE_EMAIL) ||
-        strlen($email) > 150
-    ) {
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL) || strlen($email) > 150) {
         sendError("Please enter a valid Email Address.");
     }
 
-    if (
-        !preg_match("/^[0-9]{10}$/", $mobile) ||
-        $mobile[0] === "0"
-    ) {
-        sendError(
-            "Mobile Number must contain exactly 10 digits and cannot start with 0."
-        );
+    if (!preg_match("/^[0-9]{10}$/", $mobile) || $mobile[0] === "0") {
+        sendError("Mobile Number must contain exactly 10 digits and cannot start with 0.");
     }
 
-    $courses = [
-        "B.Tech IT",
-        "B.Tech CSE",
-        "BCA",
-        "MCA",
-        "Diploma IT"
-    ];
-
-    if (!in_array($course, $courses, true)) {
+    if ($course === "" || !ctype_digit($course)) {
         sendError("Please select a valid course.");
     }
 
@@ -366,7 +329,6 @@ function validateStudentData(
         sendError("Please select a valid gender.");
     }
 }
-
 
 function checkDuplicates(
     $pdo,

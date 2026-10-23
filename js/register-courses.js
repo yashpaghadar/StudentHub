@@ -1,40 +1,38 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const courseSelect = document.getElementById("course");
+    const courseSelect = document.getElementById("course");
 
-  if (!courseSelect) {
-    return;
-  }
+    if (!courseSelect) {
+        console.error("Course dropdown #course was not found.");
+        return;
+    }
 
-  fetch("/StudentHUB/php/get_courses.php")
-    .then(function (response) {
-      if (!response.ok) {
-        throw new Error("HTTP Error: " + response.status);
-      }
+    courseSelect.innerHTML = '<option value="">Loading courses...</option>';
 
-      return response.json();
-    })
-    .then(function (data) {
-      console.log("Registration courses:", data);
+    fetch("/StudentHUB/php/get_courses.php", { cache: "no-store" })
+        .then(function (response) {
+            if (!response.ok) {
+                throw new Error("HTTP Error: " + response.status);
+            }
+            return response.json();
+        })
+        .then(function (data) {
+            if (!data.success || !Array.isArray(data.courses)) {
+                throw new Error(data.message || "Invalid course response.");
+            }
 
-      if (!data.success || !Array.isArray(data.courses)) {
-        throw new Error(data.message || "Invalid course data.");
-      }
+            courseSelect.innerHTML = '<option value="">Select Course</option>';
 
-      courseSelect.innerHTML = '<option value="">Select Course</option>';
+            data.courses.forEach(function (course) {
+                const option = document.createElement("option");
+                option.value = String(course.course_id);
+                option.textContent = course.course_name;
+                courseSelect.appendChild(option);
+            });
 
-      data.courses.forEach(function (course) {
-        const option = document.createElement("option");
-
-        option.value = course.course_name;
-        option.textContent = course.course_name;
-
-        courseSelect.appendChild(option);
-      });
-    })
-    .catch(function (error) {
-      console.error("Registration course loading error:", error);
-
-      courseSelect.innerHTML =
-        '<option value="">Unable to load courses</option>';
-    });
+            console.log("Courses loaded:", data.courses.length);
+        })
+        .catch(function (error) {
+            console.error("Registration course loading error:", error);
+            courseSelect.innerHTML = '<option value="">Unable to load courses</option>';
+        });
 });
