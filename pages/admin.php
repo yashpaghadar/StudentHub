@@ -1,3 +1,18 @@
+<?php
+session_start();
+require_once __DIR__ . "/../php/remember_me.php";
+
+if (empty($_SESSION["logged_in"]) || empty($_SESSION["user_id"])) {
+    header("Location: login.html?error=unauthorized");
+    exit();
+}
+
+if (strtolower(trim($_SESSION["role"] ?? "")) !== "admin") {
+    header("Location: dashboard.php?error=forbidden");
+    exit();
+}
+?>
+
 <!doctype html>
 
 <html lang="en">

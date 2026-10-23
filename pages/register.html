@@ -106,6 +106,23 @@
               <!-- ================= FORM ================= -->
 
               <form id="registerForm" action="../php/register.php" method="POST" novalidate>
+                <!-- Account Role -->
+                <div class="mb-4">
+                  <label for="role" class="form-label fw-semibold">Register As</label>
+                  <select id="role" name="role" class="form-select" required>
+                    <option value="student" selected>Student</option>
+                    <option value="admin">Admin</option>
+                  </select>
+                  <div class="form-text">Select the type of account you need.</div>
+                </div>
+
+                <!-- Admin Invitation Code -->
+                <div class="mb-4" id="adminInvitationContainer" hidden>
+                  <label for="adminInvitationCode" class="form-label fw-semibold">Admin Invitation Code</label>
+                  <input type="password" id="adminInvitationCode" name="admin_invitation_code" class="form-control" placeholder="Enter admin invitation code" autocomplete="off">
+                  <div class="form-text">Required only when registering an administrator.</div>
+                </div>
+                                
                 <!-- Full Name -->
 
                 <div class="mb-4">
@@ -125,22 +142,16 @@
                   <div id="nameError" class="text-danger small mt-1" aria-live="polite"></div>
                 </div>
 
-                <!-- Enrollment Number -->
-
+                <!-- Enrollment Number / Employee ID -->
                 <div class="mb-4">
-                  <label for="enrollment" class="form-label fw-semibold">
-                    Enrollment Number
-                  </label>
-
+                  <label for="enrollment" id="enrollmentLabel" class="form-label fw-semibold">Enrollment Number</label>
                   <div class="input-group">
                     <input type="text" id="enrollment" name="enrollment" class="form-control"
                       placeholder="Enter your enrollment number" aria-describedby="enrollmentError" required />
-
                     <span class="input-group-text">
                       <i class="bi bi-person-vcard"></i>
                     </span>
                   </div>
-
                   <div id="enrollmentError" class="text-danger small mt-1" aria-live="polite"></div>
                 </div>
 
@@ -227,7 +238,7 @@
                 </div>
 
                 <!-- Course -->
-                <div class="mb-4">
+                <div class="mb-4" id="courseContainer">
                   <label for="course" class="form-label fw-semibold">Course</label>
                   <select id="course" name="course" class="form-select" aria-describedby="courseError" required>
                     <option value="">Select Course</option>
@@ -237,7 +248,7 @@
 
                 <!-- Year -->
 
-                <div class="mb-4">
+                <div class="mb-4" id="yearContainer">
                   <label for="year" class="form-label fw-semibold">
                     Year
                   </label>
@@ -367,6 +378,7 @@
   <script src="../js/register.js"></script>
   <script src="../js/script.js"></script>
   <script src="../js/register-courses.js"></script>
+  <script src="../js/register-role.js"></script>
 </body>
 
 </html>

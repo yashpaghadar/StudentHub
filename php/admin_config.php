@@ -1,0 +1,2 @@
+<?php
+define("ADMIN_INVITATION_CODE", "TEAM-ALPHA");

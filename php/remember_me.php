@@ -23,7 +23,7 @@ if (!ctype_xdigit($selector) || strlen($selector) !== 24 ||
 require_once __DIR__ . "/db_connect_mysqli.php";
 
 $stmt = $conn->prepare(
-    "SELECT rt.student_id, rt.token_hash, rt.expires_at, s.full_name, s.enrollment
+    "SELECT rt.student_id, rt.token_hash, rt.expires_at, s.full_name, s.enrollment, s.role
      FROM remember_tokens rt
      JOIN students s ON s.id = rt.student_id
      WHERE rt.selector = ? LIMIT 1"
@@ -60,6 +60,7 @@ session_regenerate_id(true);
 $_SESSION["user_id"] = (int) $record["student_id"];
 $_SESSION["enrollment"] = $record["enrollment"];
 $_SESSION["full_name"] = $record["full_name"];
+$_SESSION["role"] = strtolower(trim($record["role"]));
 $_SESSION["logged_in"] = true;
 $_SESSION["last_activity"] = time();
 

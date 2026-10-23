@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once __DIR__ . "/../php/remember_me.php";
 
 if (empty($_SESSION["logged_in"]) || empty($_SESSION["user_id"])) {
     header("Location: login.html?error=unauthorized");
@@ -10,7 +11,6 @@ $timeout = 900;
 
 if (isset($_SESSION["last_activity"]) && (time() - $_SESSION["last_activity"]) > $timeout) {
     $_SESSION = [];
-
     if (ini_get("session.use_cookies")) {
         $params = session_get_cookie_params();
         setcookie(session_name(), "", [
@@ -22,14 +22,12 @@ if (isset($_SESSION["last_activity"]) && (time() - $_SESSION["last_activity"]) >
             "samesite" => $params["samesite"] ?? "Lax"
         ]);
     }
-
     session_destroy();
     header("Location: login.html?error=timeout");
     exit();
 }
 
 $_SESSION["last_activity"] = time();
-
 $studentName = $_SESSION["full_name"];
 $enrollmentNo = $_SESSION["enrollment"];
 ?>

@@ -15,9 +15,8 @@ if ($enrollment === "" || $password === "") {
     header("Location: ../pages/login.html?error=empty");
     exit();
 }
-
 $stmt = $conn->prepare(
-    "SELECT id, full_name, enrollment, password FROM students WHERE enrollment = ? LIMIT 1"
+    "SELECT id, full_name, enrollment, password, role FROM students WHERE enrollment = ? LIMIT 1"
 );
 $stmt->bind_param("s", $enrollment);
 $stmt->execute();
@@ -31,11 +30,20 @@ if (!$student || !password_verify($password, $student["password"])) {
     exit();
 }
 
+$role = strtolower(trim($student["role"]));
+
+if (!in_array($role, ["student", "admin"], true)) {
+    $conn->close();
+    header("Location: ../pages/login.html?error=invalid");
+    exit();
+}
+
 session_regenerate_id(true);
 
 $_SESSION["user_id"] = (int) $student["id"];
 $_SESSION["enrollment"] = $student["enrollment"];
 $_SESSION["full_name"] = $student["full_name"];
+$_SESSION["role"] = $role;
 $_SESSION["logged_in"] = true;
 $_SESSION["last_activity"] = time();
 
@@ -49,19 +57,12 @@ if ($rememberMe) {
     $stmt = $conn->prepare(
         "INSERT INTO remember_tokens (student_id, selector, token_hash, expires_at) VALUES (?, ?, ?, ?)"
     );
-    $stmt->bind_param(
-        "isss",
-        $student["id"],
-        $selector,
-        $tokenHash,
-        $expiresAtSql
-    );
+    $studentId = (int) $student["id"];
+    $stmt->bind_param("isss", $studentId, $selector, $tokenHash, $expiresAtSql);
     $stmt->execute();
     $stmt->close();
 
-    $cookieValue = $selector . ":" . $validator;
-
-    setcookie("studenthub_remember", $cookieValue, [
+    setcookie("studenthub_remember", $selector . ":" . $validator, [
         "expires" => $expiresAt,
         "path" => "/",
         "secure" => !empty($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] !== "off",
@@ -72,6 +73,10 @@ if ($rememberMe) {
 
 $conn->close();
 
-header("Location: ../pages/dashboard.php");
+if ($role === "admin") {
+    header("Location: ../pages/admin.php");
+} else {
+    header("Location: ../pages/dashboard.php");
+}
 exit();
 ?>
