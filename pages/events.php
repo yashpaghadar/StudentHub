@@ -27,7 +27,7 @@ if (empty($_SESSION['event_csrf'])) {
 $message = '';
 $error = '';
 
-$uploadDir = __DIR__ . '/../uploads/events/';
+$uploadDir = __DIR__ . '/../img/';
 $existingPosterDir = __DIR__ . '/../img/';
 
 if (!is_dir($uploadDir) &&
@@ -623,7 +623,7 @@ $formEvent = $editEvent ?? [
         </div>
       </div>
     </nav>
-    
+
 <main class="events-page">
     <div class="events-container">
 
@@ -664,12 +664,12 @@ $formEvent = $editEvent ?? [
         <?php if ($isAdmin): ?>
             <div class="card mb-4">
 
-                <div class="card-header">
-                    <?= $editEvent ? 'Update Event' : 'Add New Event' ?>
-                </div>
+                <button type="submit" class="btn btn-primary">
+                    <?= $editEvent ? 'Update Event' : 'Add Event' ?>
+                </button>
 
                 <div class="card-body">
-                    <form method="POST" enctype="multipart/form-data">
+                    <form id="eventForm" method="POST" enctype="multipart/form-data">
 
                         <input type="hidden" name="action" value="save">
 
@@ -774,7 +774,7 @@ $formEvent = $editEvent ?? [
                             </div>
 
                             <div class="col-12 d-flex gap-2">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary" id="eventSubmitButton">
                                     <?= $editEvent ? 'Update Event' : 'Add Event' ?>
                                 </button>
 
@@ -795,7 +795,7 @@ $formEvent = $editEvent ?? [
         <div class="card event-filter-card mb-4">
             <div class="card-body">
 
-                <form method="GET" class="row g-3">
+                <form method="GET" class="row g-3" id="eventFilterForm">
 
                     <div class="col-md-5">
                         <label class="form-label">Search Events</label>
@@ -852,7 +852,7 @@ $formEvent = $editEvent ?? [
         </div>
 
         <!-- EVENT LIST -->
-        <div class="row g-4 event-grid">
+        <div class="row g-4 event-grid" id="eventsGrid" aria-live="polite">
 
             <?php if ($events->num_rows === 0): ?>
                 <div class="col-12">
@@ -933,17 +933,15 @@ $formEvent = $editEvent ?? [
                         <?php if ($isAdmin): ?>
                             <div class="card-footer d-flex gap-2">
 
-                                <a
+                                <button
+                                    type="button"
                                     class="btn btn-warning btn-sm"
-                                    href="events.php?edit=<?= (int)$event['id'] ?>"
+                                    data-edit-id="<?= (int)$event['id'] ?>"
                                 >
                                     Edit
-                                </a>
+                                </button>
 
-                                <form
-                                    method="POST"
-                                    onsubmit="return confirm('Are you sure you want to delete this event?');"
-                                >
+                                <form method="POST" class="event-delete-form">
                                     <input
                                         type="hidden"
                                         name="action"
@@ -987,11 +985,291 @@ $formEvent = $editEvent ?? [
     </div>
 </main>
 
-<!-- Existing StudentHUB navbar loader -->
-<script src="../js/navbar.js"></script>
-
 <!-- Bootstrap dismissible alerts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+const API = '../api/events.php';
+const csrfToken = <?= json_encode($_SESSION['event_csrf']) ?>;
+const isAdmin = <?= json_encode($isAdmin) ?>;
+
+const eventForm = document.getElementById('eventForm');
+const filterForm = document.getElementById('eventFilterForm');
+const eventsGrid = document.getElementById('eventsGrid');
+
+let eventCache = [];
+
+const apiMessage = document.createElement('div');
+apiMessage.id = 'eventApiMessage';
+apiMessage.className = 'alert d-none';
+apiMessage.setAttribute('role', 'status');
+eventsGrid.parentNode.insertBefore(apiMessage, eventsGrid);
+
+function escapeHtml(value) {
+    return String(value ?? '').replace(/[&<>"']/g, char => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+    })[char]);
+}
+
+function showMessage(message, type = 'success') {
+    apiMessage.className = `alert alert-${type}`;
+    apiMessage.textContent = message;
+    apiMessage.classList.remove('d-none');
+}
+
+async function apiRequest(url = API, formData = null) {
+    const response = await fetch(url, {
+        method: formData ? 'POST' : 'GET',
+        body: formData,
+        headers: {
+            'Accept': 'application/json'
+        }
+    });
+
+    const result = await response.json();
+
+    if (!response.ok || !result.success) {
+        throw new Error(result.message || 'Request failed.');
+    }
+
+    return result;
+}
+
+function getFilterParams() {
+    const params = new URLSearchParams(new FormData(filterForm));
+
+    for (const [key, value] of [...params.entries()]) {
+        if (!value.trim()) params.delete(key);
+    }
+
+    return params.toString();
+}
+
+function renderEvents(events) {
+    eventCache = events;
+
+    if (events.length === 0) {
+        eventsGrid.innerHTML = `
+            <div class="col-12">
+                <div class="alert alert-info">
+                    No events found. Try changing your search or filters.
+                </div>
+            </div>`;
+        return;
+    }
+
+    eventsGrid.innerHTML = events.map(event => {
+        const id = Number(event.id);
+        const title = escapeHtml(event.title);
+        const category = escapeHtml(event.category);
+        const date = escapeHtml(event.event_date);
+        const location = escapeHtml(event.location);
+        const description = escapeHtml(event.description);
+        const status = escapeHtml(event.status);
+
+        let posterHtml = '';
+
+        if (event.poster) {
+            const filename = String(event.poster);
+
+            if (/^[a-zA-Z0-9_-]+\.(jpg|jpeg|png|webp)$/i.test(filename)) {
+                const posterUrl = '../img/' + encodeURIComponent(filename);
+
+                posterHtml = `
+                    <img
+                        src="${posterUrl}"
+                        class="event-image"
+                        alt="${title}"
+                        loading="lazy"
+                        onerror="this.onerror=null;this.remove()"
+                    >`;
+            }
+        }
+
+        return `
+            <div class="col-12 col-md-6 col-lg-4">
+                <article class="card event-card">
+                    ${posterHtml}
+
+                    <div class="card-body">
+                        <span class="event-badge">${category}</span>
+                        <h2 class="event-title">${title}</h2>
+
+                        <div class="event-info">
+                            <p><strong>Date:</strong> ${date}</p>
+                            <p><strong>Location:</strong> ${location}</p>
+                            <p>
+                                <strong>Status:</strong>
+                                <span class="badge ${
+                                    event.status === 'Open'
+                                        ? 'bg-success'
+                                        : 'bg-secondary'
+                                }">${status}</span>
+                            </p>
+                        </div>
+
+                        <p class="event-description mb-0">
+                            ${description.replace(/\n/g, '<br>')}
+                        </p>
+                    </div>
+
+                    ${isAdmin ? `
+                        <div class="card-footer d-flex gap-2">
+                            <button
+                                type="button"
+                                class="btn btn-warning btn-sm"
+                                data-edit-id="${id}"
+                            >Edit</button>
+
+                            <button
+                                type="button"
+                                class="btn btn-danger btn-sm"
+                                data-delete-id="${id}"
+                            >Delete</button>
+                        </div>
+                    ` : ''}
+                </article>
+            </div>`;
+    }).join('');
+}
+
+async function loadEvents(showLoading = true) {
+    try {
+        if (showLoading) {
+            showMessage('Loading events...', 'info');
+        }
+
+        const query = getFilterParams();
+        const result = await apiRequest(
+            API + (query ? '?' + query : '')
+        );
+
+        renderEvents(result.data);
+        apiMessage.classList.add('d-none');
+    } catch (error) {
+        showMessage(error.message, 'danger');
+    }
+}
+
+// Search and filter without page reload.
+filterForm.addEventListener('submit', event => {
+    event.preventDefault();
+    loadEvents();
+});
+
+// Create and update without page reload.
+if (eventForm) {
+    eventForm.addEventListener('submit', async event => {
+        event.preventDefault();
+
+        const button = document.getElementById('eventSubmitButton');
+
+        try {
+            button.disabled = true;
+            button.textContent = 'Saving...';
+
+            const data = new FormData(eventForm);
+            data.set('action', 'save');
+            data.set('csrf_token', csrfToken);
+
+            const result = await apiRequest(API, data);
+
+            eventForm.reset();
+            eventForm.querySelector('[name="id"]').value = '0';
+
+            document.getElementById('eventFormTitle').textContent =
+                'Add New Event';
+
+            button.textContent = 'Add Event';
+
+            showMessage(result.message, 'success');
+            await loadEvents(false);
+        } catch (error) {
+            showMessage(error.message, 'danger');
+        } finally {
+            button.disabled = false;
+
+            if (document.getElementById('eventFormTitle').textContent ===
+                'Add New Event') {
+                button.textContent = 'Add Event';
+            } else {
+                button.textContent = 'Update Event';
+            }
+        }
+    });
+}
+
+// Edit and delete without page reload.
+eventsGrid.addEventListener('click', async event => {
+    const editButton = event.target.closest('[data-edit-id]');
+    const deleteButton = event.target.closest('[data-delete-id]');
+
+    if (editButton && eventForm) {
+        const selectedEvent = eventCache.find(
+            item => Number(item.id) === Number(editButton.dataset.editId)
+        );
+
+        if (!selectedEvent) {
+            showMessage('Event not found.', 'danger');
+            return;
+        }
+
+        eventForm.querySelector('[name="id"]').value = selectedEvent.id;
+        eventForm.querySelector('[name="title"]').value =
+            selectedEvent.title ?? '';
+        eventForm.querySelector('[name="description"]').value =
+            selectedEvent.description ?? '';
+        eventForm.querySelector('[name="event_date"]').value =
+            selectedEvent.event_date ?? '';
+        eventForm.querySelector('[name="location"]').value =
+            selectedEvent.location ?? '';
+        eventForm.querySelector('[name="category"]').value =
+            selectedEvent.category ?? '';
+        eventForm.querySelector('[name="status"]').value =
+            selectedEvent.status ?? 'Open';
+
+        document.getElementById('eventFormTitle').textContent =
+            'Update Event';
+
+        document.getElementById('eventSubmitButton').textContent =
+            'Update Event';
+
+        eventForm.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+
+        return;
+    }
+
+    if (deleteButton) {
+        if (!confirm('Are you sure you want to delete this event?')) {
+            return;
+        }
+
+        try {
+            const data = new FormData();
+            data.set('action', 'delete');
+            data.set('id', deleteButton.dataset.deleteId);
+            data.set('csrf_token', csrfToken);
+
+            const result = await apiRequest(API, data);
+
+            showMessage(result.message, 'success');
+            await loadEvents(false);
+        } catch (error) {
+            showMessage(error.message, 'danger');
+        }
+    }
+});
+
+// Initial event loading.
+loadEvents();
+</script>
 
 </body>
 </html>
